@@ -13,9 +13,9 @@
     },
     "android": {
       "package": "com.meami.app",
-      "icon": "./assets/images/icon.png",
+      "icon": "./assets/images/adaptive-icon.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#491B1E"
       },
       "edgeToEdgeEnabled": true
