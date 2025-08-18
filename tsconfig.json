@@ -3,9 +3,52 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@app/*": [
+        "./app/*",
+        "./app/*/index"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@constants/*": [
+        "./constants/*"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@services/*": [
+        "./services/*"
+      ],
+      "@stores/*": [
+        "./stores/*"
+      ],
+      "@types/*": [
+        "./types/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@themes/*": [
+        "./themes/*"
+      ],
+      "@data/*": [
+        "./data/*"
+      ],
+      "@i18n/*": [
+        "./i18n/*"
+      ],
+      "@platforms/*": [
+        "./components/platforms/*"
+      ],
+      "@context/*": [
+        "./context/*"
+      ],
+      "@supabase/*": [
+        "./supabase/*"
+      ],
     }
   },
   "include": [

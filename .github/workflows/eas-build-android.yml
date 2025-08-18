@@ -1,0 +1,46 @@
+name: Build Android Only
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+    steps:
+      - name: ✅ Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account."
+            exit 1
+          fi
+
+      - name: 🏗 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 🧱 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+
+      - name: 🛠 Setup EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Clear npm cache
+        run: npm cache clean --force
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🚀 Build Android app only
+        run: eas build --non-interactive --platform android --profile production
+
