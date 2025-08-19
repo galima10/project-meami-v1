@@ -13,6 +13,7 @@
     },
     "android": {
       "package": "com.meami.app",
+      "versionCode": 1,
       "icon": "./assets/images/adaptive-icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
@@ -38,7 +39,9 @@
       ],
       "expo-sqlite"
     ],
+    "jsEngine": "hermes",
     "experiments": {
+      "baseHermesBytecodeBundle": true,
       "typedRoutes": true
     },
     "extra": {

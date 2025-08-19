@@ -37,6 +37,7 @@ jobs:
             echo "This commit would trigger a full EAS Build (APK/IPA)"
           else
             echo "This commit would trigger a regular push – no build/update"
+            exit 0
           fi
 
       - name: 🧱 Setup Node

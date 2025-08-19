@@ -12,6 +12,11 @@
       "distribution": "internal"
     },
     "production": {
+      "cache": {
+        "disabled": false,
+        "key": "node-modules",
+        "paths": ["node_modules", "yarn.lock", "package-lock.json"]
+      },
       "android": {
         "buildType": "apk"
       },
