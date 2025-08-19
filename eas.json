@@ -15,7 +15,7 @@
       "cache": {
         "disabled": false,
         "key": "node-modules",
-        "paths": ["node_modules", "yarn.lock", "package-lock.json"]
+        "paths": ["node_modules", "package-lock.json"]
       },
       "android": {
         "buildType": "apk"
