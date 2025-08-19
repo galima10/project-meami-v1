@@ -23,37 +23,49 @@ jobs:
       - name: 🏗 Checkout repo
         uses: actions/checkout@v3
 
-      - name: 🧱 Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          cache: npm
-
-      - name: 🛠 Setup EAS CLI
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: 📦 Clear npm cache
-        run: npm cache clean --force
-
-      - name: 📦 Install dependencies
-        run: npm install
-
       - name: 🔍 Get last commit message
         id: commit
         run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
 
-      - name: 🚀 Conditional EAS Command
+      - name: 🔍 Preview commit type
         run: |
-          echo "Commit message: $COMMIT_MESSAGE"
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          echo "Last commit message: '$COMMIT_MESSAGE'"
           if [[ "$COMMIT_MESSAGE" == *"[update]"* ]]; then
-            echo "Performing EAS Update (JS + assets only)"
-            eas update --branch main --message "$COMMIT_MESSAGE"
+            echo "This commit would trigger an EAS Update (JS + assets only)"
           elif [[ "$COMMIT_MESSAGE" == *"[build]"* ]]; then
-            echo "Performing full EAS Build (APK/IPA)"
-            eas build --non-interactive --platform android --profile production
+            echo "This commit would trigger a full EAS Build (APK/IPA)"
           else
-            echo "Regular push – no build/update triggered"
+            echo "This commit would trigger a regular push – no build/update"
           fi
+
+      # - name: 🧱 Setup Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18.x
+      #     cache: npm
+
+      # - name: 🛠 Setup EAS CLI
+      #   uses: expo/expo-github-action@v8
+      #   with:
+      #     eas-version: latest
+      #     token: ${{ secrets.EXPO_TOKEN }}
+
+      # - name: 📦 Clear npm cache
+      #   run: npm cache clean --force
+
+      # - name: 📦 Install dependencies
+      #   run: npm install
+
+      # - name: 🚀 Conditional EAS Command
+      #   run: |
+      #     echo "Commit message: $COMMIT_MESSAGE"
+      #     if [[ "$COMMIT_MESSAGE" == *"[update]"* ]]; then
+      #       echo "Performing EAS Update (JS + assets only)"
+      #       eas update --branch main --message "$COMMIT_MESSAGE"
+      #     elif [[ "$COMMIT_MESSAGE" == *"[build]"* ]]; then
+      #       echo "Performing full EAS Build (APK/IPA)"
+      #       eas build --non-interactive --platform android --profile production
+      #     else
+      #       echo "Regular push – no build/update triggered"
+      #     fi
