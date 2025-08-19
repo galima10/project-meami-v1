@@ -1,4 +1,4 @@
-name: Build Android Only
+name: Build or Update Android
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-android:
+  android:
     runs-on: ubuntu-latest
 
     env:
@@ -41,6 +41,17 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 🚀 Build Android app only
-        run: eas build --non-interactive --platform android --profile production
+      - name: 🔍 Get last commit message
+        id: commit
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
 
+      - name: 🚀 Conditional EAS Command
+        run: |
+          echo "Commit message: $COMMIT_MESSAGE"
+          if [[ "$COMMIT_MESSAGE" == *"[update]"* ]]; then
+            echo "Performing EAS Update (JS + assets only)"
+            eas update --branch main --message "$COMMIT_MESSAGE"
+          else
+            echo "Performing full EAS Build"
+            eas build --non-interactive --platform android --profile production
+          fi
