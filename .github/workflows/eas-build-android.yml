@@ -51,7 +51,9 @@ jobs:
           if [[ "$COMMIT_MESSAGE" == *"[update]"* ]]; then
             echo "Performing EAS Update (JS + assets only)"
             eas update --branch main --message "$COMMIT_MESSAGE"
-          else
-            echo "Performing full EAS Build"
+          elif [[ "$COMMIT_MESSAGE" == *"[build]"* ]]; then
+            echo "Performing full EAS Build (APK/IPA)"
             eas build --non-interactive --platform android --profile production
+          else
+            echo "Regular push – no build/update triggered"
           fi
