@@ -34,21 +34,6 @@
       "@themes/*": [
         "./themes/*"
       ],
-      "@data/*": [
-        "./data/*"
-      ],
-      "@i18n/*": [
-        "./i18n/*"
-      ],
-      "@platforms/*": [
-        "./components/platforms/*"
-      ],
-      "@context/*": [
-        "./context/*"
-      ],
-      "@supabase/*": [
-        "./supabase/*"
-      ],
     }
   },
   "include": [
