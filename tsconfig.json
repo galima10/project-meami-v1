@@ -2,38 +2,19 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "customConditions": ["react-native-strict-api"],
+    "baseUrl": ".",
     "paths": {
-      "@app/*": [
-        "./app/*",
-        "./app/*/index"
-      ],
-      "@assets/*": [
-        "./assets/*"
-      ],
-      "@components/*": [
-        "./components/*"
-      ],
-      "@constants/*": [
-        "./constants/*"
-      ],
-      "@hooks/*": [
-        "./hooks/*"
-      ],
-      "@services/*": [
-        "./services/*"
-      ],
-      "@stores/*": [
-        "./stores/*"
-      ],
-      "@types/*": [
-        "./types/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ],
-      "@themes/*": [
-        "./themes/*"
-      ],
+      "@app/*": ["./app/*", "./app/*/index"],
+      "@assets/*": ["./assets/*"],
+      "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@services/*": ["./services/*"],
+      "@stores/*": ["./stores/*"],
+      "@types/*": ["./types/*"],
+      "@utils/*": ["./utils/*"],
+      "@themes/*": ["./themes/*"]
     }
   },
   "include": [
