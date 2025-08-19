@@ -39,9 +39,7 @@
       ],
       "expo-sqlite"
     ],
-    "jsEngine": "hermes",
     "experiments": {
-      "baseHermesBytecodeBundle": true,
       "typedRoutes": true
     },
     "extra": {
