@@ -65,7 +65,7 @@ jobs:
         if: contains(github.event.head_commit.message, '[update]')
         run: |
           echo "Performing EAS Update (JS + assets only)"
-          eas update --branch main --message "${{ github.event.head_commit.message }}"
+          eas update --branch production --message "${{ github.event.head_commit.message }}"
 
       - name: 🚀 EAS Build
         if: contains(github.event.head_commit.message, '[build]')
