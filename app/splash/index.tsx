@@ -22,7 +22,7 @@ export default function Splash() {
     <View style={styles.container}>
       {/* <Image source={require("@assets/images/logo.png")} style={styles.icon} /> */}
       <BounceSpring>
-        <Image source={require("@assets/images/logo.png")} style={styles.icon} />
+        <Image source={require("@assets/images/precharged/logos/logo.png")} style={styles.icon} />
       </BounceSpring>
       <View style={styles.titleContainer}>
         <WaveText text="Ton meilleur ami pour cooky !" style={styles.title} />
