@@ -1,12 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { Image } from "expo-image";
 import { useTheme } from "@hooks/useTheme";
+import theme from "@themes/index";
 
 export default function Splash() {
   const theme = useTheme();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcomeddd to My App</Text>
+      <View>
+        <Image
+          source={require("@assets/images/logo.png")}
+          style={styles.icon}
+        />
+      </View>
     </View>
   );
 }
@@ -16,10 +23,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: theme.properties.darkOrange,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+  icon: {
+    width: 500,
+    height: 500,
+    borderRadius: "80%",
   },
 });
