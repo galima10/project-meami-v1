@@ -1,19 +1,25 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Image } from "expo-image";
-import { useTheme } from "@hooks/useTheme";
-import theme from "@themes/index";
+import theme, { ThemeType } from "@themes/index";
+import { useEffect } from "react";
+import { useRouter } from "expo-router";
 
 export default function Splash() {
-  const theme = useTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/home");
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <View>
-        <Image
-          source={require("@assets/images/logo.png")}
-          style={styles.icon}
-        />
-      </View>
+      <Image source={require("@assets/images/logo.png")} style={styles.icon} />
+      <Text style={styles.title}>Ton meilleur ami pour cooky !</Text>
     </View>
   );
 }
@@ -28,6 +34,14 @@ const styles = StyleSheet.create({
   icon: {
     width: 500,
     height: 500,
-    borderRadius: "80%",
+  },
+  title: {
+    paddingHorizontal: 50,
+    textAlign: "center",
+    lineHeight: 56,
+    fontSize: 40,
+    fontWeight: "bold",
+    color: theme.properties.white,
+    marginTop: 32,
   },
 });
