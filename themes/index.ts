@@ -31,16 +31,6 @@ const theme = {
     vibrantPink: "#FF7B9C",
     vibrantBeige: "#FFEAC3",
 
-    filterShadow: {
-      shadowColor: "#000",
-      shadowOffset: {
-        x: 0,
-        y: 2,
-      },
-      shadowOpacity: 0.8,
-      shadowRadius: 2,
-    },
-
     borderRadius: 10,
 
     // active: "#000000",
@@ -69,15 +59,6 @@ export interface ThemeType {
   vibrantPurple: string;
   vibrantPink: string;
   borderRadius: number;
-  filterShadow: {
-    shadowColor: string;
-    shadowOffset: {
-      x: number;
-      y: number;
-    };
-    shadowOpacity: number;
-    shadowRadius: number;
-  };
   // inputColor: string;
   // gray: string;
 }
