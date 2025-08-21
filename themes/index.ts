@@ -1,26 +1,66 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import { StyleProp } from "react-native";
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const theme = {
+  name: "light",
+  properties: {
+    beige: "#FFF6E6",
 
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
+    darkOrange: "#E09873",
+
+    brown: "#491B1E",
+    white: "#FFFFFF",
+
+    darkRed: "#B23E5B",
+    darkGreen: "#929E6D",
+    darkYellow: "#F3D55F",
+    darkPurple: "#8983D7",
+    darkPink: "#E68FBC",
+
+    lightOrange: "#EEAA83",
+    lightRed: "#D45068",
+    lightGreen: "#B8C990",
+    lightYellow: "#FFE992",
+    lightPurple: "#A39EE3",
+    lightPink: "#F2B8DD",
+
+    vibrantOrange: "#ED8C37",
+    vibrantRed: "#C82807",
+    vibrantGreen: "#8EA604",
+    vibrantYellow: "#FFED26",
+    vibrantPurple: "#663CE1",
+    vibrantPink: "#FF7B9C",
+    vibrantBeige: "#FFEAC3",
+
+    borderRadius: 10,
+
+    // active: "#000000",
+    // iconActive: "#ffffff",
+    // iconInactive: "gray",
+    // danger: "#FED7E3",
+    // success: "#42CD00",
+  } as ThemeType,
 };
+
+export interface ThemeType {
+  beige: string;
+  darkOrange: string;
+  brown: string;
+  white: string;
+  darkRed: string;
+  darkGreen: string;
+  darkYellow: string;
+  darkPurple: string;
+  darkPink: string;
+  vibrantBeige: string;
+  vibrantOrange: string;
+  vibrantRed: string;
+  vibrantGreen: string;
+  vibrantYellow: string;
+  vibrantPurple: string;
+  vibrantPink: string;
+  borderRadius: number;
+  // inputColor: string;
+  // gray: string;
+}
+
+export default theme;
