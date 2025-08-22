@@ -2,7 +2,7 @@
 import { useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing } from "react-native-reanimated";
 import { useEffect } from "react";
 
-export const useWaveAnimation = (index:number, { amplitude = 10, speed = 3000 } = {}) => {
+export const useWaveAnimation = (index:number, { amplitude = 10, speed = 2800 } = {}) => {
   const progress = useSharedValue(0);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const useWaveAnimation = (index:number, { amplitude = 10, speed = 3000 } 
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => {
-    const offset = index * 0.18;
+    const offset = index * 0.2;
     return {
       transform: [
         {
