@@ -7,6 +7,11 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "package": "com.meami.app.debug",
+        "label": "Meami Debug"
+      },
       "channel": "development"
     },
     "preview": {
@@ -14,16 +19,16 @@
       "channel": "preview"
     },
     "production": {
+      "distribution": "store",
       "cache": {
         "disabled": false,
         "key": "node-modules",
-        "paths": [
-          "node_modules",
-          "package-lock.json"
-        ]
+        "paths": ["node_modules", "package-lock.json"]
       },
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "package": "com.meami.app",
+        "label": "Meami"
       },
       "autoIncrement": true,
       "channel": "production"

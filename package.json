@@ -9,7 +9,9 @@
     "run:android": "expo run:android",
     "prebuild": "expo prebuild",
     "lint": "expo lint",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
