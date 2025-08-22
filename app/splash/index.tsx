@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    // lineHeight: 56,
     fontSize: 32,
     fontWeight: "bold",
     color: theme.properties.beige,
