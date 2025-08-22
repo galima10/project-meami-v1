@@ -60,8 +60,8 @@
         "expo-asset",
         {
           "assets": [
-            "./assets/images/precharged/logos/icon.png",
-            "./assets/images/precharged/logos/text-logo.png",
+            "./assets/images/precharged/logos/logo.png",
+            "./assets/images/precharged/logos/logo-text.png",
             "./assets/images/precharged/illustrations/viewImages/storage@3x.jpg",
             "./assets/images/precharged/illustrations/viewImages/recipes@3x.jpg",
             "./assets/images/precharged/illustrations/viewImages/ingredients@3x.jpg",
