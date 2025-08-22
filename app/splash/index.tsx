@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import theme, { ThemeType } from "@themes/index";
 import { useEffect } from "react";
 import { useRouter } from "expo-router";
+import WaveText from "@components/atoms/WaveText";
 
 export default function Splash() {
   const router = useRouter();
@@ -19,7 +20,9 @@ export default function Splash() {
   return (
     <View style={styles.container}>
       <Image source={require("@assets/images/logo.png")} style={styles.icon} />
-      <Text style={styles.title}>Ton meilleur ami pour cooky !</Text>
+      <View style={styles.titleContainer}>
+        <WaveText text="Ton meilleur ami pour cooky !" style={styles.title} />
+      </View>
     </View>
   );
 }
@@ -32,16 +35,18 @@ const styles = StyleSheet.create({
     backgroundColor: theme.properties.darkOrange,
   },
   icon: {
-    width: 500,
-    height: 500,
+    width: 400,
+    height: 400,
   },
   title: {
-    paddingHorizontal: 50,
     textAlign: "center",
-    lineHeight: 56,
-    fontSize: 40,
+    // lineHeight: 56,
+    fontSize: 32,
     fontWeight: "bold",
-    color: theme.properties.white,
-    marginTop: 32,
+    color: theme.properties.beige,
   },
+  titleContainer: {
+    paddingHorizontal: 100,
+    marginTop: 40,
+  }
 });
