@@ -4,7 +4,8 @@ import { Image } from "expo-image";
 import theme, { ThemeType } from "@themes/index";
 import { useEffect } from "react";
 import { useRouter } from "expo-router";
-import WaveText from "@components/atoms/WaveText";
+import WaveText from "@components/atoms/animated/WaveText";
+import BounceSpring from "@components/atoms/animated/BounceSpring";
 
 export default function Splash() {
   const router = useRouter();
@@ -12,14 +13,17 @@ export default function Splash() {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.replace("/home");
-    }, 4000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Image source={require("@assets/images/logo.png")} style={styles.icon} />
+      {/* <Image source={require("@assets/images/logo.png")} style={styles.icon} /> */}
+      <BounceSpring>
+        <Image source={require("@assets/images/logo.png")} style={styles.icon} />
+      </BounceSpring>
       <View style={styles.titleContainer}>
         <WaveText text="Ton meilleur ami pour cooky !" style={styles.title} />
       </View>
