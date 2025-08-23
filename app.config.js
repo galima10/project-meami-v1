@@ -4,14 +4,5 @@ module.exports = ({ config }) => {
   return {
     ...config,
     name: isProd ? "Meami" : "Meami Debug",
-
-    android: {
-      ...config.android,
-      package: isProd ? "com.meami.app" : "com.meami.app.debug",
-    },
-    extra: {
-      ...config.extra,
-      expoRouterAppRoot: "./app",
-    },
   };
 };
