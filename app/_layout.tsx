@@ -6,10 +6,10 @@ export default function RootLayout() {
   return (
     // <Provider store={store}>
     // </Provider>
-      <Stack>
+      <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="splash/index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        {/* <Stack.Screen name="+not-found" /> */}
       </Stack>
   );
 }

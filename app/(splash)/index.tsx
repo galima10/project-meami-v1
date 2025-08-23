@@ -39,17 +39,18 @@ const styles = StyleSheet.create({
     backgroundColor: theme.properties.darkOrange,
   },
   icon: {
-    width: 400,
-    height: 400,
+    width: 300,
+    height: 300,
   },
   title: {
     textAlign: "center",
-    fontSize: 32,
-    fontWeight: "bold",
+    fontSize: 28,
     color: theme.properties.beige,
+    fontFamily: "SN",
+    fontWeight: "700",
   },
   titleContainer: {
-    paddingHorizontal: 100,
+    paddingHorizontal: 50,
     marginTop: 40,
   }
 });

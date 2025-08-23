@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 export const useWaveAnimation = (index:number, { amplitude = 10, speed = 2800 } = {}) => {
   const progress = useSharedValue(0);
+  const waveLength = 5;
 
   useEffect(() => {
     progress.value = withRepeat(
@@ -17,7 +18,7 @@ export const useWaveAnimation = (index:number, { amplitude = 10, speed = 2800 } 
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => {
-    const offset = index * 0.2;
+    const offset = index / waveLength;
     return {
       transform: [
         {
