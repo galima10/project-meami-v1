@@ -26,9 +26,7 @@
         "paths": ["node_modules", "package-lock.json"]
       },
       "android": {
-        "buildType": "apk",
-        "package": "com.meami.app",
-        "label": "Meami"
+        "buildType": "apk"
       },
       "autoIncrement": true,
       "channel": "production"

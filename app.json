@@ -12,8 +12,8 @@
       "supportsTablet": true
     },
     "android": {
-      "label": "Meami Debug",
-      "package": "com.meami.app.debug",
+      "label": "Meami",
+      "package": "com.meami.app",
       "versionCode": 1,
       "icon": "./assets/images/precharged/logos/adaptive_icon.png",
       "adaptiveIcon": {
@@ -21,11 +21,6 @@
         "backgroundColor": "#491B1E"
       },
       "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/precharged/logos/icon.png"
     },
     "plugins": [
       "expo-router",
@@ -90,8 +85,9 @@
       "typedRoutes": true
     },
     "extra": {
-      "router": {},
-      "EXPO_ROUTER_APP_ROOT": "./app",
+      "router": {
+        "expoRouterAppRoot": "./app"
+      },
       "eas": {
         "projectId": "4201e8a9-82b6-4928-84f4-6b2ddf6dfaf9"
       }
