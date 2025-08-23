@@ -18,5 +18,7 @@ const styles = StyleSheet.create({
     fontFamily: "SN",
     fontWeight: "700",
     fontSize: 24,
+    textAlign: "center",
+    paddingHorizontal: 20,
   },
 });
