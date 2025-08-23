@@ -21,7 +21,6 @@ export default function Splash() {
   return (
     <View style={styles.container}>
       {/* <Image source={require("@assets/images/logo.png")} style={styles.icon} /> */}
-      
       <BounceSpring>
         <Image source={require("@assets/images/precharged/logos/logo.png")} style={styles.icon} />
       </BounceSpring>
