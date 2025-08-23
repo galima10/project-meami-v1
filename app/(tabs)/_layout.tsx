@@ -4,10 +4,31 @@ export default function TabLayout() {
   return (
     <Tabs>
       <Tabs.Screen
-        name="home"
+        name="menu"
         options={{
           headerShown: false,
-          tabBarStyle: { display: "none" },
+          // tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tabs.Screen
+        name="cart"
+        options={{
+          headerShown: false,
+          // tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tabs.Screen
+        name="stock"
+        options={{
+          headerShown: false,
+          // tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tabs.Screen
+        name="infos"
+        options={{
+          headerShown: false,
+          // tabBarStyle: { display: "none" },
         }}
       />
     </Tabs>
