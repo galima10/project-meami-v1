@@ -14,9 +14,9 @@
     "android": {
       "package": "com.meami.app",
       "versionCode": 1,
-      "icon": "./assets/images/precharged/logos/adaptive-icon.png",
+      "icon": "./assets/images/precharged/logos/adaptive_icon.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/precharged/logos/adaptive-icon.png",
+        "foregroundImage": "./assets/images/precharged/logos/adaptive_icon.png",
         "backgroundColor": "#491B1E"
       },
       "edgeToEdgeEnabled": true
@@ -46,10 +46,10 @@
               {
                 "fontFamily": "SN",
                 "fontDefinitions": [
-                  { "path": "./assets/fonts/SN-Regular.ttf", "weight": 400 },
-                  { "path": "./assets/fonts/SN-Medium.ttf", "weight": 500 },
-                  { "path": "./assets/fonts/SN-SemiBold.ttf", "weight": 600 },
-                  { "path": "./assets/fonts/SN-Bold.ttf", "weight": 700 }
+                  { "path": "./assets/fonts/SN_Regular.ttf", "weight": 400 },
+                  { "path": "./assets/fonts/SN_Medium.ttf", "weight": 500 },
+                  { "path": "./assets/fonts/SN_SemiBold.ttf", "weight": 600 },
+                  { "path": "./assets/fonts/SN_Bold.ttf", "weight": 700 }
                 ]
               }
             ]
@@ -61,20 +61,20 @@
         {
           "assets": [
             "./assets/images/precharged/logos/logo.png",
-            "./assets/images/precharged/logos/logo-text.png",
-            "./assets/images/precharged/illustrations/viewImages/storage@3x.jpg",
-            "./assets/images/precharged/illustrations/viewImages/recipes@3x.jpg",
-            "./assets/images/precharged/illustrations/viewImages/ingredients@3x.jpg",
-            "./assets/images/precharged/illustrations/viewImages/cooking@3x.jpg",
-            "./assets/images/precharged/illustrations/recipesTypes/vegetables@3x.jpg",
-            "./assets/images/precharged/illustrations/recipesTypes/meats@3x.jpg",
-            "./assets/images/precharged/illustrations/recipesTypes/desserts@3x.jpg",
-            "./assets/images/precharged/illustrations/recipesTypes/accompaniements@3x.jpg",
-            "./assets/images/precharged/background/stock@3x.jpg",
-            "./assets/images/precharged/background/recipes@3x.jpg",
-            "./assets/images/precharged/background/menu@3x.jpg",
-            "./assets/images/precharged/background/infos@3x.jpg",
-            "./assets/images/precharged/background/cart@3x.jpg"
+            "./assets/images/precharged/logos/logo_text.png",
+            "./assets/images/precharged/illustrations/viewImages/storage_3x.jpg",
+            "./assets/images/precharged/illustrations/viewImages/recipes_3x.jpg",
+            "./assets/images/precharged/illustrations/viewImages/ingredients_3x.jpg",
+            "./assets/images/precharged/illustrations/viewImages/cooking_3x.jpg",
+            "./assets/images/precharged/illustrations/recipesTypes/vegetables_3x.jpg",
+            "./assets/images/precharged/illustrations/recipesTypes/meats_3x.jpg",
+            "./assets/images/precharged/illustrations/recipesTypes/desserts_3x.jpg",
+            "./assets/images/precharged/illustrations/recipesTypes/accompaniements_3x.jpg",
+            "./assets/images/precharged/background/stock_3x.jpg",
+            "./assets/images/precharged/background/recipes_3x.jpg",
+            "./assets/images/precharged/background/menu_3x.jpg",
+            "./assets/images/precharged/background/infos_3x.jpg",
+            "./assets/images/precharged/background/cart_3x.jpg"
           ]
         }
       ]
