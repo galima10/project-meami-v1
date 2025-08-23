@@ -8,9 +8,7 @@
       "developmentClient": true,
       "distribution": "internal",
       "android": {
-        "buildType": "apk",
-        "package": "com.meami.app.debug",
-        "label": "Meami Debug"
+        "buildType": "apk"
       },
       "channel": "development"
     },
