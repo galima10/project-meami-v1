@@ -12,7 +12,8 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.meami.app",
+      "label": "Meami Debug",
+      "package": "com.meami.app.debug",
       "versionCode": 1,
       "icon": "./assets/images/precharged/logos/adaptive_icon.png",
       "adaptiveIcon": {
