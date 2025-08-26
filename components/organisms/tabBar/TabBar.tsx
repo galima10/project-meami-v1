@@ -1,4 +1,4 @@
-import TabButton from "@components/atoms/tabBar/TabButton";
+import TabButton from "@components/molecules/tabBar/TabButton";
 import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
 
@@ -6,7 +6,7 @@ const TabBar = () => {
   return (
     <View style={styles.container}>
       <TabButton routeName="menu" label="Menu" />
-      <TabButton routeName="cart" label="Cart" />
+      <TabButton routeName="cart" label="Courses" />
       <TabButton routeName="stock" label="Stock" />
       <TabButton routeName="infos" label="Infos" />
     </View>

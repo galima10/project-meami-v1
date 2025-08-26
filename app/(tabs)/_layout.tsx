@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import TabBar from "@components/molecules/tabBar/TabBar";
+import TabBar from "@components/organisms/tabBar/TabBar";
 
 export default function TabLayout() {
   return (

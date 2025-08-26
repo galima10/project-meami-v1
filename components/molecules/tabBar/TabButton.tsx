@@ -2,6 +2,7 @@ import { Pressable, Text, StyleSheet } from "react-native";
 import theme from "@themes/index";
 import { Link } from "expo-router";
 import { usePathname } from "expo-router";
+import Icon from "@components/atoms/Icon";
 
 interface TabButtonProps {
   routeName: "menu" | "cart" | "stock" | "infos";
