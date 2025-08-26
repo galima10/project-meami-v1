@@ -2,17 +2,19 @@ import { Image } from "expo-image";
 import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
 import TopButton from "@components/molecules/TopButton";
+import { PropsWithChildren } from "react";
 
-const TopBar = () => {
+const TopBar = ({children} : PropsWithChildren) => {
   return (
     <>
       <View style={styles.container}>
-        <TopButton routeName="menu" />
-        <TopButton routeName="cart" />
         <Image
           source={require("@assets/images/precharged/logos/logo_text.png")}
           style={styles.logo}
         />
+        <View >
+            {children}
+        </View>
       </View>
     </>
   );
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: theme.properties.darkOrange,
+    position: "relative",
   },
   logo: {
     width: 100,
