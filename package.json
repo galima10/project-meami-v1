@@ -11,6 +11,7 @@
     "test": "jest --verbose",
     "android": "expo run:android",
     "clean:android": "rimraf android",
+    "start:lan": "expo start --host lan",
     "ios": "expo run:ios"
   },
   "dependencies": {
