@@ -1,4 +1,4 @@
-import { StyleProp } from "react-native";
+import { FontWeight } from "react-native";
 
 const theme = {
   name: "light",
@@ -33,6 +33,12 @@ const theme = {
 
     borderRadius: 10,
 
+    fontFamily: "SN",
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+
     // active: "#000000",
     // iconActive: "#ffffff",
     // iconInactive: "gray",
@@ -59,6 +65,11 @@ export interface ThemeType {
   vibrantPurple: string;
   vibrantPink: string;
   borderRadius: number;
+  fontFamily: string;
+  regular: FontWeight;
+  medium: FontWeight;
+  semibold: FontWeight;
+  bold: FontWeight;
   // inputColor: string;
   // gray: string;
 }

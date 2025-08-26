@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 28,
     color: theme.properties.beige,
-    fontFamily: "SN",
-    fontWeight: "700",
+    fontWeight: theme.properties.bold,
   },
   titleContainer: {
     paddingHorizontal: 50,

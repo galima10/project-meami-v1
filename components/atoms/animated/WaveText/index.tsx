@@ -1,8 +1,8 @@
 // WaveText.tsx
 import React from "react";
 import { View, StyleSheet, TextProps, StyleProp, TextStyle } from "react-native";
-import Animated from "react-native-reanimated";
 import { useWaveAnimation } from "@hooks/animations/useWaveAnimation";
+import { AnimatedAppText } from "@components/atoms/global/Texts";
 
 type WaveTextProps = TextProps & {
   text: string;
@@ -22,13 +22,13 @@ const WaveText = ({ text, style, ...rest }: WaveTextProps) => {
               const animatedStyle = useWaveAnimation(charIndex + wordIndex * 3); 
               // Décalage pour garder l'effet fluide entre mots
               return (
-                <Animated.Text
+                <AnimatedAppText
                   key={charIndex}
                   {...rest}
                   style={[style, animatedStyle]}
                 >
                   {char}
-                </Animated.Text>
+                </AnimatedAppText>
               );
             })}
           </View>
