@@ -18,3 +18,16 @@ jest.mock('react-native-reanimated', () => {
     default: { call: () => {} },
   };
 });
+
+jest.mock('react-native-svg', () => {
+  const React = require('react');
+  return {
+    __esModule: true,
+    Svg: (props: any) => React.createElement('svg', props),
+    Path: (props: any) => React.createElement('path', props),
+    Circle: (props: any) => React.createElement('circle', props),
+    Rect: (props: any) => React.createElement('rect', props),
+    G: (props: any) => React.createElement('g', props),
+    // Ajoute d'autres si besoin (Line, Ellipse, Polygon, Polyline, etc.)
+  };
+});
