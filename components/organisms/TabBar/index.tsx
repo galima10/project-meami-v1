@@ -1,4 +1,4 @@
-import TabButton from "@components/molecules/tabBar/TabButton";
+import TabButton from "@components/molecules/TabButton";
 import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";

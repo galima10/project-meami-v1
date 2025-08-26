@@ -1,9 +1,11 @@
 import { Tabs } from "expo-router";
-import TabBar from "@components/organisms/tabBar/TabBar";
+import TabBar from "@components/organisms/TabBar";
+import TopBar from "@components/organisms/TopBar";
 
 export default function TabLayout() {
   return (
     <>
+      <TopBar />
       <Tabs>
         <Tabs.Screen
           name="menu"
