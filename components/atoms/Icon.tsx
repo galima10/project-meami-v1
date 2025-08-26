@@ -1,8 +1,6 @@
 import React from "react";
 import { SvgProps } from "react-native-svg";
-import SvgMenu from "./icons/SvgMenu";
-
-type IconName = "menu";
+import { useIconComponent, IconName } from "@hooks/icon/useIcon";
 
 interface IconProps extends SvgProps {
   name: IconName;
@@ -10,12 +8,8 @@ interface IconProps extends SvgProps {
   color?: string;
 }
 
-const ICONS: Record<IconName, React.FC<SvgProps>> = {
-  menu: SvgMenu,
-};
-
 const Icon: React.FC<IconProps> = ({ name, size = 24, color = "#000", ...props }) => {
-  const SvgComponent = ICONS[name];
+  const SvgComponent = useIconComponent(name);
 
   if (!SvgComponent) {
     console.warn(`Icon "${name}" does not exist.`);
