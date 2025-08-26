@@ -22,3 +22,7 @@
 [1.2.0]
 - **Utilisation d'icônes SVG** :
     > Affichage d'icônes SVG au sein de l'application
+- **Tab Bar stylisée** :
+    > Ajout d'icônes et de styles globaux (ombres, couleurs) à la Tab Bar et aux boutons de navigation d'écrans
+- **Nouvelle couleur de fond** :
+    > Couleurs et polices par défaut appliquées : beige au fond, marron aux textes
