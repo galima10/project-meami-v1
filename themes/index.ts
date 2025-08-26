@@ -1,5 +1,3 @@
-import { FontWeight } from "react-native";
-
 const theme = {
   name: "light",
   properties: {
@@ -31,13 +29,15 @@ const theme = {
     vibrantPink: "#FF7B9C",
     vibrantBeige: "#FFEAC3",
 
-    borderRadius: 10,
+    buttonRadius: 8,
 
     fontFamily: "SN",
-    regular: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
+    regular: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+
+    borderColor: "rgba(73, 27, 30, 0.25)",
 
     // active: "#000000",
     // iconActive: "#ffffff",
@@ -64,14 +64,17 @@ export interface ThemeType {
   vibrantYellow: string;
   vibrantPurple: string;
   vibrantPink: string;
-  borderRadius: number;
+  buttonRadius: number;
   fontFamily: string;
-  regular: FontWeight;
-  medium: FontWeight;
-  semibold: FontWeight;
-  bold: FontWeight;
+  regular: FontWeightType;
+  medium: FontWeightType;
+  semibold: FontWeightType;
+  bold: FontWeightType;
+  borderColor: string
   // inputColor: string;
   // gray: string;
 }
+
+type FontWeightType = "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
 
 export default theme;

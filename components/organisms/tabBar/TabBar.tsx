@@ -1,10 +1,11 @@
 import TabButton from "@components/molecules/tabBar/TabButton";
 import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
+import { globalStyles } from "@themes/styles";
 
 const TabBar = () => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, globalStyles.bigShadow]}>
       <TabButton routeName="menu" label="Menu" />
       <TabButton routeName="cart" label="Courses" />
       <TabButton routeName="stock" label="Stock" />
@@ -18,8 +19,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingBottom: 16,
+    paddingTop: 8,
     backgroundColor: theme.properties.beige,
+    borderColor: theme.properties.borderColor,
+    borderWidth: 1,
   },
 });
 
