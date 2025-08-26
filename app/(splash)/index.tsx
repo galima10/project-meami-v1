@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Image } from "expo-image";
-import theme, { ThemeType } from "@themes/index";
+import theme from "@themes/index";
 import { useEffect } from "react";
 import { useRouter } from "expo-router";
 import WaveText from "@components/atoms/animated/WaveText";
