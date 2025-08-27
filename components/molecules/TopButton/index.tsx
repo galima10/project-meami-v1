@@ -4,7 +4,7 @@ import { globalStyles } from "@themes/styles";
 
 interface TopButtonProps {
   routeName: string;
-  icon: string;
+  icon?: string;
 }
 
 const TopButton = ({ routeName, icon }: TopButtonProps) => {
