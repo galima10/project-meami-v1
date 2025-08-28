@@ -166,12 +166,12 @@ export default function TabLayout() {
                   >
                     <TopButton
                       routeName="stockViews/recipes"
-                      icon="calendar"
+                      icon="recipes"
                       withStroke
                     />
                     <TopButton
                       routeName="stockViews/ingredients"
-                      icon="list"
+                      icon="ingredients"
                       withStroke
                     />
                   </View>
