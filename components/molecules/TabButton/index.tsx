@@ -7,7 +7,7 @@ import { usePathname } from "expo-router";
 import Icon from "@components/atoms/global/Icon";
 
 interface TabButtonProps {
-  routeName: "menuViews/calendar" | "cart" | "stockViews/stock" | "infos";
+  routeName: "menuViews/calendar" | "cart" | "stockViews" | "infosViews";
   icon: string;
   label: string;
 }
