@@ -6,6 +6,7 @@ import { View } from "react-native";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { usePathname } from "expo-router";
+import AddInfo from "@components/molecules/AddInfo";
 
 export default function TabLayout() {
   return (
@@ -117,7 +118,8 @@ export default function TabLayout() {
 
               // headerRight différent en fonction de la vue
               if (
-                !pathname.endsWith("stockViews") && !pathname.includes("modify")
+                !pathname.endsWith("stockViews") &&
+                !pathname.includes("modify")
               ) {
                 return (
                   <View
@@ -134,20 +136,12 @@ export default function TabLayout() {
                     />
                   </View>
                 );
-              } 
-              else if (
-                pathname.includes("modify")
-              ) {
+              } else if (pathname.includes("modify")) {
                 return (
                   <View
                     style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
                   >
-                    <TopButton
-                      icon="return"
-                      green
-                      withStroke
-                      goBack
-                    />
+                    <TopButton icon="return" green withStroke goBack />
                   </View>
                 );
               }
@@ -189,7 +183,59 @@ export default function TabLayout() {
         <Tabs.Screen
           name="infosViews"
           options={{
-            headerShown: false,
+            headerTitleAlign: "center",
+            headerTitle: () => (
+              <Image
+                source={require("@assets/images/precharged/logos/logo_text.png")}
+                style={{ width: 100, height: 100 }}
+              />
+            ),
+            headerRight: () => {
+              const pathname = usePathname();
+
+              // headerRight différent en fonction de la vue
+              if (
+                !pathname.endsWith("infosViews")
+              ) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                  >
+                    <AddInfo />
+                  </View>
+                );
+              }
+            },
+            headerLeft: () => {
+              const pathname = usePathname();
+
+              // headerRight différent si on est sur modify
+              if (
+                !pathname.endsWith("/infosViews")
+              ) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
+                  >
+                    <TopButton
+                      routeName="infosViews/storage"
+                      icon="storage"
+                      withStroke
+                    />
+                    <TopButton
+                      routeName="infosViews/cooking"
+                      icon="cooking"
+                      withStroke
+                    />
+                  </View>
+                );
+              }
+            },
+            headerStyle: {
+              backgroundColor: theme.properties.darkOrange,
+              height: 100,
+              ...globalStyles.bigShadow,
+            },
             tabBarStyle: { display: "none" },
           }}
         />

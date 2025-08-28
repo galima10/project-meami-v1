@@ -11,8 +11,10 @@ import SvgAdd from "@components/atoms/icons/global/SvgAdd";
 import SvgReturn from "@components/atoms/icons/global/SvgReturn";
 import SvgRecipes from "@components/atoms/icons/global/SvgRecipes";
 import SvgIngredients from "@components/atoms/icons/global/SvgIngredients";
+import SvgStorage from "@components/atoms/icons/global/SvgStorage";
+import SvgCooking from "@components/atoms/icons/global/SvgCooking";
 
-export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | "validate" | "add" | "return" | "recipes" | "ingredients" | string;
+export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | "validate" | "add" | "return" | "recipes" | "ingredients" | "storage" | "cooking" | string;
 
 const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   menu: SvgMenu,
@@ -26,7 +28,9 @@ const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   add: SvgAdd,
   return: SvgReturn,
   recipes: SvgRecipes,
-  ingredients: SvgIngredients
+  ingredients: SvgIngredients,
+  storage: SvgStorage,
+  cooking: SvgCooking
 };
 
 
