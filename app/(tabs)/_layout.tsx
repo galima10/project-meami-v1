@@ -1,12 +1,12 @@
 import { Tabs } from "expo-router";
 import TabBar from "@components/organisms/TabBar";
-import TopButton from "@components/molecules/TopButton";
+import TopButton from "@components/molecules/TopButtonNavigation";
 import { Image } from "expo-image";
 import { View } from "react-native";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { usePathname } from "expo-router";
-import AddInfo from "@components/molecules/AddInfo";
+import AddInfo from "@components/molecules/TopButtonAction";
 
 export default function TabLayout() {
   return (
@@ -16,32 +16,85 @@ export default function TabLayout() {
           name="menuViews"
           options={{
             headerTitleAlign: "center",
-            headerLeft: () => (
-              <View style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}>
-                <TopButton
-                  routeName="menuViews/calendar"
-                  icon="calendar"
-                  withStroke
-                />
-                <TopButton routeName="menuViews/list" icon="list" withStroke />
-              </View>
-            ),
+            headerLeft: () => {
+              const pathname = usePathname();
+
+              // headerLeft différent si on est sur liste des recettes du menu
+              if (pathname.endsWith("menuViews/recipesList")) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
+                  >
+                    <AddInfo icon="ingredientsMenu" withStroke />
+                  </View>
+                );
+              }
+
+              // headerRight par défaut
+              return (
+                <View
+                  style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
+                >
+                  <TopButton
+                    routeName="menuViews/calendar"
+                    icon="calendar"
+                    withStroke
+                  />
+                  <TopButton
+                    routeName="menuViews/list"
+                    icon="list"
+                    withStroke
+                  />
+                </View>
+              );
+            },
             headerTitle: () => (
               <Image
                 source={require("@assets/images/precharged/logos/logo_text.png")}
                 style={{ width: 100, height: 100 }}
               />
             ),
-            headerRight: () => (
-              <View style={{ flexDirection: "row", gap: 10, marginRight: 16 }}>
-                <TopButton
-                  routeName="menuViews/modify"
-                  icon="modify"
-                  green
-                  withStroke
-                />
-              </View>
-            ),
+            headerRight: () => {
+              const pathname = usePathname();
+
+              // headerRight différent si on est sur modify
+              if (pathname.endsWith("menuViews/modify")) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                  >
+                    <TopButton
+                      routeName="menuViews/recipesList"
+                      icon="recipesMenu"
+                      green
+                      withStroke
+                    />
+                  </View>
+                );
+              } else if (pathname.endsWith("menuViews/recipesList")) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                  >
+                    <TopButton icon="return" green withStroke goBack />
+                  </View>
+                );
+              }
+
+              // headerRight par défaut
+              return (
+                <View
+                  style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                >
+                  <TopButton
+                    routeName="menuViews/modify"
+                    icon="modify"
+                    green
+                    withStroke
+                  />
+                </View>
+              );
+            },
             headerStyle: {
               backgroundColor: theme.properties.darkOrange,
               height: 100,
@@ -192,14 +245,12 @@ export default function TabLayout() {
               const pathname = usePathname();
 
               // headerRight différent en fonction de la vue
-              if (
-                !pathname.endsWith("infosViews")
-              ) {
+              if (!pathname.endsWith("infosViews")) {
                 return (
                   <View
                     style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
                   >
-                    <AddInfo />
+                    <AddInfo icon="add" />
                   </View>
                 );
               }
@@ -208,9 +259,7 @@ export default function TabLayout() {
               const pathname = usePathname();
 
               // headerRight différent si on est sur modify
-              if (
-                !pathname.endsWith("/infosViews")
-              ) {
+              if (!pathname.endsWith("/infosViews")) {
                 return (
                   <View
                     style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}

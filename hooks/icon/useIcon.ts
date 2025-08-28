@@ -13,8 +13,10 @@ import SvgRecipes from "@components/atoms/icons/global/SvgRecipes";
 import SvgIngredients from "@components/atoms/icons/global/SvgIngredients";
 import SvgStorage from "@components/atoms/icons/global/SvgStorage";
 import SvgCooking from "@components/atoms/icons/global/SvgCooking";
+import SvgRecipesMenu from "@components/atoms/icons/global/SvgRecipesMenu";
+import SvgIngredientsMenu from "@components/atoms/icons/global/SvgIngredientsMenu";
 
-export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | "validate" | "add" | "return" | "recipes" | "ingredients" | "storage" | "cooking" | string;
+export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | "validate" | "add" | "return" | "recipes" | "ingredients" | "storage" | "cooking" | "recipesMenu" | "ingredientsMenu" | string;
 
 const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   menu: SvgMenu,
@@ -30,7 +32,9 @@ const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   recipes: SvgRecipes,
   ingredients: SvgIngredients,
   storage: SvgStorage,
-  cooking: SvgCooking
+  cooking: SvgCooking,
+  recipesMenu: SvgRecipesMenu,
+  ingredientsMenu: SvgIngredientsMenu
 };
 
 

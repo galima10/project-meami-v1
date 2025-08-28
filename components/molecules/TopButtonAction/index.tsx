@@ -3,7 +3,12 @@ import Icon from "@components/atoms/global/Icon";
 import { globalStyles } from "@themes/styles";
 import theme from "@themes/index";
 
-const AddInfo = () => {
+interface AddInfoProps {
+  icon: string;
+  withStroke?: boolean;
+}
+
+const AddInfo = ({ icon, withStroke }: AddInfoProps) => {
   return (
     <Pressable
       style={[
@@ -12,7 +17,7 @@ const AddInfo = () => {
         styles.button,
       ]}
     >
-      <Icon name="add" color={theme.properties.beige} size={32} />
+      <Icon name={icon} color={theme.properties.beige} size={32} withStroke={withStroke} />
     </Pressable>
   );
 };

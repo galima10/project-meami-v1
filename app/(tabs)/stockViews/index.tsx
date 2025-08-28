@@ -7,14 +7,14 @@ export default function Stock() {
   return (
     <View style={styles.screen}>
       <AppText style={styles.text}>Stock (recettes & ingrédients)</AppText>
-      <Link href={"/stockViews/ingredients"} asChild>
-        <Pressable style={{ marginTop: 20 }}>
-          <AppText>Ingrédients</AppText>
-        </Pressable>
-      </Link>
       <Link href={"/stockViews/recipes"} asChild>
         <Pressable style={{ marginTop: 20 }}>
           <AppText>Recettes</AppText>
+        </Pressable>
+      </Link>
+      <Link href={"/stockViews/ingredients"} asChild>
+        <Pressable style={{ marginTop: 20 }}>
+          <AppText>Ingrédients</AppText>
         </Pressable>
       </Link>
     </View>
