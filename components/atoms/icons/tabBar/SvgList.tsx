@@ -1,0 +1,18 @@
+import * as React from "react";
+import Svg, { Path, SvgProps } from "react-native-svg";
+import type { ColorValue } from "react-native";
+
+type Props = SvgProps & { color?: ColorValue };
+
+function SvgList({ color = "#000", ...props }: Props) {
+  return (
+    <Svg width={100} height={100} viewBox="0 0 100 100" fill="none" {...props}>
+      <Path
+        d="M20 27.5a2.507 2.507 0 00-2.5 2.5v40c0 1.375 1.125 2.5 2.5 2.5h60c1.375 0 2.5-1.125 2.5-2.5V30c0-1.375-1.125-2.5-2.5-2.5H20zM10 30c0-5.516 4.484-10 10-10h60c5.516 0 10 4.484 10 10v40c0 5.516-4.484 10-10 10H20c-5.516 0-10-4.484-10-10V30zm25 30c0 2.766-2.234 5-5 5s-5-2.234-5-5 2.234-5 5-5 5 2.234 5 5zm-5-15c-2.766 0-5-2.234-5-5s2.234-5 5-5 5 2.234 5 5-2.234 5-5 5zm16.25-8.75h25A3.741 3.741 0 0175 40a3.741 3.741 0 01-3.75 3.75h-25A3.741 3.741 0 0142.5 40a3.741 3.741 0 013.75-3.75zm0 20h25A3.741 3.741 0 0175 60a3.741 3.741 0 01-3.75 3.75h-25A3.741 3.741 0 0142.5 60a3.741 3.741 0 013.75-3.75z"
+        fill={color}
+      />
+    </Svg>
+  );
+}
+
+export default SvgList;
