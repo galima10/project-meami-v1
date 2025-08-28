@@ -16,13 +16,21 @@ const TopButton = ({ routeName, icon, green, withStroke }: TopButtonProps) => {
   const pathname = usePathname();
   const isActive = pathname === `/${routeName}`;
 
+  const greenStyles = StyleSheet.flatten([
+    topBarStyles.greenButton,
+    globalStyles.littleShadow,
+  ]);
+
+  const activeStyles = StyleSheet.flatten([
+    !green ? topBarStyles.active : topBarStyles.greenActive,
+    globalStyles.littleShadow,
+  ]);
+
   const mergedButtonStyle = StyleSheet.flatten([
       globalStyles.buttonBase,
       styles.button,
-      green && topBarStyles.greenButton,
-      isActive && !green && topBarStyles.active,
-      isActive && !green && globalStyles.littleShadow,
-      isActive && green && topBarStyles.greenActive,
+      green && greenStyles,
+      isActive && activeStyles,
     ]);
   return (
     <Link href={{ pathname: `/${routeName}` } as any} asChild>

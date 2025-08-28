@@ -5,9 +5,9 @@ import { Image } from "expo-image";
 import { View } from "react-native";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
+import { usePathname } from "expo-router";
 
 export default function TabLayout() {
-
   return (
     <>
       {/* <TopBar /> */}
@@ -18,8 +18,12 @@ export default function TabLayout() {
             headerTitleAlign: "center",
             headerLeft: () => (
               <View style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}>
-                <TopButton routeName="menuViews/calendar" icon="calendar" withStroke />
-                <TopButton routeName="menuViews/list" icon="list" />
+                <TopButton
+                  routeName="menuViews/calendar"
+                  icon="calendar"
+                  withStroke
+                />
+                <TopButton routeName="menuViews/list" icon="list" withStroke />
               </View>
             ),
             headerTitle: () => (
@@ -31,7 +35,12 @@ export default function TabLayout() {
             headerRight: () => (
               // <View style={{ width: 50 }} /> // espace réservé
               <View style={{ flexDirection: "row", gap: 10, marginRight: 16 }}>
-                <TopButton routeName="menuViews/modify" icon="modify" green />
+                <TopButton
+                  routeName="menuViews/modify"
+                  icon="modify"
+                  green
+                  withStroke
+                />
               </View>
             ),
             headerStyle: {
@@ -43,9 +52,53 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="cart"
+          name="cartViews"
           options={{
-            headerShown: false,
+            headerTitleAlign: "center",
+            headerTitle: () => (
+              <Image
+                source={require("@assets/images/precharged/logos/logo_text.png")}
+                style={{ width: 100, height: 100 }}
+              />
+            ),
+            headerRight: () => {
+              const pathname = usePathname();
+
+              // headerRight différent si on est sur modify
+              if (pathname.endsWith("cartViews/modify")) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                  >
+                    <TopButton
+                      routeName="cartViews/list"
+                      icon="modify"
+                      green
+                      withStroke
+                    />
+                  </View>
+                );
+              }
+
+              // headerRight par défaut
+              return (
+                <View
+                  style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                >
+                  <TopButton
+                    routeName="cartViews/modify"
+                    icon="modify"
+                    green
+                    withStroke
+                  />
+                </View>
+              );
+            },
+            headerStyle: {
+              backgroundColor: theme.properties.darkOrange,
+              height: 100,
+              ...globalStyles.bigShadow,
+            },
             tabBarStyle: { display: "none" },
           }}
         />
