@@ -26,3 +26,11 @@
     > Ajout d'icônes et de styles globaux (ombres, couleurs) à la Tab Bar et aux boutons de navigation d'écrans
 - **Nouvelle couleur de fond** :
     > Couleurs et polices par défaut appliquées : beige au fond, marron aux textes
+- **Restructuration de la navigation & Nouveaux Onglets** :
+    > Ajout de différentes vues pour chaque onglet : 
+        - Onglet Menu de la semaine : Vue Calendrier, Vue Liste, Vue Modifier le menu et Vue Liste des recettes entrées dans le menu
+        - Onglet Liste de courses : Vue Liste et Vue Modifier la liste
+        - Onglet Stock : Vue Liste des Recettes, Vue Liste des Ingrédients, Vue Ajouter/Modifier une Recette ou un Ingrédient
+        - Onglet Informations utiles : Vue Informations de Conservation et Vue Informations de Cuisson
+- **Top Bar stylisée** :
+    > Ajout d'une Top Bar avec le logo textuel de l'application et différents boutons de navigation à travers les différentes vues
