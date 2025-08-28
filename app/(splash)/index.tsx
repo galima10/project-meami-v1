@@ -12,7 +12,7 @@ export default function Splash() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.replace("/menu");
+      router.replace("/menuViews/calendar");
     }, 5000);
 
     return () => clearTimeout(timer);

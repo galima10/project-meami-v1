@@ -57,6 +57,12 @@ export interface ThemeType {
   darkYellow: string;
   darkPurple: string;
   darkPink: string;
+  lightOrange: string;
+  lightRed: string;
+  lightGreen: string;
+  lightYellow: string;
+  lightPurple: string;
+  lightPink: string;
   vibrantBeige: string;
   vibrantOrange: string;
   vibrantRed: string;
@@ -70,11 +76,22 @@ export interface ThemeType {
   medium: FontWeightType;
   semibold: FontWeightType;
   bold: FontWeightType;
-  borderColor: string
+  borderColor: string;
   // inputColor: string;
   // gray: string;
 }
 
-type FontWeightType = "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
+type FontWeightType =
+  | "normal"
+  | "bold"
+  | "100"
+  | "200"
+  | "300"
+  | "400"
+  | "500"
+  | "600"
+  | "700"
+  | "800"
+  | "900";
 
 export default theme;

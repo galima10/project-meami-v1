@@ -23,3 +23,13 @@ export const tabBarStyles = StyleSheet.create({
     borderWidth: 1,
   },
 });
+
+export const topBarStyles = StyleSheet.create({
+  active: {
+    opacity: 1,
+    backgroundColor: theme.properties.lightOrange,
+  },
+  greenButton: {
+    backgroundColor: theme.properties.darkGreen,
+  }
+});

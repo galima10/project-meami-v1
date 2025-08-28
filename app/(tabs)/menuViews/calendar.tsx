@@ -2,10 +2,10 @@ import {View, StyleSheet } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 
-export default function Home() {
+export default function CalendarView() {
   return (
     <View style={styles.screen}>
-      <AppText style={styles.text}>Menu de la semaine</AppText>
+      <AppText style={styles.text}>Menu de la semaine Vue calendrier</AppText>
     </View>
   );
 }

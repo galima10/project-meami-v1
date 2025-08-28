@@ -3,20 +3,23 @@ import TabBar from "@components/organisms/TabBar";
 import TopButton from "@components/molecules/TopButton";
 import { Image } from "expo-image";
 import { View } from "react-native";
+import theme from "@themes/index";
+import { globalStyles } from "@themes/styles";
 
 export default function TabLayout() {
+
   return (
     <>
       {/* <TopBar /> */}
       <Tabs>
         <Tabs.Screen
-          name="menu"
+          name="menuViews"
           options={{
             headerTitleAlign: "center",
             headerLeft: () => (
-              <View style={{ flexDirection: "row", gap: 8 }}>
-                <TopButton routeName="infos" />
-                <TopButton routeName="infos" />
+              <View style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}>
+                <TopButton routeName="infos" icon="calendar" />
+                <TopButton routeName="infos" icon="list" />
               </View>
             ),
             headerTitle: () => (
@@ -26,8 +29,16 @@ export default function TabLayout() {
               />
             ),
             headerRight: () => (
-              <View style={{ width: 50 }} /> // espace réservé
+              // <View style={{ width: 50 }} /> // espace réservé
+              <View style={{ flexDirection: "row", gap: 10, marginRight: 16 }}>
+                <TopButton routeName="infos" icon="modify" green />
+              </View>
             ),
+            headerStyle: {
+              backgroundColor: theme.properties.darkOrange,
+              height: 100,
+              ...globalStyles.bigShadow,
+            },
             tabBarStyle: { display: "none" },
           }}
         />
@@ -39,14 +50,14 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="stock"
+          name="stockViews"
           options={{
             headerShown: false,
             tabBarStyle: { display: "none" },
           }}
         />
         <Tabs.Screen
-          name="infos"
+          name="infosViews"
           options={{
             headerShown: false,
             tabBarStyle: { display: "none" },

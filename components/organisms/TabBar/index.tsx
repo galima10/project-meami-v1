@@ -6,10 +6,10 @@ import { globalStyles } from "@themes/styles";
 const TabBar = () => {
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
-      <TabButton routeName="menu" label="Menu" />
-      <TabButton routeName="cart" label="Courses" />
-      <TabButton routeName="stock" label="Stock" />
-      <TabButton routeName="infos" label="Infos" />
+      <TabButton routeName="menuViews/calendar" label="Menu" icon="menu" />
+      <TabButton routeName="cart" label="Courses" icon="cart" />
+      <TabButton routeName="stockViews/stock" label="Stock" icon="stock" />
+      <TabButton routeName="infos" label="Infos" icon="infos" />
     </View>
   );
 };

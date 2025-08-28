@@ -7,13 +7,14 @@ import { usePathname } from "expo-router";
 import Icon from "@components/atoms/global/Icon";
 
 interface TabButtonProps {
-  routeName: "menu" | "cart" | "stock" | "infos";
+  routeName: "menuViews/calendar" | "cart" | "stockViews/stock" | "infos";
+  icon: string;
   label: string;
 }
 
-const TabButton = ({ routeName, label }: TabButtonProps) => {
+const TabButton = ({ routeName, icon, label }: TabButtonProps) => {
   const pathname = usePathname();
-  const isActive = pathname === `/${routeName}`;
+  const isActive = pathname.startsWith(`/${routeName}`);;
 
   // Styles fusionnés (car le <Link> wrapper ne permet pas les tableaux de styles)
   const mergedButtonStyle = StyleSheet.flatten([
@@ -30,7 +31,7 @@ const TabButton = ({ routeName, label }: TabButtonProps) => {
   return (
     <Link href={`/${routeName}`} asChild>
       <Pressable style={mergedButtonStyle}>
-        <Icon name={routeName} size={34} color={isActive ? theme.properties.vibrantOrange : theme.properties.brown} />
+        <Icon name={icon} size={34} color={isActive ? theme.properties.vibrantOrange : theme.properties.brown} />
         <AppText style={mergedTextStyle}>{label}</AppText>
       </Pressable>
     </Link>
