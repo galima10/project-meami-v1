@@ -6,6 +6,7 @@ interface IconProps extends SvgProps {
   name: IconName;
   size?: number;
   color?: string;
+  withStroke?: boolean;
 }
 
 const Icon: React.FC<IconProps> = ({ name, size = 24, color = "#000", ...props }) => {

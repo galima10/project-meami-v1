@@ -3,27 +3,31 @@ import { Link } from "expo-router";
 import { globalStyles, topBarStyles } from "@themes/styles";
 import Icon from "@components/atoms/global/Icon";
 import { usePathname } from "expo-router";
+import theme from "@themes/index";
 
 interface TopButtonProps {
   routeName: string;
   icon: string;
-  iconColor?: string;
   green?: boolean;
+  withStroke?: boolean;
 }
 
-const TopButton = ({ routeName, icon, iconColor, green }: TopButtonProps) => {
+const TopButton = ({ routeName, icon, green, withStroke }: TopButtonProps) => {
   const pathname = usePathname();
   const isActive = pathname === `/${routeName}`;
 
   const mergedButtonStyle = StyleSheet.flatten([
       globalStyles.buttonBase,
       styles.button,
-      green && topBarStyles.greenButton
+      green && topBarStyles.greenButton,
+      isActive && !green && topBarStyles.active,
+      isActive && !green && globalStyles.littleShadow,
+      isActive && green && topBarStyles.greenActive,
     ]);
   return (
     <Link href={{ pathname: `/${routeName}` } as any} asChild>
       <Pressable style={mergedButtonStyle}>
-        <Icon name={icon} color={iconColor} size={32} />
+        <Icon name={icon} color={theme.properties.beige} size={32} withStroke={withStroke} />
       </Pressable>
     </Link>
   );
@@ -31,7 +35,7 @@ const TopButton = ({ routeName, icon, iconColor, green }: TopButtonProps) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#da4545ff",
+    opacity: 0.5,
   },
 });
 

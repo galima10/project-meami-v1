@@ -7,14 +7,16 @@ import { usePathname } from "expo-router";
 import Icon from "@components/atoms/global/Icon";
 
 interface TabButtonProps {
-  routeName: "menuViews/calendar" | "cart" | "stockViews" | "infosViews";
+  routeName: "menuViews/calendar" | "cart" | "stockViews/index" | "infosViews/index";
   icon: string;
   label: string;
 }
 
 const TabButton = ({ routeName, icon, label }: TabButtonProps) => {
   const pathname = usePathname();
-  const isActive = pathname.startsWith(`/${routeName}`);;
+  const firstSegmentOfActualRoute = pathname.split("/")[1];
+  const firstSegmentOfRouteName = routeName.split("/")[0];
+  const isActive = firstSegmentOfActualRoute === firstSegmentOfRouteName;
 
   // Styles fusionnés (car le <Link> wrapper ne permet pas les tableaux de styles)
   const mergedButtonStyle = StyleSheet.flatten([
@@ -31,7 +33,13 @@ const TabButton = ({ routeName, icon, label }: TabButtonProps) => {
   return (
     <Link href={`/${routeName}`} asChild>
       <Pressable style={mergedButtonStyle}>
-        <Icon name={icon} size={34} color={isActive ? theme.properties.vibrantOrange : theme.properties.brown} />
+        <Icon
+          name={icon}
+          size={34}
+          color={
+            isActive ? theme.properties.vibrantOrange : theme.properties.brown
+          }
+        />
         <AppText style={mergedTextStyle}>{label}</AppText>
       </Pressable>
     </Link>
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
   },
   buttonActive: {
     color: theme.properties.vibrantOrange,
-  }
+  },
 });
 
 export default TabButton;

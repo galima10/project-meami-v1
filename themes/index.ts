@@ -37,7 +37,7 @@ const theme = {
     semibold: "600",
     bold: "700",
 
-    borderColor: "rgba(73, 27, 30, 0.25)",
+    borderColor: "#491b1e40",
 
     // active: "#000000",
     // iconActive: "#ffffff",

@@ -18,8 +18,8 @@ export default function TabLayout() {
             headerTitleAlign: "center",
             headerLeft: () => (
               <View style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}>
-                <TopButton routeName="infos" icon="calendar" />
-                <TopButton routeName="infos" icon="list" />
+                <TopButton routeName="menuViews/calendar" icon="calendar" withStroke />
+                <TopButton routeName="menuViews/list" icon="list" />
               </View>
             ),
             headerTitle: () => (
@@ -31,7 +31,7 @@ export default function TabLayout() {
             headerRight: () => (
               // <View style={{ width: 50 }} /> // espace réservé
               <View style={{ flexDirection: "row", gap: 10, marginRight: 16 }}>
-                <TopButton routeName="infos" icon="modify" green />
+                <TopButton routeName="menuViews/modify" icon="modify" green />
               </View>
             ),
             headerStyle: {

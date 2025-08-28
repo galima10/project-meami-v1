@@ -9,7 +9,7 @@ import SvgModify from "@components/atoms/icons/global/SvgModify";
 
 export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | string;
 
-const ICONS: Record<IconName, React.FC<SvgProps>> = {
+const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   menu: SvgMenu,
   cart: SvgCart,
   infos: SvgInfos,
@@ -18,6 +18,7 @@ const ICONS: Record<IconName, React.FC<SvgProps>> = {
   list: SvgList,
   modify: SvgModify
 };
+
 
 export function useIconComponent(name: IconName) {
   return ICONS[name];

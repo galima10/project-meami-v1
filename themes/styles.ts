@@ -28,8 +28,17 @@ export const topBarStyles = StyleSheet.create({
   active: {
     opacity: 1,
     backgroundColor: theme.properties.lightOrange,
+    borderColor: theme.properties.borderColor,
+    borderWidth: 0.5,
+  },
+  greenActive: {
+    opacity: 1,
+    backgroundColor: theme.properties.lightGreen,
   },
   greenButton: {
+    opacity: 1,
     backgroundColor: theme.properties.darkGreen,
+    borderColor: theme.properties.borderColor,
+    borderWidth: 1,
   }
 });
