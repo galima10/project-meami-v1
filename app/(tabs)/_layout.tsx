@@ -123,10 +123,10 @@ export default function TabLayout() {
                     style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
                   >
                     <TopButton
-                      routeName="cartViews/list"
                       icon="validate"
                       green
                       withStroke
+                      goBack
                     />
                   </View>
                 );
