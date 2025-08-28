@@ -11,7 +11,6 @@ import AddInfo from "@components/molecules/AddInfo";
 export default function TabLayout() {
   return (
     <>
-      {/* <TopBar /> */}
       <Tabs>
         <Tabs.Screen
           name="menuViews"
@@ -34,7 +33,6 @@ export default function TabLayout() {
               />
             ),
             headerRight: () => (
-              // <View style={{ width: 50 }} /> // espace réservé
               <View style={{ flexDirection: "row", gap: 10, marginRight: 16 }}>
                 <TopButton
                   routeName="menuViews/modify"
