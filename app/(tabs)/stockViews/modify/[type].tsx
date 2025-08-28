@@ -1,11 +1,19 @@
-import {View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
+import { useLocalSearchParams } from "expo-router";
 
-export default function RecipesView() {
+export default function ModifyView() {
+  const { type, mode } = useLocalSearchParams<{
+    type: string;
+    mode?: string;
+  }>();
+  const isCreate = mode === "create";
   return (
     <View style={styles.screen}>
-      <AppText style={styles.text}>Liste des recettes</AppText>
+      <AppText style={styles.text}>
+        {isCreate ? `Création d'un nouveau ${type}` : `Modification de ${type}`}
+      </AppText>
     </View>
   );
 }

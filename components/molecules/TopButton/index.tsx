@@ -1,18 +1,27 @@
 import { Pressable, StyleSheet } from "react-native";
-import { Link } from "expo-router";
+import { Link, usePathname, useRouter } from "expo-router";
 import { globalStyles, topBarStyles } from "@themes/styles";
 import Icon from "@components/atoms/global/Icon";
-import { usePathname } from "expo-router";
 import theme from "@themes/index";
 
 interface TopButtonProps {
-  routeName: string;
+  routeName?: string;
   icon: string;
   green?: boolean;
   withStroke?: boolean;
+  params?: Record<string, any>;
+  goBack?: boolean;
 }
 
-const TopButton = ({ routeName, icon, green, withStroke }: TopButtonProps) => {
+const TopButton = ({
+  routeName,
+  icon,
+  green,
+  withStroke,
+  params,
+  goBack,
+}: TopButtonProps) => {
+  const router = useRouter();
   const pathname = usePathname();
   const isActive = pathname === `/${routeName}`;
 
@@ -27,16 +36,31 @@ const TopButton = ({ routeName, icon, green, withStroke }: TopButtonProps) => {
   ]);
 
   const mergedButtonStyle = StyleSheet.flatten([
-      globalStyles.buttonBase,
-      styles.button,
-      green && greenStyles,
-      isActive && activeStyles,
-    ]);
+    globalStyles.buttonBase,
+    styles.button,
+    green && greenStyles,
+    isActive && activeStyles,
+  ]);
+
+  const content = (
+    <Pressable
+      style={mergedButtonStyle}
+      onPress={goBack ? () => router.back() : undefined}
+    >
+      <Icon
+        name={icon}
+        color={theme.properties.beige}
+        size={32}
+        withStroke={withStroke}
+      />
+    </Pressable>
+  );
+
+  if (goBack) return content;
+
   return (
-    <Link href={{ pathname: `/${routeName}` } as any} asChild>
-      <Pressable style={mergedButtonStyle}>
-        <Icon name={icon} color={theme.properties.beige} size={32} withStroke={withStroke} />
-      </Pressable>
+    <Link href={{ pathname: `/${routeName}`, params } as any} asChild>
+      {content}
     </Link>
   );
 };

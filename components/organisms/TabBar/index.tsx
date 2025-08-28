@@ -8,8 +8,8 @@ const TabBar = () => {
     <View style={[styles.container, globalStyles.bigShadow]}>
       <TabButton routeName="menuViews/calendar" label="Menu" icon="menu" />
       <TabButton routeName="cartViews/list" label="Courses" icon="cart" />
-      <TabButton routeName="stockViews/index" label="Stock" icon="stock" />
-      <TabButton routeName="infosViews/index" label="Infos" icon="infos" />
+      <TabButton routeName="stockViews" label="Stock" icon="stock" />
+      <TabButton routeName="infosViews" label="Infos" icon="infos" />
     </View>
   );
 };

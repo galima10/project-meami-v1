@@ -72,7 +72,7 @@ export default function TabLayout() {
                   >
                     <TopButton
                       routeName="cartViews/list"
-                      icon="modify"
+                      icon="validate"
                       green
                       withStroke
                     />
@@ -105,7 +105,84 @@ export default function TabLayout() {
         <Tabs.Screen
           name="stockViews"
           options={{
-            headerShown: false,
+            headerTitleAlign: "center",
+            headerTitle: () => (
+              <Image
+                source={require("@assets/images/precharged/logos/logo_text.png")}
+                style={{ width: 100, height: 100 }}
+              />
+            ),
+            headerRight: () => {
+              const pathname = usePathname();
+
+              // headerRight différent en fonction de la vue
+              if (
+                !pathname.endsWith("stockViews") && !pathname.includes("modify")
+              ) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                  >
+                    <TopButton
+                      routeName={`stockViews/modify/${pathname
+                        .split("/")
+                        .pop()}`}
+                      icon="add"
+                      green
+                      withStroke
+                      params={{ mode: "create" }}
+                    />
+                  </View>
+                );
+              } 
+              else if (
+                pathname.includes("modify")
+              ) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
+                  >
+                    <TopButton
+                      icon="return"
+                      green
+                      withStroke
+                      goBack
+                    />
+                  </View>
+                );
+              }
+            },
+            headerLeft: () => {
+              const pathname = usePathname();
+
+              // headerRight différent si on est sur modify
+              if (
+                pathname.endsWith("stockViews/ingredients") ||
+                pathname.endsWith("stockViews/recipes")
+              ) {
+                return (
+                  <View
+                    style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
+                  >
+                    <TopButton
+                      routeName="stockViews/recipes"
+                      icon="calendar"
+                      withStroke
+                    />
+                    <TopButton
+                      routeName="stockViews/ingredients"
+                      icon="list"
+                      withStroke
+                    />
+                  </View>
+                );
+              }
+            },
+            headerStyle: {
+              backgroundColor: theme.properties.darkOrange,
+              height: 100,
+              ...globalStyles.bigShadow,
+            },
             tabBarStyle: { display: "none" },
           }}
         />

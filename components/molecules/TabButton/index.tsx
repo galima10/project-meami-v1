@@ -7,7 +7,7 @@ import { usePathname } from "expo-router";
 import Icon from "@components/atoms/global/Icon";
 
 interface TabButtonProps {
-  routeName: "menuViews/calendar" | "cartViews/list" | "stockViews/index" | "infosViews/index";
+  routeName: "menuViews/calendar" | "cartViews/list" | "stockViews" | "infosViews";
   icon: string;
   label: string;
 }
@@ -31,7 +31,7 @@ const TabButton = ({ routeName, icon, label }: TabButtonProps) => {
   ]);
 
   return (
-    <Link href={`/${routeName}`} asChild>
+    <Link href={{ pathname: `/${routeName}` } as any} asChild>
       <Pressable style={mergedButtonStyle}>
         <Icon
           name={icon}

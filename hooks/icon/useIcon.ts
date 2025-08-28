@@ -6,8 +6,11 @@ import SvgInfos from "@components/atoms/icons/tabBar/SvgInfos";
 import SvgCalendar from "@components/atoms/icons/global/SvgCalendar";
 import SvgList from "@components/atoms/icons/global/SvgList";
 import SvgModify from "@components/atoms/icons/global/SvgModify";
+import SvgValidate from "@components/atoms/icons/global/SvgValidate";
+import SvgAdd from "@components/atoms/icons/global/SvgAdd";
+import SvgReturn from "@components/atoms/icons/global/SvgReturn";
 
-export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | string;
+export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | "validate" | "add" | "return" | string;
 
 const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   menu: SvgMenu,
@@ -16,7 +19,10 @@ const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   stock: SvgStock,
   calendar: SvgCalendar,
   list: SvgList,
-  modify: SvgModify
+  modify: SvgModify,
+  validate: SvgValidate,
+  add: SvgAdd,
+  return: SvgReturn,
 };
 
 
