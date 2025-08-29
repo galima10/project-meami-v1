@@ -47,29 +47,22 @@ describe("useDate", () => {
   });
 
   it("met à jour après 1 minute", async () => {
-    mockedGetDateInfo
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 10,
-      })
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 11,
-      });
+    let callCount = 0;
+    mockedGetDateInfo.mockImplementation(() => {
+      callCount++;
+      if (callCount === 1)
+        return { dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 10 };
+      return { dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 11 };
+    });
 
     const { result } = renderHook(() => useDate());
 
     act(() => {
       jest.advanceTimersByTime(60 * 1000);
-      jest.runOnlyPendingTimers();
     });
 
-    // Force React à flush les mises à jour d'état après le timer
-    await act(async () => {
-      await Promise.resolve();
-    });
+    // flush les mises à jour d'état
+    await act(async () => Promise.resolve());
 
     expect(result.current!.hour).toBe(11);
   });
