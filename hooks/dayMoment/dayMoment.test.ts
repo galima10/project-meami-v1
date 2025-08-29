@@ -64,7 +64,7 @@ describe("useDate", () => {
     // Avance le timer et flush React
     await act(async () => {
       jest.advanceTimersByTime(60 * 1000);
-      jest.runAllTimers(); // exécute tous les timers planifiés
+      jest.runOnlyPendingTimers(); // exécute seulement les timers actuellement planifiés
     });
 
     expect(result.current!.hour).toBe(11);
