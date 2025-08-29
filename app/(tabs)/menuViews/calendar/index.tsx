@@ -1,11 +1,21 @@
-import {View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
+import { getDate } from "@utils/getDate";
+import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 
 export default function CalendarView() {
+  const { dayOfWeek, dayAndMonth, hour } = getDate();
+  const { actualDayMoment, displayMoment } = useDayMoment(hour);
+
   return (
     <View style={styles.screen}>
       <AppText style={styles.text}>Menu de la semaine Vue calendrier</AppText>
+      <AppText style={{ marginTop: 20, textTransform: "capitalize" }}>{dayOfWeek}</AppText>
+      <AppText>{dayAndMonth}</AppText>
+      <AppText>
+        {hour}h : {displayMoment}
+      </AppText>
     </View>
   );
 }

@@ -8,10 +8,7 @@ export function getDate() {
     day: "2-digit",
     month: "long",
   }).format(now);
-  const hour = new Intl.DateTimeFormat("fr-FR", {
-    hour: "2-digit",
-    hour12: false,
-  }).format(now);
+  const hour = now.getHours(); // nombre entier, 0-23
 
   return { dayOfWeek, dayAndMonth, hour };
 }

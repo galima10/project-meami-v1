@@ -1,8 +1,10 @@
 import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
+import { getDate } from "@utils/getDate";
 
 export default function ListView() {
+  const { dayOfWeek } = getDate();
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/menu_3x.jpg")}
@@ -10,6 +12,7 @@ export default function ListView() {
       resizeMode="cover"
     >
       <AppText style={styles.text}>Menu de la semaine Vue liste</AppText>
+      <AppText style={{marginTop: 20}}>{dayOfWeek}</AppText>
     </ImageBackground>
   );
 }
