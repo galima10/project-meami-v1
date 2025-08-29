@@ -1,10 +1,10 @@
 import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
-import { getDate } from "@utils/getDate";
+import { getDateInfo } from "@utils/getDate";
 
 export default function ListView() {
-  const { dayOfWeek } = getDate();
+  const { dayOfWeek } = getDateInfo();
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/menu_3x.jpg")}
