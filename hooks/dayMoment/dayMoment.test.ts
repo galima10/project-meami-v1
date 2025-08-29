@@ -46,7 +46,7 @@ describe("useDate", () => {
     });
   });
 
-  it("met à jour après 1 minute", () => {
+  it("met à jour après 1 minute", async () => {
     mockedGetDateInfo
       .mockReturnValueOnce({
         dayOfWeek: "lundi",
@@ -61,10 +61,13 @@ describe("useDate", () => {
 
     const { result } = renderHook(() => useDate());
 
-    // avance 1 minute et exécute seulement le timer planifié
     act(() => {
       jest.advanceTimersByTime(60 * 1000);
-      jest.runOnlyPendingTimers();
+    });
+
+    // Force React à flush les mises à jour d'état après le timer
+    await act(async () => {
+      await Promise.resolve();
     });
 
     expect(result.current!.hour).toBe(11);
