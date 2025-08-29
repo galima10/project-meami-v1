@@ -1,3 +1,5 @@
+import React from "react";
+
 // jest.setup.ts
 global.__DEV__ = true;
 
@@ -29,5 +31,16 @@ jest.mock('react-native-svg', () => {
     Rect: (props: any) => React.createElement('rect', props),
     G: (props: any) => React.createElement('g', props),
     // Ajoute d'autres si besoin (Line, Ellipse, Polygon, Polyline, etc.)
+  };
+});
+
+jest.mock("@react-navigation/native", () => {
+  const actual = jest.requireActual("@react-navigation/native");
+  return {
+    ...actual,
+    useFocusEffect: (cb: any) => {
+      // exécute le callback dans un useEffect, après le render
+      React.useEffect(cb, []);
+    },
   };
 });

@@ -8,19 +8,10 @@ import { useDayMoment } from "./useDayMoment";
 jest.mock("@utils/getDate", () => {
   const actual = jest.requireActual("@utils/getDate");
   return {
-    ...actual, // garde les vraies fonctions
-    getDateInfo: jest.fn(), // mock seulement celle-ci
+    ...actual, // garde getDayMoment
+    getDateInfo: jest.fn(),
   };
 });
-
-// On mock useFocusEffect de React Navigation
-jest.mock("@react-navigation/native", () => ({
-  useFocusEffect: (cb: any) => {
-    // Simule le comportement normal : callback exécuté APRES le render
-    const React = require("react");
-    React.useEffect(cb, []);
-  },
-}));
 
 describe("useDate", () => {
   beforeEach(() => {
@@ -63,9 +54,8 @@ describe("useDate", () => {
 
     const { result } = renderHook(() => useDate());
 
-    // avance le temps de 1 min
     act(() => {
-      jest.advanceTimersByTime(60 * 1000);
+      jest.advanceTimersByTime(60 * 1000); // simule 1 minute
     });
 
     expect(result.current.hour).toBe(11);
@@ -86,8 +76,8 @@ describe("useDate", () => {
 
     const { result } = renderHook(() => useDate());
 
-    // Comme on a mock useFocusEffect pour exécuter direct le callback,
-    // le hook doit déjà avoir recalculé
+    // Comme useFocusEffect est maintenant mocké correctement,
+    // setDateInfo est appelé après le render
     expect(result.current.hour).toBe(12);
   });
 });
