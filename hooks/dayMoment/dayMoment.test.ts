@@ -55,13 +55,13 @@ describe("useDate", () => {
     const { result } = renderHook(() => useDate());
 
     act(() => {
-      jest.advanceTimersByTime(60 * 1000); // simule 1 minute
+      jest.advanceTimersByTime(60 * 1000);
     });
 
     expect(result.current.hour).toBe(11);
   });
 
-  it("se met à jour au focus", () => {
+  it("se met à jour au focus", async () => {
     (getDateInfo as jest.Mock)
       .mockReturnValueOnce({
         dayOfWeek: "lundi",
@@ -74,11 +74,14 @@ describe("useDate", () => {
         hour: 12,
       });
 
+    // on rend le hook d’abord
     const { result } = renderHook(() => useDate());
 
-    // Comme useFocusEffect est maintenant mocké correctement,
-    // setDateInfo est appelé après le render
-    expect(result.current.hour).toBe(12);
+    // flush des effets (useFocusEffect)
+    await act(async () => {});
+
+    // on peut utiliser ! pour dire à TS que c’est défini
+    expect(result.current!.hour).toBe(12);
   });
 });
 
