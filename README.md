@@ -34,3 +34,10 @@
         - Onglet Informations utiles : Vue Informations de Conservation et Vue Informations de Cuisson
 - **Top Bar stylisée** :
     > Ajout d'une Top Bar avec le logo textuel de l'application et différents boutons de navigation à travers les différentes vues
+- **Nouveaux fonds d'écrans pour chaque onglet** :
+    > Chaque onglet a maintenant une image abstraite de fond avec un filtre beige avec une couleur attribuée :
+        - Onglet Menu de la semaine : fond orange
+        - Onglet Liste des recettes entrées dans le menu : fond rose
+        - Onglet Liste de courses : fond vert
+        - Onglet Stock : fond jaune
+        - Onglet Informations utiles : fond violet
