@@ -5,15 +5,22 @@ import { useDate } from "./useDate";
 import { useDayMoment } from "./useDayMoment";
 
 // On mock @utils/getDate
-jest.mock("@utils/getDate", () => ({
-  getDateInfo: jest.fn(),
-}));
+jest.mock("@utils/getDate", () => {
+  const actual = jest.requireActual("@utils/getDate");
+  return {
+    ...actual, // garde les vraies fonctions
+    getDateInfo: jest.fn(), // mock seulement celle-ci
+  };
+});
 
 // On mock useFocusEffect de React Navigation
 jest.mock("@react-navigation/native", () => ({
-  useFocusEffect: (cb: any) => cb(), // exécute direct le callback
+  useFocusEffect: (cb: any) => {
+    // Simule le comportement normal : callback exécuté APRES le render
+    const React = require("react");
+    React.useEffect(cb, []);
+  },
 }));
-
 
 describe("useDate", () => {
   beforeEach(() => {
@@ -43,7 +50,7 @@ describe("useDate", () => {
 
   it("met à jour après 1 minute", () => {
     (getDateInfo as jest.Mock)
-    .mockReturnValueOnce({
+      .mockReturnValueOnce({
         dayOfWeek: "lundi",
         dayAndMonth: "01 janvier",
         hour: 10,
@@ -70,19 +77,19 @@ describe("useDate", () => {
         dayOfWeek: "lundi",
         dayAndMonth: "01 janvier",
         hour: 10,
-    })
+      })
       .mockReturnValueOnce({
         dayOfWeek: "lundi",
         dayAndMonth: "01 janvier",
         hour: 12,
       });
 
-      const { result } = renderHook(() => useDate());
-      
-      // Comme on a mock useFocusEffect pour exécuter direct le callback,
-      // le hook doit déjà avoir recalculé
-      expect(result.current.hour).toBe(12);
-    });
+    const { result } = renderHook(() => useDate());
+
+    // Comme on a mock useFocusEffect pour exécuter direct le callback,
+    // le hook doit déjà avoir recalculé
+    expect(result.current.hour).toBe(12);
+  });
 });
 
 // On mock useDate pour contrôler l'heure
@@ -92,7 +99,6 @@ jest.mock("./useDate", () => ({
 
 describe("useDayMoment", () => {
   it("retourne le bon moment de la journée en fonction de l'heure", () => {
-
     (useDate as jest.Mock).mockReturnValue({
       dayOfWeek: "lundi",
       dayAndMonth: "01 janvier",
@@ -101,6 +107,7 @@ describe("useDayMoment", () => {
 
     const { result } = renderHook(() => useDayMoment());
 
-    expect(result.current).toBe("morning");
+    expect(result.current.actualDayMoment).toBe("morning");
+    expect(result.current.displayMoment).toBe("Matin");
   });
 });
