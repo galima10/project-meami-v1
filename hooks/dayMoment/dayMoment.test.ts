@@ -63,6 +63,7 @@ describe("useDate", () => {
 
     act(() => {
       jest.advanceTimersByTime(60 * 1000);
+      jest.runOnlyPendingTimers();
     });
 
     // Force React à flush les mises à jour d'état après le timer
