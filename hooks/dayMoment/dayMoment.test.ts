@@ -46,7 +46,7 @@ describe("useDate", () => {
     });
   });
 
-  it("met à jour après 1 minute", () => {
+  it("met à jour après 1 minute", async () => {
     mockedGetDateInfo
       .mockReturnValueOnce({
         dayOfWeek: "lundi",
@@ -61,7 +61,7 @@ describe("useDate", () => {
 
     const { result } = renderHook(() => useDate());
 
-    act(() => {
+    await act(async () => {
       jest.advanceTimersByTime(60 * 1000);
     });
 
