@@ -1,22 +1,31 @@
 // useDate.test.ts
+
+// On mock @utils/getDate
+jest.mock("@utils/getDate", () => {
+    const actual = jest.requireActual("@utils/getDate");
+    return {
+        ...actual, // garde getDayMoment
+        getDateInfo: jest.fn(),
+    };
+});
+
+// On mock useDate pour contrôler l'heure
+jest.mock("./useDate", () => ({
+    useDate: jest.fn(),
+}));
+
 import { renderHook, act } from "@testing-library/react";
 import { getDateInfo } from "@utils/getDate";
 import { useDate } from "./useDate";
 import { useDayMoment } from "./useDayMoment";
 
-// On mock @utils/getDate
-jest.mock("@utils/getDate", () => {
-  const actual = jest.requireActual("@utils/getDate");
-  return {
-    ...actual, // garde getDayMoment
-    getDateInfo: jest.fn(),
-  };
-});
+// Assure TS que c'est bien un mock
+const mockedGetDateInfo = getDateInfo as jest.MockedFunction<typeof getDateInfo>;
 
 describe("useDate", () => {
   beforeEach(() => {
     jest.useFakeTimers();
-    (getDateInfo as jest.Mock).mockClear();
+    mockedGetDateInfo.mockClear();
   });
 
   afterEach(() => {
@@ -24,7 +33,7 @@ describe("useDate", () => {
   });
 
   it("retourne la date initiale", () => {
-    (getDateInfo as jest.Mock).mockReturnValue({
+    mockedGetDateInfo.mockReturnValue({
       dayOfWeek: "lundi",
       dayAndMonth: "01 janvier",
       hour: 10,
@@ -40,17 +49,9 @@ describe("useDate", () => {
   });
 
   it("met à jour après 1 minute", () => {
-    (getDateInfo as jest.Mock)
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 10,
-      })
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 11,
-      });
+    mockedGetDateInfo
+      .mockReturnValueOnce({ dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 10 })
+      .mockReturnValueOnce({ dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 11 });
 
     const { result } = renderHook(() => useDate());
 
@@ -62,33 +63,18 @@ describe("useDate", () => {
   });
 
   it("se met à jour au focus", async () => {
-    (getDateInfo as jest.Mock)
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 10,
-      })
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 12,
-      });
+    mockedGetDateInfo
+      .mockReturnValueOnce({ dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 10 })
+      .mockReturnValueOnce({ dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 12 });
 
-    // on rend le hook d’abord
     const { result } = renderHook(() => useDate());
 
-    // flush des effets (useFocusEffect)
+    // flush useFocusEffect
     await act(async () => {});
 
-    // on peut utiliser ! pour dire à TS que c’est défini
     expect(result.current!.hour).toBe(12);
   });
 });
-
-// On mock useDate pour contrôler l'heure
-jest.mock("./useDate", () => ({
-  useDate: jest.fn(),
-}));
 
 describe("useDayMoment", () => {
   it("retourne le bon moment de la journée en fonction de l'heure", () => {
