@@ -34,13 +34,9 @@ jest.mock('react-native-svg', () => {
   };
 });
 
-jest.mock("@react-navigation/native", () => {
-  const actual = jest.requireActual("@react-navigation/native");
-  return {
-    ...actual,
-    useFocusEffect: (cb: any) => {
-      const React = require("react"); // pas d'erreur de scope
-      React.useEffect(cb, []);
-    },
-  };
-});
+jest.mock('@react-navigation/native', () => ({
+  useFocusEffect: (cb: any) => {
+    const React = require('react');
+    React.useEffect(cb, []);
+  },
+}));
