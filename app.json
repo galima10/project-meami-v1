@@ -58,26 +58,26 @@
             "./assets/images/precharged/logos/logo.png",
             "./assets/images/precharged/logos/logo_text.png",
 
-            "./assets/images/precharged/illustrations/viewImages/storage_3x.png",
-            "./assets/images/precharged/illustrations/viewImages/recipes_3x.png",
-            "./assets/images/precharged/illustrations/viewImages/ingredients_3x.png",
-            "./assets/images/precharged/illustrations/viewImages/cooking_3x.png",
+            "./assets/images/precharged/illustrations/viewImages/storage_3x.jpg",
+            "./assets/images/precharged/illustrations/viewImages/recipes_3x.jpg",
+            "./assets/images/precharged/illustrations/viewImages/ingredients_3x.jpg",
+            "./assets/images/precharged/illustrations/viewImages/cooking_3x.jpg",
 
-            "./assets/images/precharged/illustrations/viewImages/storage_3x_darker.png",
-            "./assets/images/precharged/illustrations/viewImages/recipes_3x_darker.png",
-            "./assets/images/precharged/illustrations/viewImages/ingredients_3x_darker.png",
-            "./assets/images/precharged/illustrations/viewImages/cooking_3x_darker.png",
+            "./assets/images/precharged/illustrations/viewImages/storage_3x_darker.jpg",
+            "./assets/images/precharged/illustrations/viewImages/recipes_3x_darker.jpg",
+            "./assets/images/precharged/illustrations/viewImages/ingredients_3x_darker.jpg",
+            "./assets/images/precharged/illustrations/viewImages/cooking_3x_darker.jpg",
 
             "./assets/images/precharged/illustrations/recipesTypes/vegetables_3x.jpg",
             "./assets/images/precharged/illustrations/recipesTypes/meats_3x.jpg",
             "./assets/images/precharged/illustrations/recipesTypes/desserts_3x.jpg",
             "./assets/images/precharged/illustrations/recipesTypes/accompaniements_3x.jpg",
 
-            "./assets/images/precharged/background/stock_3x.png",
-            "./assets/images/precharged/background/recipes_3x.png",
-            "./assets/images/precharged/background/menu_3x.png",
-            "./assets/images/precharged/background/infos_3x.png",
-            "./assets/images/precharged/background/cart_3x.png"
+            "./assets/images/precharged/background/stock_3x.jpg",
+            "./assets/images/precharged/background/recipes_3x.jpg",
+            "./assets/images/precharged/background/menu_3x.jpg",
+            "./assets/images/precharged/background/infos_3x.jpg",
+            "./assets/images/precharged/background/cart_3x.jpg"
           ]
         }
       ]
