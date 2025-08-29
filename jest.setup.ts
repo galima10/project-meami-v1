@@ -39,7 +39,7 @@ jest.mock("@react-navigation/native", () => {
   return {
     ...actual,
     useFocusEffect: (cb: any) => {
-      // exécute le callback dans un useEffect, après le render
+      const React = require("react"); // pas d'erreur de scope
       React.useEffect(cb, []);
     },
   };
