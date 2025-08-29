@@ -41,3 +41,8 @@
         - Onglet Liste de courses : fond vert
         - Onglet Stock : fond jaune
         - Onglet Informations utiles : fond violet
+- **Récupération de la date et de l'heure en temps réel** : 
+    > Sur l'onglet Menu de la semaine Vue Calendrier, le jour de la semaine, le numéro avec le mois et l'heure sont récupérés et affichés
+    > L'heure est mise à jour toutes les minutes ou en changeant d'onglet et en revenant dessus
+    > Le moment de la journée : Matin, Midi ou Soir est donc déterminé en fonction de l'heure récupérée et est affiché
+    > Sur l'onglet Menu de la semaine Vue Liste, seul le jour de la semaine esr récupéré et affiché
