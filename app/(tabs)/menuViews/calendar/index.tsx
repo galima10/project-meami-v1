@@ -3,9 +3,11 @@ import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import { useDate } from "@hooks/dayMoment/useDate";
 
 export default function CalendarView() {
-  const { dayOfWeek, dayAndMonth, hour } = getDateInfo();
+  const { dayOfWeek, dayAndMonth } = getDateInfo();
+  const { hour } = useDate(); // déjà à jour
   const { actualDayMoment, displayMoment } = useDayMoment();
 
   return (
@@ -14,7 +16,7 @@ export default function CalendarView() {
       <AppText style={{ marginTop: 20, textTransform: "capitalize" }}>{dayOfWeek}</AppText>
       <AppText>{dayAndMonth}</AppText>
       <AppText>
-        {hour}h : {actualDayMoment}
+        {hour}h : {displayMoment}
       </AppText>
     </View>
   );
