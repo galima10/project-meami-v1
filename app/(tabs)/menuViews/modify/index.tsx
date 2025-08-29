@@ -1,12 +1,16 @@
-import {View, StyleSheet } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 
 export default function ModifyView() {
   return (
-    <View style={styles.screen}>
+    <ImageBackground
+      source={require("@assets/images/precharged/background/menu_3x.jpg")}
+      style={styles.screen}
+      resizeMode="cover"
+    >
       <AppText style={styles.text}>Menu de la semaine Vue modifier</AppText>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -15,7 +19,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: theme.properties.beige,
   },
   text: {
     fontFamily: "SN",

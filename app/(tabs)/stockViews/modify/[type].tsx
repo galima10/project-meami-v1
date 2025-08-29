@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { useLocalSearchParams } from "expo-router";
@@ -10,11 +10,15 @@ export default function ModifyView() {
   }>();
   const isCreate = mode === "create";
   return (
-    <View style={styles.screen}>
+    <ImageBackground
+      source={require("@assets/images/precharged/background/stock_3x.jpg")}
+      style={styles.screen}
+      resizeMode="cover"
+    >
       <AppText style={styles.text}>
         {isCreate ? `Création d'un nouveau ${type}` : `Modification de ${type}`}
       </AppText>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -23,7 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: theme.properties.beige,
   },
   text: {
     fontFamily: "SN",
