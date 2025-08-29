@@ -61,11 +61,12 @@ describe("useDate", () => {
 
     const { result } = renderHook(() => useDate());
 
+    // Avance le timer et flush React
     await act(async () => {
       jest.advanceTimersByTime(60 * 1000);
     });
 
-    expect(result.current.hour).toBe(11);
+    expect(result.current!.hour).toBe(11);
   });
 
   it("se met à jour au focus", async () => {
