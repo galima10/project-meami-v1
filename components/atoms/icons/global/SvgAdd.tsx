@@ -4,7 +4,7 @@ import type { ColorValue } from "react-native";
 
 type Props = SvgProps & { color?: ColorValue; withStroke?: boolean };
 
-function SvgAdd({ color = "#000", withStroke, ...props }: Props) {
+export default function SvgAdd({ color = "#000", withStroke, ...props }: Props) {
   return (
     <Svg width={100} height={100} viewBox="0 0 100 100" fill="none" {...props}>
       <G clipPath="url(#clip0_336_8020)">
@@ -21,5 +21,3 @@ function SvgAdd({ color = "#000", withStroke, ...props }: Props) {
     </Svg>
   );
 }
-
-export default SvgAdd;

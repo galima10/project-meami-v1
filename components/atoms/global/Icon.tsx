@@ -8,8 +8,12 @@ interface IconProps extends SvgProps {
   color?: string;
   withStroke?: boolean;
 }
-
-const Icon: React.FC<IconProps> = ({ name, size = 24, color = "#000", ...props }) => {
+export default function Icon({
+  name,
+  size = 24,
+  color = "#000",
+  ...props
+}: IconProps) {
   const SvgComponent = useIconComponent(name);
 
   if (!SvgComponent) {
@@ -18,6 +22,4 @@ const Icon: React.FC<IconProps> = ({ name, size = 24, color = "#000", ...props }
   }
 
   return <SvgComponent width={size} height={size} color={color} {...props} />;
-};
-
-export default Icon;
+}

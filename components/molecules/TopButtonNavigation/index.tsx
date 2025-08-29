@@ -13,14 +13,14 @@ interface TopButtonProps {
   goBack?: boolean;
 }
 
-const TopButton = ({
+export default function TopButton({
   routeName,
   icon,
   green,
   withStroke,
   params,
   goBack,
-}: TopButtonProps) => {
+}: TopButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
   const isActive = pathname === `/${routeName}`;
@@ -63,12 +63,10 @@ const TopButton = ({
       {content}
     </Link>
   );
-};
+}
 
 const styles = StyleSheet.create({
   button: {
     opacity: 0.5,
   },
 });
-
-export default TopButton;

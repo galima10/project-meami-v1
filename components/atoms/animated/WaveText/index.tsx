@@ -1,6 +1,12 @@
 // WaveText.tsx
 import React from "react";
-import { View, StyleSheet, TextProps, StyleProp, TextStyle } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextProps,
+  StyleProp,
+  TextStyle,
+} from "react-native";
 import { useWaveAnimation } from "@hooks/animations/useWaveAnimation";
 import { AnimatedAppText } from "@components/atoms/global/Texts";
 
@@ -9,7 +15,7 @@ type WaveTextProps = TextProps & {
   style?: StyleProp<TextStyle>;
 };
 
-const WaveText = ({ text, style, ...rest }: WaveTextProps) => {
+export default function WaveText({ text, style, ...rest }: WaveTextProps) {
   // Split par mot + espaces
   const words = text.split(/(\s+)/);
 
@@ -19,7 +25,7 @@ const WaveText = ({ text, style, ...rest }: WaveTextProps) => {
         return (
           <View key={wordIndex} style={styles.wordContainer}>
             {word.split("").map((char, charIndex) => {
-              const animatedStyle = useWaveAnimation(charIndex + wordIndex * 3); 
+              const animatedStyle = useWaveAnimation(charIndex + wordIndex * 3);
               // Décalage pour garder l'effet fluide entre mots
               return (
                 <AnimatedAppText
@@ -36,8 +42,7 @@ const WaveText = ({ text, style, ...rest }: WaveTextProps) => {
       })}
     </View>
   );
-};
-export default WaveText;
+}
 
 const styles = StyleSheet.create({
   container: {

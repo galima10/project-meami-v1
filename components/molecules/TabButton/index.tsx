@@ -7,12 +7,16 @@ import { usePathname } from "expo-router";
 import Icon from "@components/atoms/global/Icon";
 
 interface TabButtonProps {
-  routeName: "menuViews/calendar" | "cartViews/list" | "stockViews" | "infosViews";
+  routeName:
+    | "menuViews/calendar"
+    | "cartViews/list"
+    | "stockViews"
+    | "infosViews";
   icon: string;
   label: string;
 }
 
-const TabButton = ({ routeName, icon, label }: TabButtonProps) => {
+export default function TabButton({ routeName, icon, label }: TabButtonProps) {
   const pathname = usePathname();
   const firstSegmentOfActualRoute = pathname.split("/")[1];
   const firstSegmentOfRouteName = routeName.split("/")[0];
@@ -44,7 +48,7 @@ const TabButton = ({ routeName, icon, label }: TabButtonProps) => {
       </Pressable>
     </Link>
   );
-};
+}
 
 const styles = StyleSheet.create({
   button: {
@@ -62,5 +66,3 @@ const styles = StyleSheet.create({
     color: theme.properties.vibrantOrange,
   },
 });
-
-export default TabButton;

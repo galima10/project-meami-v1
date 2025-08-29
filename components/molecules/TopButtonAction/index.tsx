@@ -8,7 +8,7 @@ interface AddInfoProps {
   withStroke?: boolean;
 }
 
-const AddInfo = ({ icon, withStroke }: AddInfoProps) => {
+export default function AddInfo({ icon, withStroke }: AddInfoProps) {
   return (
     <Pressable
       style={[
@@ -17,10 +17,15 @@ const AddInfo = ({ icon, withStroke }: AddInfoProps) => {
         styles.button,
       ]}
     >
-      <Icon name={icon} color={theme.properties.beige} size={32} withStroke={withStroke} />
+      <Icon
+        name={icon}
+        color={theme.properties.beige}
+        size={32}
+        withStroke={withStroke}
+      />
     </Pressable>
   );
-};
+}
 
 const styles = StyleSheet.create({
   button: {
@@ -29,5 +34,3 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 });
-
-export default AddInfo;

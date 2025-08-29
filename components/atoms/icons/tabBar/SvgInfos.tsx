@@ -4,7 +4,7 @@ import type { ColorValue } from "react-native";
 
 type Props = SvgProps & { color?: ColorValue };
 
-function SvgInfos({ color = "#000", ...props }: Props) {
+export default function SvgInfos({ color = "#000", ...props }: Props) {
   return (
     <Svg width={100} height={100} viewBox="0 0 100 100" fill="none" {...props}>
       <Path
@@ -14,5 +14,3 @@ function SvgInfos({ color = "#000", ...props }: Props) {
     </Svg>
   );
 }
-
-export default SvgInfos;
