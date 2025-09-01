@@ -2,22 +2,22 @@ import { View, StyleSheet } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 import { useDate } from "@hooks/dayMoment/useDate";
+import CalendarContainer from "@components/organisms/calendar/CalendarContainer";
 
 export default function CalendarView() {
   const { dayOfWeek, dayAndMonth } = getDateInfo();
-  const { hour } = useDate(); // déjà à jour
-  const { actualDayMoment, displayMoment } = useDayMoment();
+  const { hour } = useDate();
 
   return (
     <View style={styles.screen}>
-      <AppText style={styles.text}>Menu de la semaine Vue calendrier</AppText>
+      <CalendarContainer />
+      {/* <AppText style={styles.text}>Menu de la semaine Vue calendrier</AppText>
       <AppText style={{ marginTop: 20, textTransform: "capitalize" }}>{dayOfWeek}</AppText>
       <AppText>{dayAndMonth}</AppText>
       <AppText>
         {hour}h : {displayMoment}
-      </AppText>
+      </AppText> */}
     </View>
   );
 }
@@ -25,15 +25,7 @@ export default function CalendarView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: theme.properties.beige,
-  },
-  text: {
-    fontFamily: "SN",
-    fontWeight: theme.properties.bold,
-    fontSize: 24,
-    textAlign: "center",
-    paddingHorizontal: 20,
+    flexDirection: "row",
   },
 });

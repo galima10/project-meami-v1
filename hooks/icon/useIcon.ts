@@ -15,8 +15,31 @@ import SvgStorage from "@components/atoms/icons/global/SvgStorage";
 import SvgCooking from "@components/atoms/icons/global/SvgCooking";
 import SvgRecipesMenu from "@components/atoms/icons/global/SvgRecipesMenu";
 import SvgIngredientsMenu from "@components/atoms/icons/global/SvgIngredientsMenu";
+import SvgMorning from "@components/atoms/icons/dayMoment/SvgMorning";
+import SvgNoon from "@components/atoms/icons/dayMoment/SvgNoon";
+import SvgNight from "@components/atoms/icons/dayMoment/SvgNight";
 
-export type IconName = "menu" | "cart" | "infos" | "stock" | "calendar" | "list" | "modify" | "validate" | "add" | "return" | "recipes" | "ingredients" | "storage" | "cooking" | "recipesMenu" | "ingredientsMenu" | string;
+export type IconName =
+  | "menu"
+  | "cart"
+  | "infos"
+  | "stock"
+  | "calendar"
+  | "list"
+  | "modify"
+  | "validate"
+  | "add"
+  | "return"
+  | "recipes"
+  | "ingredients"
+  | "storage"
+  | "cooking"
+  | "recipesMenu"
+  | "ingredientsMenu"
+  | "morning"
+  | "noon"
+  | "night"
+  | string;
 
 const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   menu: SvgMenu,
@@ -34,9 +57,11 @@ const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   storage: SvgStorage,
   cooking: SvgCooking,
   recipesMenu: SvgRecipesMenu,
-  ingredientsMenu: SvgIngredientsMenu
+  ingredientsMenu: SvgIngredientsMenu,
+  morning: SvgMorning,
+  noon: SvgNoon,
+  night: SvgNight,
 };
-
 
 export function useIconComponent(name: IconName) {
   return ICONS[name];
