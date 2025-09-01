@@ -1,17 +1,15 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
-import { useDate } from "@hooks/dayMoment/useDate";
 import DayContainer from "@components/organisms/calendar/DayContainer";
 import MomentModule from "@components/organisms/calendar/MomentModule";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
-import { useState, useEffect, useRef } from "react";
-import { AppText } from "@components/atoms/global/Texts";
+import { useState, useEffect } from "react";
 import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
+import DayNavigation from "@components/organisms/calendar/DayNavigation";
 
 export default function CalendarView() {
   const { dayOfWeek, dayAndMonth } = getDateInfo();
-  const { hour } = useDate();
   const { actualDayMoment } = useDayMoment();
   const [momentSelected, setMomentSelected] = useState(actualDayMoment);
 
@@ -30,6 +28,7 @@ export default function CalendarView() {
       style={styles.screen}
     >
       <DayContainer momentSelected={momentSelected} />
+      <DayNavigation actualDay={dayOfWeek} />
       <View style={styles.buttonsContainer}>
         <MomentModule
           momentSelected={momentSelected}

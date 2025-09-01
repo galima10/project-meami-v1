@@ -1,11 +1,23 @@
 // /utils/getDate.ts
 
+type FrenchDayOfWeek =
+  | "lundi"
+  | "mardi"
+  | "mercredi"
+  | "jeudi"
+  | "vendredi"
+  | "samedi"
+  | "dimanche";
+
 export function getDateInfo() {
   const now = new Date();
+  const dayOfWeek = (new Intl.DateTimeFormat("fr-FR", { weekday: "long" }).format(now) as FrenchDayOfWeek);
+  const dayAndMonth = new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "long" }).format(now);
+  const hour = now.getHours();
   return {
-    dayOfWeek: new Intl.DateTimeFormat("fr-FR", { weekday: "long" }).format(now),
-    dayAndMonth: new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "long" }).format(now),
-    hour: now.getHours(),
+    dayOfWeek,
+    dayAndMonth,
+    hour,
   };
 }
 
