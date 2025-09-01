@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 
-export default function CalendarMenu() {
+export default function DayMenu() {
   return (
     <View style={styles.container}>
       <AppText>Texte</AppText>

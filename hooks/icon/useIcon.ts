@@ -17,7 +17,7 @@ import SvgRecipesMenu from "@components/atoms/icons/global/SvgRecipesMenu";
 import SvgIngredientsMenu from "@components/atoms/icons/global/SvgIngredientsMenu";
 import SvgMorning from "@components/atoms/icons/dayMoment/SvgMorning";
 import SvgNoon from "@components/atoms/icons/dayMoment/SvgNoon";
-import SvgNight from "@components/atoms/icons/dayMoment/SvgNight";
+import SvgEvening from "@components/atoms/icons/dayMoment/SvgEvening";
 
 export type IconName =
   | "menu"
@@ -38,7 +38,7 @@ export type IconName =
   | "ingredientsMenu"
   | "morning"
   | "noon"
-  | "night"
+  | "evening"
   | string;
 
 const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
@@ -60,7 +60,7 @@ const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   ingredientsMenu: SvgIngredientsMenu,
   morning: SvgMorning,
   noon: SvgNoon,
-  night: SvgNight,
+  evening: SvgEvening,
 };
 
 export function useIconComponent(name: IconName) {

@@ -3,21 +3,23 @@ import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
 import { useDate } from "@hooks/dayMoment/useDate";
-import CalendarContainer from "@components/organisms/calendar/CalendarContainer";
+import DayContainer from "@components/organisms/calendar/DayContainer";
+import MomentModule from "@components/organisms/calendar/MomentModule";
+import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import { useState } from "react";
 
 export default function CalendarView() {
   const { dayOfWeek, dayAndMonth } = getDateInfo();
   const { hour } = useDate();
+  const { actualDayMoment } = useDayMoment();
+  const [momentSelected, setMomentSelected] = useState(actualDayMoment);
 
   return (
     <View style={styles.screen}>
-      <CalendarContainer />
-      {/* <AppText style={styles.text}>Menu de la semaine Vue calendrier</AppText>
-      <AppText style={{ marginTop: 20, textTransform: "capitalize" }}>{dayOfWeek}</AppText>
-      <AppText>{dayAndMonth}</AppText>
-      <AppText>
-        {hour}h : {displayMoment}
-      </AppText> */}
+      <DayContainer momentSelected={momentSelected} />
+      <View style={styles.buttonsContainer}>
+        <MomentModule momentSelected={momentSelected} setMomentSelected={setMomentSelected} />
+      </View>
     </View>
   );
 }
@@ -27,5 +29,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.properties.beige,
     flexDirection: "row",
+  },
+  buttonsContainer: {
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    position: "absolute",
+    bottom: 100,
+    left: 0,
   },
 });

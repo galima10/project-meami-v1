@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path, SvgProps, G, Defs, ClipPath } from "react-native-svg";
 
-export default function SvgNight({ ...props }: SvgProps) {
+export default function SvgEvening({ ...props }: SvgProps) {
   return (
     <Svg
       width={100}

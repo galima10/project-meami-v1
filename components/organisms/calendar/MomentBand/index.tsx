@@ -1,22 +1,19 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import { StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
-import MomentModule from "../MomentModule";
+import { DayMomentType } from "@app-types/DayMomentType";
+import useMomentBand from "@hooks/calendar/useMomentBand";
 
-export default function CalendarBand() {
-  const { actualDayMoment, displayMoment } = useDayMoment();
+export default function MomentBand({ momentSelected }: DayMomentType) {
+  const moment = useMomentBand(momentSelected);
+
   return (
     <ImageBackground
       source={require("@assets/images/requires/menu/menu_saturday_morning_3x.jpg")}
       resizeMode="cover"
       style={styles.container}
     >
-      <AppText style={styles.dayMomentText}>
-        {displayMoment}
-        {/* Matin */}
-      </AppText>
-      <MomentModule />
+      <AppText style={styles.dayMomentText}>{moment}</AppText>
     </ImageBackground>
   );
 }
@@ -33,12 +30,12 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   dayMomentText: {
-    marginBottom: 100,
+    marginBottom: 280,
     transform: [{ rotate: "-90deg" }],
     textTransform: "uppercase",
     color: theme.properties.white,
     fontWeight: theme.properties.bold,
-    backgroundColor: "rgba(0,0,0,0.3)",
+    // backgroundColor: "rgba(0,0,0,0.3)",
     fontSize: 64,
     textAlign: "center",
     width: 200,

@@ -12,10 +12,10 @@
       "@hooks/*": ["./hooks/*"],
       "@services/*": ["./services/*"],
       "@stores/*": ["./stores/*"],
-      "@types/*": ["./types/*"],
+      "@app-types/*": ["./types/*"],
       "@utils/*": ["./utils/*"],
       "@themes/*": ["./themes/*"]
-    }
+    },
   },
   "include": [
     "**/*.ts",
