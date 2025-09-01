@@ -35,7 +35,6 @@ export default function CalendarView() {
           momentSelected={momentSelected}
           setMomentSelected={setMomentSelected}
         />
-        <AppText>{hasInteracted ? "Oui" : "Non"}</AppText>
       </View>
     </View>
   );
