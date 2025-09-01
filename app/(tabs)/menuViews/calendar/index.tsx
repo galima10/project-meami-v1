@@ -1,26 +1,41 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
 import { useDate } from "@hooks/dayMoment/useDate";
 import DayContainer from "@components/organisms/calendar/DayContainer";
 import MomentModule from "@components/organisms/calendar/MomentModule";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { AppText } from "@components/atoms/global/Texts";
+import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
 
 export default function CalendarView() {
   const { dayOfWeek, dayAndMonth } = getDateInfo();
   const { hour } = useDate();
   const { actualDayMoment } = useDayMoment();
   const [momentSelected, setMomentSelected] = useState(actualDayMoment);
+
+  const { hasInteracted, handleInteraction } = useInteractionCooldown();
+
   useEffect(() => {
-    setMomentSelected(actualDayMoment);
-  }, [actualDayMoment]);
+    if (!hasInteracted) {
+      setMomentSelected(actualDayMoment);
+    }
+  }, [actualDayMoment, hasInteracted]);
 
   return (
-    <View style={styles.screen}>
+    <View
+      onStartShouldSetResponder={() => true}
+      onResponderGrant={handleInteraction}
+      style={styles.screen}
+    >
       <DayContainer momentSelected={momentSelected} />
       <View style={styles.buttonsContainer}>
-        <MomentModule momentSelected={momentSelected} setMomentSelected={setMomentSelected} />
+        <MomentModule
+          momentSelected={momentSelected}
+          setMomentSelected={setMomentSelected}
+        />
+        <AppText>{hasInteracted ? "Oui" : "Non"}</AppText>
       </View>
     </View>
   );
