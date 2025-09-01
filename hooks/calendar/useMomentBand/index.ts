@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function useMomentBand(
   momentSelected: "morning" | "noon" | "evening"
 ) {
+
   const momentMap = {
     morning: "Matin",
     noon: "Midi",

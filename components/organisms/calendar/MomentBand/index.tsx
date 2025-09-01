@@ -3,13 +3,22 @@ import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { DayMomentType } from "@app-types/DayMomentType";
 import useMomentBand from "@hooks/calendar/useMomentBand";
+import { imagesMap } from "@constants/imagesBandMap";
+import { getDateInfo } from "@utils/getDate";
+import { useMemo } from "react";
 
 export default function MomentBand({ momentSelected }: DayMomentType) {
+  const { dayOfWeek } = getDateInfo();
   const moment = useMomentBand(momentSelected);
+
+  const key = useMemo(
+    () => `${dayOfWeek.toLowerCase()}_${momentSelected}`,
+    [dayOfWeek, momentSelected]
+  );
 
   return (
     <ImageBackground
-      source={require("@assets/images/requires/menu/menu_saturday_morning_3x.jpg")}
+      source={imagesMap[key]}
       resizeMode="cover"
       style={styles.container}
     >
