@@ -6,10 +6,18 @@ import { globalStyles } from "@themes/styles";
 interface MomentButtonProps {
   moment: "morning" | "noon" | "evening";
   isActive: boolean;
-  setMomentSelected: React.Dispatch<React.SetStateAction<"morning" | "noon" | "evening">>;
+  setMomentSelected: React.Dispatch<
+    React.SetStateAction<"morning" | "noon" | "evening">
+  >;
+  handleInteraction: () => void;
 }
 
-export default function MomentButton({ moment, isActive, setMomentSelected }: MomentButtonProps) {
+export default function MomentButton({
+  moment,
+  isActive,
+  setMomentSelected,
+  handleInteraction,
+}: MomentButtonProps) {
   const buttonContainerStyle = StyleSheet.flatten([
     styles.buttonContainer,
     globalStyles.littleShadow,
@@ -20,7 +28,13 @@ export default function MomentButton({ moment, isActive, setMomentSelected }: Mo
     isActive && { borderColor: theme.properties.vibrantOrange },
   ]);
   return (
-    <Pressable style={buttonContainerStyle} onPress={() => setMomentSelected(moment)}>
+    <Pressable
+      style={buttonContainerStyle}
+      onPress={() => {
+        setMomentSelected(moment);
+        handleInteraction();
+      }}
+    >
       <View style={buttonStyle}>
         <Icon name={moment} size={40} />
       </View>

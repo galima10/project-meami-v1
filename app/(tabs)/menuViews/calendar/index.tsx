@@ -21,26 +21,54 @@ export default function CalendarView() {
 
   const { hasInteracted, handleInteraction } = useInteractionCooldown();
 
-  // useEffect(() => {
-  //   setMomentSelected(actualDayMoment);
-  // }, [actualDayMoment]);
+  useEffect(() => {
+    if (!hasInteracted) {
+      const todayIndex = days.findIndex((day) => day === dayOfWeek);
 
-  // Réinitialise momentSelected quand l'écran reprend le focus si pas d'interaction
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     if (!hasInteracted) {
-  //       setMomentSelected(actualDayMoment);
-  //     }
-  //   }, [actualDayMoment, hasInteracted])
-  // );
+      if (todayIndex !== -1) {
+        setCurrentIndex(todayIndex);
+        scrollRef.current?.scrollTo({
+          x: SCREEN_WIDTH * todayIndex,
+          animated: true,
+        });
+      }
+
+      // setMomentSelected(actualDayMoment);
+      setTimeout(() => {
+        setMomentSelected(actualDayMoment);
+      }, 300);
+    }
+  }, [hasInteracted, dayOfWeek, actualDayMoment]);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!hasInteracted) {
+        // 1️⃣ trouve l'index du jour courant
+        const todayIndex = days.findIndex((day) => day === dayOfWeek);
+
+        if (todayIndex !== -1) {
+          // 2️⃣ aller sur la bonne slide
+          setCurrentIndex(todayIndex);
+          scrollRef.current?.scrollTo({
+            x: SCREEN_WIDTH * todayIndex,
+            animated: true,
+          });
+        }
+
+        // 3️⃣ mettre à jour momentSelected
+        // setMomentSelected(actualDayMoment);
+        setTimeout(() => {
+          setMomentSelected(actualDayMoment);
+        }, 300);
+      }
+    }, [hasInteracted, dayOfWeek, actualDayMoment])
+  );
 
   const scrollRef = useRef<ScrollView>(null);
 
   const goToSlide = (index: number) => {
     scrollRef.current?.scrollTo({ x: index * SCREEN_WIDTH, animated: true });
   };
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const days = [
     "lundi",
@@ -51,6 +79,12 @@ export default function CalendarView() {
     "samedi",
     "dimanche",
   ];
+
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  const todayIndex = days.findIndex((day) => day === dayOfWeek);
+  const [currentIndex, setCurrentIndex] = useState(
+    todayIndex !== -1 ? todayIndex : 0
+  );
 
   return (
     <View
@@ -72,18 +106,29 @@ export default function CalendarView() {
         >
           {days.map((day, index) => (
             <View key={index} style={{ width: SCREEN_WIDTH, flex: 1 }}>
-              <DayContainer currentIndex={currentIndex} index={index} day={day} momentSelected={momentSelected} />
+              <DayContainer
+                currentIndex={currentIndex}
+                index={index}
+                day={day}
+                momentSelected={momentSelected}
+              />
               <AppText>{day}</AppText>
             </View>
           ))}
         </ScrollView>
       </View>
-      {/* <DayContainer momentSelected={momentSelected} /> */}
-      <DayNavigation currentIndex={currentIndex} goToSlide={goToSlide} actualDay={dayOfWeek} setMomentSelected={setMomentSelected} />
+      <DayNavigation
+        currentIndex={currentIndex}
+        goToSlide={goToSlide}
+        actualDay={dayOfWeek}
+        setMomentSelected={setMomentSelected}
+        handleInteraction={handleInteraction}
+      />
       <View style={styles.buttonsContainer}>
         <MomentModule
           momentSelected={momentSelected}
           setMomentSelected={setMomentSelected}
+          handleInteraction={handleInteraction}
         />
         {/* <AppText
           style={{ marginTop: 20, textTransform: "capitalize", color: "white" }}

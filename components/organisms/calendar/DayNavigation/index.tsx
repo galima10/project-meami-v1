@@ -16,6 +16,7 @@ interface DayNavigationProps {
   setMomentSelected?: React.Dispatch<
     React.SetStateAction<"morning" | "noon" | "evening">
   >;
+  handleInteraction: () => void;
 }
 
 export default function DayNavigation({
@@ -23,6 +24,7 @@ export default function DayNavigation({
   goToSlide,
   currentIndex,
   setMomentSelected,
+  handleInteraction
 }: DayNavigationProps) {
   return (
     <View style={styles.container}>
@@ -31,6 +33,7 @@ export default function DayNavigation({
         onPress={() => {
           goToSlide(currentIndex - 1);
           setMomentSelected?.("morning");
+          handleInteraction();
         }}
       >
         <AppText style={styles.buttonText}>◀</AppText>
@@ -41,6 +44,7 @@ export default function DayNavigation({
         onPress={() => {
           goToSlide(currentIndex + 1);
           setMomentSelected?.("morning");
+          handleInteraction();
         }}
       >
         <AppText style={styles.buttonText}>▶</AppText>
