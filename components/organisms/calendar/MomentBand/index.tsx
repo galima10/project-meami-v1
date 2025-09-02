@@ -6,15 +6,24 @@ import useMomentBand from "@hooks/calendar/useMomentBand";
 import { imagesMap } from "@constants/imagesBandMap";
 import { getDateInfo } from "@utils/getDate";
 import { useMemo } from "react";
+import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 
-export default function MomentBand({ momentSelected }: DayMomentType) {
+interface MomentBandProps extends DayMomentType {
+  day: string;
+  index: number;
+  currentIndex: number;
+}
+
+export default function MomentBand({ momentSelected, day, index, currentIndex }: MomentBandProps) {
   const { dayOfWeek } = getDateInfo();
+  const { actualDayMoment } = useDayMoment();
   const moment = useMomentBand(momentSelected);
 
-  const key = useMemo(
-    () => `${dayOfWeek.toLowerCase()}_${momentSelected}`,
-    [dayOfWeek, momentSelected]
-  );
+  const momentSlide = index === currentIndex ? momentSelected : "morning";
+
+  const key = useMemo(() => {
+    return `${day.toLowerCase()}_${momentSlide}`
+  }, [day, momentSelected]);
 
   return (
     <ImageBackground

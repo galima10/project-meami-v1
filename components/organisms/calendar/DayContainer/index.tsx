@@ -6,17 +6,19 @@ import { globalStyles } from "@themes/styles";
 import theme from "@themes/index";
 
 interface DayContainerProps extends DayMomentType {
-  day?: string;
+  day: string;
+  currentIndex: number;
+  index: number;
 }
 
-export default function DayContainer({momentSelected, day}: DayContainerProps) {
+export default function DayContainer({momentSelected, day, currentIndex, index}: DayContainerProps) {
   return (
     <View style={{ flexDirection: "row-reverse", flex: 1 }}>
       <View style={styles.menuContainer}>
         <DayMenu />
       </View>
       <View style={[styles.band, globalStyles.bigShadow]}>
-        <MomentBand momentSelected={momentSelected} />
+        <MomentBand currentIndex={currentIndex} index={index} day={day} momentSelected={momentSelected} />
       </View>
     </View>
   );

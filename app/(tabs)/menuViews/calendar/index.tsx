@@ -16,23 +16,23 @@ const { width: SCREEN_WIDTH } = Dimensions.get("window");
 export default function CalendarView() {
   const { dayOfWeek, dayAndMonth } = getDateInfo();
   const { hour } = useDate();
-  const { actualDayMoment, displayMoment } = useDayMoment();
+  const { actualDayMoment } = useDayMoment();
   const [momentSelected, setMomentSelected] = useState(actualDayMoment);
 
   const { hasInteracted, handleInteraction } = useInteractionCooldown();
 
-  useEffect(() => {
-    setMomentSelected(actualDayMoment);
-  }, [actualDayMoment]);
+  // useEffect(() => {
+  //   setMomentSelected(actualDayMoment);
+  // }, [actualDayMoment]);
 
   // Réinitialise momentSelected quand l'écran reprend le focus si pas d'interaction
-  useFocusEffect(
-    useCallback(() => {
-      if (!hasInteracted) {
-        setMomentSelected(actualDayMoment);
-      }
-    }, [actualDayMoment, hasInteracted])
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     if (!hasInteracted) {
+  //       setMomentSelected(actualDayMoment);
+  //     }
+  //   }, [actualDayMoment, hasInteracted])
+  // );
 
   const scrollRef = useRef<ScrollView>(null);
 
@@ -72,14 +72,14 @@ export default function CalendarView() {
         >
           {days.map((day, index) => (
             <View key={index} style={{ width: SCREEN_WIDTH, flex: 1 }}>
-              <DayContainer momentSelected={momentSelected} />
+              <DayContainer currentIndex={currentIndex} index={index} day={day} momentSelected={momentSelected} />
               <AppText>{day}</AppText>
             </View>
           ))}
         </ScrollView>
       </View>
       {/* <DayContainer momentSelected={momentSelected} /> */}
-      <DayNavigation currentIndex={currentIndex} goToSlide={goToSlide} actualDay={dayOfWeek} />
+      <DayNavigation currentIndex={currentIndex} goToSlide={goToSlide} actualDay={dayOfWeek} setMomentSelected={setMomentSelected} />
       <View style={styles.buttonsContainer}>
         <MomentModule
           momentSelected={momentSelected}
