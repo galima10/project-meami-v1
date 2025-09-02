@@ -1,10 +1,13 @@
 // jest.setup.ts
-global.__DEV__ = true;
+(global as any).__DEV__ = true;
 
-import 'react-native';
 import { Dimensions } from 'react-native';
-
-Dimensions.get = jest.fn().mockReturnValue({ width: 400, height: 800 });
+Dimensions.get = jest.fn(() => ({
+  width: 400,
+  height: 800,
+  scale: 2,      // mock value
+  fontScale: 2,  // mock value
+}));
 
 jest.mock('react-native-reanimated', () => {
   // Mock minimal juste pour tes hooks
