@@ -46,3 +46,28 @@
     > L'heure est mise à jour toutes les minutes ou en changeant d'onglet et en revenant dessus
     > Le moment de la journée : Matin, Midi ou Soir est donc déterminé en fonction de l'heure récupérée et est affiché
     > Sur l'onglet Menu de la semaine Vue Liste, seul le jour de la semaine esr récupéré et affiché
+
+[1.3.0]
+- **Vue Calendrier** :
+    > Ajout d'un slider pour afficher les jours de la semaine pour voir le (futur) menu
+    > Ajout de boutons de navigation pour naviguer entre chaque slide
+    > Ajout d'un module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
+    > Ajout d'un délai d'inactivité : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
+    > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
+    > Ajout d'une bande imagée colorée pour chaque jour de la semaine avec des variantes pour chaque, matin, midi et soir : 
+        - Lundi : Photographie orange
+        - Mardi : Photographie verte
+        - Mercredi : Photographie jaune
+        - Jeudi : Photographie rouge
+        - Vendredi : Photographie rose
+        - Samedi : Photographie violette
+        - Dimanche : Photographie blanche
+
+### À faire la prochaine fois
+
+- Changer le contraste de l'affichage du moment de la journée (surtout pour les bandes claires)
+- Changer le contraste des boutons de navigation sur fond sombre
+- Réajuster le délai de réactualisation de du moment de la journée sur 60 secondes
+- Réajuster le délai d'inactivité à 10 secondes
+- Ajouter le bouton aller à aujourd'hui avec un compte à rebours dessus pour le délai d'inactivité
+- Enlever les consoles logs du délai d'inactivité

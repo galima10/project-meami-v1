@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   buttonsContainer: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
     position: "absolute",
     bottom: 100,
     left: 0,
