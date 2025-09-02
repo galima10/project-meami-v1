@@ -11,16 +11,18 @@ interface DayNavigationProps {
     | "vendredi"
     | "samedi"
     | "dimanche";
+  goToSlide: (index: number) => void;
+  currentIndex: number;
 }
 
-export default function DayNavigation({ actualDay }: DayNavigationProps) {
+export default function DayNavigation({ actualDay, goToSlide, currentIndex }: DayNavigationProps) {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={() => goToSlide(currentIndex - 1)}>
         <AppText style={styles.buttonText}>◀</AppText>
       </Pressable>
       <AppText style={styles.dayTitle}>{actualDay}</AppText>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={() => goToSlide(currentIndex + 1)}>
         <AppText style={styles.buttonText}>▶</AppText>
       </Pressable>
     </View>
@@ -51,5 +53,5 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: theme.properties.bold,
     textTransform: "capitalize",
-  }
+  },
 });
