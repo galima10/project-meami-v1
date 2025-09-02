@@ -42,4 +42,6 @@ jest.mock('@react-navigation/native', () => ({
 
 jest.mock("react-native/Libraries/Utilities/Dimensions", () => ({
   get: jest.fn().mockReturnValue({ width: 400, height: 800 }),
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
 }));
