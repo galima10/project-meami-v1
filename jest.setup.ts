@@ -1,4 +1,3 @@
-import React from "react";
 
 // jest.setup.ts
 global.__DEV__ = true;
@@ -39,4 +38,8 @@ jest.mock('@react-navigation/native', () => ({
     const React = require('react');
     React.useEffect(cb, []);
   },
+}));
+
+jest.mock("react-native/Libraries/Utilities/Dimensions", () => ({
+  get: jest.fn().mockReturnValue({ width: 400, height: 800 }),
 }));
