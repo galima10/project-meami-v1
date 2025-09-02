@@ -1,14 +1,6 @@
 // jest.setup.ts
 (global as any).__DEV__ = true;
 
-import { Dimensions } from 'react-native';
-Dimensions.get = jest.fn(() => ({
-  width: 400,
-  height: 800,
-  scale: 2,      // mock value
-  fontScale: 2,  // mock value
-}));
-
 jest.mock('react-native-reanimated', () => {
   // Mock minimal juste pour tes hooks
   return {
@@ -46,3 +38,21 @@ jest.mock('@react-navigation/native', () => ({
     React.useEffect(cb, []);
   },
 }));
+
+jest.mock('react-native', () => {
+  const RN = jest.requireActual('react-native');
+
+  return {
+    ...RN,
+    Dimensions: {
+      get: jest.fn(() => ({
+        width: 400,
+        height: 800,
+        scale: 2,
+        fontScale: 2,
+      })),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    },
+  };
+});
