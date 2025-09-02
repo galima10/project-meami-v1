@@ -1,7 +1,7 @@
 // jest.setup.ts
 (global as any).__DEV__ = true;
 
-jest.mock('react-native-reanimated', () => {
+jest.mock("react-native-reanimated", () => {
   // Mock minimal juste pour tes hooks
   return {
     // Hooks
@@ -19,40 +19,40 @@ jest.mock('react-native-reanimated', () => {
   };
 });
 
-jest.mock('react-native-svg', () => {
-  const React = require('react');
+jest.mock("react-native-svg", () => {
+  const React = require("react");
   return {
     __esModule: true,
-    Svg: (props: any) => React.createElement('svg', props),
-    Path: (props: any) => React.createElement('path', props),
-    Circle: (props: any) => React.createElement('circle', props),
-    Rect: (props: any) => React.createElement('rect', props),
-    G: (props: any) => React.createElement('g', props),
+    Svg: (props: any) => React.createElement("svg", props),
+    Path: (props: any) => React.createElement("path", props),
+    Circle: (props: any) => React.createElement("circle", props),
+    Rect: (props: any) => React.createElement("rect", props),
+    G: (props: any) => React.createElement("g", props),
     // Ajoute d'autres si besoin (Line, Ellipse, Polygon, Polyline, etc.)
   };
 });
 
-jest.mock('@react-navigation/native', () => ({
+jest.mock("@react-navigation/native", () => ({
   useFocusEffect: (cb: any) => {
-    const React = require('react');
+    const React = require("react");
     React.useEffect(cb, []);
   },
 }));
 
-jest.mock('react-native', () => {
-  const RN = jest.requireActual('react-native');
-
-  return {
-    ...RN,
-    Dimensions: {
-      get: jest.fn(() => ({
-        width: 400,
-        height: 800,
-        scale: 2,
-        fontScale: 2,
-      })),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-    },
-  };
-});
+jest.mock("react-native", () => ({
+  Dimensions: {
+    get: jest.fn(() => ({
+      width: 400,
+      height: 800,
+      scale: 2,
+      fontScale: 2,
+    })),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+  },
+  Platform: {
+    OS: "test",
+    select: jest.fn(),
+  },
+  // tu peux mocker d'autres trucs dont tu as besoin ici
+}));
