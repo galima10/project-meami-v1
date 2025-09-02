@@ -1,6 +1,6 @@
+global.__DEV__ = true;
 import { Dimensions } from 'react-native';
 // jest.setup.ts
-global.__DEV__ = true;
 
 Dimensions.get = jest.fn().mockReturnValue({ width: 400, height: 800 });
 
