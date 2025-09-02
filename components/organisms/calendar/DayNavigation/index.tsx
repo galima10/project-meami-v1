@@ -1,52 +1,40 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
+import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import { useDayNavigation } from "@hooks/calendar/useDayNavigation";
 
 interface DayNavigationProps {
-  actualDay:
-    | "lundi"
-    | "mardi"
-    | "mercredi"
-    | "jeudi"
-    | "vendredi"
-    | "samedi"
-    | "dimanche";
   goToSlide: (index: number) => void;
   currentIndex: number;
-  setMomentSelected?: React.Dispatch<
+  setMomentSelected: React.Dispatch<
     React.SetStateAction<"morning" | "noon" | "evening">
   >;
   handleInteraction: () => void;
+  todayIndex: number;
 }
 
 export default function DayNavigation({
-  actualDay,
-  goToSlide,
   currentIndex,
   setMomentSelected,
-  handleInteraction
+  handleInteraction,
+  todayIndex,
+  goToSlide,
 }: DayNavigationProps) {
+  const { goPrevious, goNext } = useDayNavigation({
+    currentIndex,
+    todayIndex,
+    goToSlide,
+    setMomentSelected,
+    handleInteraction,
+  });
+
   return (
     <View style={styles.container}>
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          goToSlide(currentIndex - 1);
-          setMomentSelected?.("morning");
-          handleInteraction();
-        }}
-      >
+      <Pressable style={styles.button} onPress={goPrevious}>
         <AppText style={styles.buttonText}>◀</AppText>
       </Pressable>
-      <AppText style={styles.dayTitle}>{actualDay}</AppText>
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          goToSlide(currentIndex + 1);
-          setMomentSelected?.("morning");
-          handleInteraction();
-        }}
-      >
+      <Pressable style={styles.button} onPress={goNext}>
         <AppText style={styles.buttonText}>▶</AppText>
       </Pressable>
     </View>
@@ -59,10 +47,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 4,
     paddingHorizontal: 32,
-    position: "absolute",
     width: "100%",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
   button: {
     padding: 8,
@@ -71,7 +57,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 32,
-    // opacity: 0.25,
   },
   dayTitle: {
     fontSize: 36,

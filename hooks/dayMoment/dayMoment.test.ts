@@ -14,6 +14,7 @@ import { renderHook, act } from "@testing-library/react";
 import { getDateInfo } from "@utils/getDate";
 import { useDate } from "./useDate";
 import { useDayMoment } from "./useDayMoment";
+import { days } from "@utils/getDate";
 
 // Assure TS que c'est bien un mock
 const mockedGetDateInfo = getDateInfo as jest.MockedFunction<
@@ -30,7 +31,7 @@ describe("useDate", () => {
     jest.useRealTimers();
   });
 
-  it("retourne la date initiale", () => {
+  it("retourne la date initiale avec todayIndex", () => {
     mockedGetDateInfo.mockReturnValue({
       dayOfWeek: "lundi",
       dayAndMonth: "01 janvier",
@@ -43,16 +44,17 @@ describe("useDate", () => {
       dayOfWeek: "lundi",
       dayAndMonth: "01 janvier",
       hour: 10,
+      todayIndex: days.findIndex((d) => d === "lundi"), // <= ajout
     });
   });
 
-  it("met à jour après 1 minute", async () => {
+  it("met à jour après 1 minute et recalcule todayIndex", async () => {
     let callCount = 0;
     mockedGetDateInfo.mockImplementation(() => {
       callCount++;
       if (callCount === 1)
         return { dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 10 };
-      return { dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 11 };
+      return { dayOfWeek: "mardi", dayAndMonth: "02 janvier", hour: 11 };
     });
 
     const { result } = renderHook(() => useDate());
@@ -61,13 +63,17 @@ describe("useDate", () => {
       jest.advanceTimersByTime(60 * 1000);
     });
 
-    // flush les mises à jour d'état
     await act(async () => Promise.resolve());
 
-    expect(result.current!.hour).toBe(11);
+    expect(result.current).toEqual({
+      dayOfWeek: "mardi",
+      dayAndMonth: "02 janvier",
+      hour: 11,
+      todayIndex: days.findIndex((d) => d === "mardi"), // <= vérifie recalcul
+    });
   });
 
-  it("se met à jour au focus", async () => {
+  it("se met à jour au focus et recalcule todayIndex", async () => {
     mockedGetDateInfo
       .mockReturnValueOnce({
         dayOfWeek: "lundi",
@@ -75,8 +81,8 @@ describe("useDate", () => {
         hour: 10,
       })
       .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
+        dayOfWeek: "mercredi",
+        dayAndMonth: "03 janvier",
         hour: 12,
       });
 
@@ -84,8 +90,33 @@ describe("useDate", () => {
 
     await act(async () => {});
 
-    expect(result.current!.hour).toBe(12);
+    expect(result.current).toEqual({
+      dayOfWeek: "mercredi",
+      dayAndMonth: "03 janvier",
+      hour: 12,
+      todayIndex: days.findIndex((d) => d === "mercredi"),
+    });
   });
+});
+
+it("se met à jour au focus", async () => {
+  mockedGetDateInfo
+    .mockReturnValueOnce({
+      dayOfWeek: "lundi",
+      dayAndMonth: "01 janvier",
+      hour: 10,
+    })
+    .mockReturnValueOnce({
+      dayOfWeek: "lundi",
+      dayAndMonth: "01 janvier",
+      hour: 12,
+    });
+
+  const { result } = renderHook(() => useDate());
+
+  await act(async () => {});
+
+  expect(result.current!.hour).toBe(12);
 });
 
 describe("useDayMoment", () => {
