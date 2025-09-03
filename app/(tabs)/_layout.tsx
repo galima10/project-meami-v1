@@ -97,7 +97,7 @@ export default function TabLayout() {
             },
             headerStyle: {
               backgroundColor: theme.properties.darkOrange,
-              borderColor: theme.properties.borderColor,
+              borderColor: theme.properties.orangeBorder,
               borderWidth: 1,
               height: 100,
               ...globalStyles.bigShadow,
@@ -151,7 +151,7 @@ export default function TabLayout() {
             headerStyle: {
               backgroundColor: theme.properties.darkOrange,
               height: 100,
-              borderColor: theme.properties.borderColor,
+              borderColor: theme.properties.orangeBorder,
               borderWidth: 1,
               ...globalStyles.bigShadow,
             },
@@ -230,7 +230,7 @@ export default function TabLayout() {
             headerStyle: {
               backgroundColor: theme.properties.darkOrange,
               height: 100,
-              borderColor: theme.properties.borderColor,
+              borderColor: theme.properties.orangeBorder,
               borderWidth: 1,
               ...globalStyles.bigShadow,
             },
@@ -287,7 +287,7 @@ export default function TabLayout() {
             headerStyle: {
               backgroundColor: theme.properties.darkOrange,
               height: 100,
-              borderColor: theme.properties.borderColor,
+              borderColor: theme.properties.orangeBorder,
               borderWidth: 1,
               ...globalStyles.bigShadow,
             },

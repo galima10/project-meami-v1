@@ -39,6 +39,13 @@ const theme = {
 
     borderColor: "#491b1e40",
 
+    greenBorder: "#807D59",
+    redBorder: "#98354C",
+    orangeBorder: "#BA795E",
+    beigeBorder: "#D1BFB4",
+    whiteBorder: "#D1BFB4",
+    vibrantOrangeBorder: "#C47031",
+
     // active: "#000000",
     // iconActive: "#ffffff",
     // iconInactive: "gray",
@@ -77,6 +84,12 @@ export interface ThemeType {
   semibold: FontWeightType;
   bold: FontWeightType;
   borderColor: string;
+  greenBorder: string;
+  redBorder: string;
+  orangeBorder: string;
+  beigeBorder: string;
+  whiteBorder: string;
+  vibrantOrangeBorder: string;
   // inputColor: string;
   // gray: string;
 }

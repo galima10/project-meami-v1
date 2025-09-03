@@ -50,6 +50,7 @@ export default function CalendarView() {
           setMomentSelected={setMomentSelected}
           handleInteraction={handleInteraction}
           todayIndex={todayIndex}
+          momentSelected={momentSelected}
         />
       </View>
       <View style={styles.buttonsContainer}>

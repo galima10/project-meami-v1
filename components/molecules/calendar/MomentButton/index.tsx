@@ -21,7 +21,7 @@ export default function MomentButton({
   const buttonContainerStyle = StyleSheet.flatten([
     styles.buttonContainer,
     globalStyles.littleShadow,
-    isActive && { opacity: 1 },
+    isActive && { opacity: 1, borderColor: theme.properties.vibrantOrangeBorder },
   ]);
   const buttonStyle = StyleSheet.flatten([
     styles.button,
@@ -47,13 +47,13 @@ const styles = StyleSheet.create({
     position: "relative",
     borderRadius: theme.properties.buttonRadius,
     marginVertical: 8,
-    borderColor: theme.properties.borderColor,
-    borderWidth: 0.5,
+    borderColor: theme.properties.whiteBorder,
+    borderWidth: 1,
     alignSelf: "flex-start",
     opacity: 0.5,
   },
   button: {
-    borderRadius: theme.properties.buttonRadius,
+    borderRadius: 7,
     overflow: "hidden",
     borderColor: theme.properties.white,
     borderWidth: 3.5,

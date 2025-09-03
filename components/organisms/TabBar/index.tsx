@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     paddingTop: 8,
     backgroundColor: theme.properties.beige,
-    borderColor: theme.properties.borderColor,
+    borderColor: theme.properties.beigeBorder,
     borderWidth: 1,
   },
 });

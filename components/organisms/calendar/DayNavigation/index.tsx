@@ -1,8 +1,7 @@
-import { View, StyleSheet, Pressable } from "react-native";
-import { AppText } from "@components/atoms/global/Texts";
+import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 import { useDayNavigation } from "@hooks/calendar/useDayNavigation";
+import DayNavigationButton from "@components/molecules/calendar/DayNavigationButton";
 
 interface DayNavigationProps {
   goToSlide: (index: number) => void;
@@ -12,11 +11,13 @@ interface DayNavigationProps {
   >;
   handleInteraction: () => void;
   todayIndex: number;
+  momentSelected: "morning" | "noon" | "evening";
 }
 
 export default function DayNavigation({
   currentIndex,
   setMomentSelected,
+  momentSelected,
   handleInteraction,
   todayIndex,
   goToSlide,
@@ -31,12 +32,8 @@ export default function DayNavigation({
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button} onPress={goPrevious}>
-        <AppText style={styles.buttonText}>◀</AppText>
-      </Pressable>
-      <Pressable style={styles.button} onPress={goNext}>
-        <AppText style={styles.buttonText}>▶</AppText>
-      </Pressable>
+      <DayNavigationButton action={goPrevious} currentIndex={currentIndex} momentSelected={momentSelected} direction="left" />
+      <DayNavigationButton action={goNext} direction="right" />
     </View>
   );
 }
@@ -49,13 +46,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     width: "100%",
     alignItems: "center",
-  },
-  button: {
-    padding: 8,
-    borderRadius: 8,
-  },
-  buttonText: {
-    fontSize: 32,
   },
   dayTitle: {
     fontSize: 36,
