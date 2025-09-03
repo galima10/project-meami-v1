@@ -36,7 +36,7 @@ export function useInteractionCooldown({
 
   const handleInteraction = useCallback(() => {
     setHasInteracted(true);
-    setResetProgressKey(resetProgressKey + 1);
+    setResetProgressKey((prev) => prev + 1);
     cleanupTimers();
 
     // init countdown (en secondes)
@@ -120,6 +120,10 @@ export function useInteractionCooldown({
     dayOfWeek,
     actualDayMoment,
   ]);
+
+  useEffect(() => {
+    console.log(resetProgressKey)
+  }, [resetProgressKey])
 
   return {
     handleInteraction,
