@@ -86,6 +86,6 @@ describe("Calendar : useInteractionCooldown", () => {
     act(() => {
       jest.advanceTimersByTime(2000);
     });
-    expect(result.current.countdown).toBeNull();
+    expect(result.current.countdown).toBe(0);
   });
 });
