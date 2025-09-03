@@ -121,10 +121,6 @@ export function useInteractionCooldown({
     actualDayMoment,
   ]);
 
-  useEffect(() => {
-    console.log(resetProgressKey)
-  }, [resetProgressKey])
-
   return {
     handleInteraction,
     countdown,
