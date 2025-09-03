@@ -51,8 +51,9 @@
 - **Vue Calendrier** :
     > Ajout d'un slider pour afficher les jours de la semaine pour voir le (futur) menu
     > Ajout de boutons de navigation pour naviguer entre chaque slide
+        > Les boutons deviennent clairs si le fond est trop sombre
     > Ajout d'un module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
-    > Ajout d'un délai d'inactivité : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
+    > Ajout d'un délai d'inactivité de 15 secondes : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
     > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
     > Ajout d'une bande imagée colorée pour chaque jour de la semaine avec des variantes pour chaque, matin, midi et soir : 
         - Lundi : Photographie orange
@@ -65,9 +66,4 @@
 
 ### À faire la prochaine fois
 
-- Changer le contraste de l'affichage du moment de la journée (surtout pour les bandes claires)
-- Changer le contraste des boutons de navigation sur fond sombre
-- Réajuster le délai de réactualisation de du moment de la journée sur 60 secondes
-- Réajuster le délai d'inactivité à 10 secondes
-- Ajouter le bouton aller à aujourd'hui avec un compte à rebours dessus pour le délai d'inactivité
 - Enlever les consoles logs du délai d'inactivité
