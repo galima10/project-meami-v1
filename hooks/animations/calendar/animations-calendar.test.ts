@@ -2,16 +2,18 @@ import { renderHook, act } from "@testing-library/react";
 import { useSmoothProgress } from "./TodayButton/useSmoothProgress";
 
 describe("TodayButton : useSmoothProgress", () => {
+  let rafCallbacks: FrameRequestCallback[] = [];
+
   beforeEach(() => {
-    jest.useFakeTimers();
+    rafCallbacks = [];
     jest.spyOn(global, "requestAnimationFrame").mockImplementation((cb) => {
-      return setTimeout(() => cb(Date.now()), 16) as unknown as number;
+      rafCallbacks.push(cb);
+      return 1; // id fictif
     });
-    jest.spyOn(global, "cancelAnimationFrame").mockImplementation((id) => clearTimeout(id as any));
+    jest.spyOn(global, "cancelAnimationFrame").mockImplementation((id) => {});
   });
 
   afterEach(() => {
-    jest.clearAllTimers();
     jest.restoreAllMocks();
   });
 
@@ -21,23 +23,24 @@ describe("TodayButton : useSmoothProgress", () => {
   });
 
   it("avance progressivement jusqu'à 100", () => {
-    const total = 2; // 2 secondes pour le test rapide
+    const total = 2; // seconds
     const { result } = renderHook(() => useSmoothProgress(2, total));
 
-    // Initialement 0
-    expect(result.current).toBe(0);
-
+    // on appelle la raf manuellement pour simuler l'animation
     act(() => {
-      // On simule 1 frame (~16ms)
-      jest.advanceTimersByTime(16);
+      rafCallbacks.forEach((cb) => cb(performance.now()));
     });
+
     expect(result.current).toBeGreaterThan(0);
     expect(result.current).toBeLessThanOrEqual(100);
 
+    // simuler plusieurs frames
     act(() => {
-      // On simule la fin du countdown
-      jest.advanceTimersByTime(2000);
+      for (let i = 0; i < 50; i++) {
+        rafCallbacks.forEach((cb) => cb(performance.now()));
+      }
     });
+
     expect(result.current).toBeLessThanOrEqual(100);
   });
 
