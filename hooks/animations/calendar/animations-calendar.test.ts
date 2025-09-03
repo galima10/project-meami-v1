@@ -17,8 +17,8 @@ describe("TodayButton : useSmoothProgress", () => {
     jest.restoreAllMocks();
   });
 
-  it("initialise à 0 si localCountdown est null", () => {
-    const { result } = renderHook(() => useSmoothProgress(null));
+  it("initialise à 0 si localCountdown est 0", () => {
+    const { result } = renderHook(() => useSmoothProgress(0));
     expect(result.current).toBe(0);
   });
 
