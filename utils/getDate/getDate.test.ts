@@ -2,49 +2,62 @@ import { getDateInfo } from ".";
 import { getDayMoment } from ".";
 
 describe("getDayMoment", () => {
-    it("return morning if hour is between 4 (include) and 12 (exclue)", () => {
-        expect(getDayMoment(4)).toBe("morning");
-        expect(getDayMoment(7)).toBe("morning");
-        expect(getDayMoment(12)).not.toBe("morning");
-    });
+  it("return morning if hour is between 4 (include) and 12 (exclue)", () => {
+    expect(getDayMoment(4)).toBe("morning");
+    expect(getDayMoment(7)).toBe("morning");
+    expect(getDayMoment(12)).not.toBe("morning");
+  });
 
-    it("return noon if hour is between 12 (include) and 18 (exclue)", () => {
-        expect(getDayMoment(12)).toBe("noon");
-        expect(getDayMoment(15)).toBe("noon");
-        expect(getDayMoment(18)).not.toBe("noon");
-    });
+  it("return noon if hour is between 12 (include) and 18 (exclue)", () => {
+    expect(getDayMoment(12)).toBe("noon");
+    expect(getDayMoment(15)).toBe("noon");
+    expect(getDayMoment(18)).not.toBe("noon");
+  });
 
-    it("return evening if hour is between 18 (include) and 4 the next day (exclue)", () => {
-        expect(getDayMoment(18)).toBe("evening");
-        expect(getDayMoment(22)).toBe("evening");
-        expect(getDayMoment(2)).toBe("evening");
-        expect(getDayMoment(4)).not.toBe("evening");
-    });
+  it("return evening if hour is between 18 (include) and 4 the next day (exclue)", () => {
+    expect(getDayMoment(18)).toBe("evening");
+    expect(getDayMoment(22)).toBe("evening");
+    expect(getDayMoment(2)).toBe("evening");
+    expect(getDayMoment(4)).not.toBe("evening");
+  });
 });
 
 describe("getDateInfo", () => {
-  const RealDate = Date;
+  let realGetHours: any;
+  let realIntl: any;
 
   beforeAll(() => {
-    // On "mock" Date pour toujours retourner la même date
-    global.Date = class extends RealDate {
-      constructor() {
-        super("2024-08-29T15:30:00Z"); // jeudi 29 août 2024 à 15h30 UTC
+    const realGetHours = Date.prototype.getHours;
+    Date.prototype.getHours = () => 15;
+
+    const realIntl = Intl.DateTimeFormat;
+    (global as any).Intl.DateTimeFormat = class {
+      options: any; // <-- déclarer la propriété
+      constructor(locale: string, options?: any) {
+        this.options = options;
+      }
+      format() {
+        if (this.options?.weekday) return "jeudi";
+        if (this.options?.day && this.options?.month) return "29 août";
+        return "";
+      }
+      resolvedOptions() {
+        return this.options;
       }
     } as any;
   });
 
   afterAll(() => {
-    global.Date = RealDate; // on restaure la vraie Date
+    Date.prototype.getHours = realGetHours;
+    (global as any).Intl.DateTimeFormat = realIntl;
   });
 
   it("retourne les infos correctes", () => {
     const result = getDateInfo();
-
     expect(result).toEqual({
-      dayOfWeek: "jeudi",       // attendu en français
-      dayAndMonth: "29 août",   // format JJ mois
-      hour: 15,                 // 15h UTC → 17h locale si timezone FR
+      dayOfWeek: "jeudi",
+      dayAndMonth: "29 août",
+      hour: 15,
     });
   });
 });

@@ -2,15 +2,19 @@ import { renderHook, act } from "@testing-library/react";
 import { useSmoothProgress } from "./TodayButton/useSmoothProgress";
 
 describe("TodayButton : useSmoothProgress", () => {
-  let rafCallbacks: FrameRequestCallback[] = [];
+  let rafQueue: FrameRequestCallback[] = [];
 
   beforeEach(() => {
-    rafCallbacks = [];
+    rafQueue = [];
+
     jest.spyOn(global, "requestAnimationFrame").mockImplementation((cb) => {
-      rafCallbacks.push(cb);
-      return 1; // id fictif
+      rafQueue.push(cb);
+      return rafQueue.length; // id fictif
     });
-    jest.spyOn(global, "cancelAnimationFrame").mockImplementation((id) => {});
+
+    jest.spyOn(global, "cancelAnimationFrame").mockImplementation((id) => {
+      rafQueue[id - 1] = () => {}; // callback neutre
+    });
   });
 
   afterEach(() => {
@@ -23,24 +27,35 @@ describe("TodayButton : useSmoothProgress", () => {
   });
 
   it("avance progressivement jusqu'à 100", () => {
-    const total = 2; // secondes
+    const total = 2; // seconds
     const { result } = renderHook(() => useSmoothProgress(2, total));
 
     let fakeTime = 0;
+    const frameMs = 50; // 20 fps
+    const maxFrames = Math.ceil((total * 1000) / frameMs);
 
     act(() => {
-      for (let i = 0; i < 50; i++) {
-        fakeTime += 50; // simuler 50ms par frame (~20fps)
-        const cbs = [...rafCallbacks];
-        rafCallbacks.length = 0;
-        cbs.forEach((cb) => cb(fakeTime));
+      for (let i = 0; i < maxFrames; i++) {
+        fakeTime += frameMs;
+        const callbacks = [...rafQueue];
+        rafQueue.length = 0;
+        callbacks.forEach((cb) => cb(fakeTime));
       }
     });
 
-    // Le progress doit avoir commencé à augmenter
     expect(result.current).toBeGreaterThan(0);
+    expect(result.current).toBeLessThanOrEqual(100);
 
-    // Le progress doit être ≤ 100%
+    // Simuler encore un petit peu pour s'assurer que ça ne dépasse pas 100
+    act(() => {
+      for (let i = 0; i < 5; i++) {
+        fakeTime += frameMs;
+        const callbacks = [...rafQueue];
+        rafQueue.length = 0;
+        callbacks.forEach((cb) => cb(fakeTime));
+      }
+    });
+
     expect(result.current).toBeLessThanOrEqual(100);
   });
 
