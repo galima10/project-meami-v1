@@ -23,26 +23,29 @@ describe("TodayButton : useSmoothProgress", () => {
   });
 
 it("avance progressivement jusqu'à 100", () => {
-  const total = 2; // seconds
+  const total = 2; // secondes
   const { result } = renderHook(() => useSmoothProgress(2, total));
 
   let fakeTime = 0;
 
   act(() => {
-    // simuler 200 frames (~3.2s)
+    // Simuler max 200 frames (~3.2s)
     for (let i = 0; i < 200; i++) {
-      fakeTime += 16; 
-      rafCallbacks.forEach((cb) => cb(fakeTime));
+      fakeTime += 16;
+
+      // Exécuter les callbacks du RAF pour cette frame
+      const cbs = [...rafCallbacks];
+      rafCallbacks.length = 0; // vider la queue
+      cbs.forEach(cb => cb(fakeTime));
     }
   });
 
   // Le progress doit avoir commencé à augmenter
   expect(result.current).toBeGreaterThan(0);
 
-  // Le progress doit être au maximum 100%
+  // Le progress doit être ≤ 100%
   expect(result.current).toBeLessThanOrEqual(100);
 });
-
 
 
   it("reset progress si localCountdown devient 0", () => {
