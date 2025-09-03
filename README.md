@@ -52,6 +52,7 @@
     > Ajout d'un slider pour afficher les jours de la semaine pour voir le (futur) menu
     > Ajout de boutons de navigation pour naviguer entre chaque slide
         > Les boutons deviennent clairs si le fond est trop sombre
+    > Ajout d'une barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue
     > Ajout d'un module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
     > Ajout d'un délai d'inactivité de 15 secondes : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
     > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
