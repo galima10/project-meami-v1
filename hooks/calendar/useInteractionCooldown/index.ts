@@ -22,6 +22,7 @@ export function useInteractionCooldown({
   const { actualDayMoment } = useDayMoment();
   const [hasInteracted, setHasInteracted] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(0);
+  const [resetProgressKey, setResetProgressKey] = useState(0);
 
   const timeoutRef = useRef<number | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -35,6 +36,7 @@ export function useInteractionCooldown({
 
   const handleInteraction = useCallback(() => {
     setHasInteracted(true);
+    setResetProgressKey(resetProgressKey + 1);
     cleanupTimers();
 
     // init countdown (en secondes)
@@ -123,5 +125,6 @@ export function useInteractionCooldown({
     handleInteraction,
     countdown,
     setHasInteracted,
+    resetProgressKey
   };
 }

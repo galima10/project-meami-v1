@@ -22,13 +22,18 @@ describe("TodayButton : useSmoothProgress", () => {
   });
 
   it("initialise à 0 si localCountdown est 0", () => {
-    const { result } = renderHook(() => useSmoothProgress(0));
+    const { result } = renderHook(() => useSmoothProgress(0, 15, 0));
     expect(result.current).toBe(0);
   });
 
   it("avance progressivement jusqu'à 100", () => {
     const total = 2; // seconds
-    const { result } = renderHook(() => useSmoothProgress(2, total));
+    let resetKey = 0;
+
+    const { result, rerender } = renderHook(
+      ({ countdown, key }) => useSmoothProgress(countdown, total, key),
+      { initialProps: { countdown: 2, key: resetKey } }
+    );
 
     let fakeTime = 0;
     const frameMs = 50; // 20 fps
@@ -46,7 +51,7 @@ describe("TodayButton : useSmoothProgress", () => {
     expect(result.current).toBeGreaterThan(0);
     expect(result.current).toBeLessThanOrEqual(100);
 
-    // Simuler encore un petit peu pour s'assurer que ça ne dépasse pas 100
+    // Simuler encore quelques frames pour vérifier que le progress ne dépasse pas 100
     act(() => {
       for (let i = 0; i < 5; i++) {
         fakeTime += frameMs;
@@ -57,16 +62,27 @@ describe("TodayButton : useSmoothProgress", () => {
     });
 
     expect(result.current).toBeLessThanOrEqual(100);
+
+    // Réinitialiser avec la même countdown mais nouvelle clé
+    resetKey++;
+    act(() => {
+      rerender({ countdown: 2, key: resetKey });
+    });
+
+    // Après reset, progress doit repartir à 0
+    expect(result.current).toBe(0);
   });
 
   it("reset progress si localCountdown devient 0", () => {
+    let resetKey = 0;
     const { result, rerender } = renderHook(
-      ({ countdown }) => useSmoothProgress(countdown),
-      { initialProps: { countdown: 2 } }
+      ({ countdown, key }) => useSmoothProgress(countdown, 15, key),
+      { initialProps: { countdown: 2, key: resetKey } }
     );
 
     act(() => {
-      rerender({ countdown: 0 });
+      resetKey++;
+      rerender({ countdown: 0, key: resetKey });
     });
 
     expect(result.current).toBe(0);

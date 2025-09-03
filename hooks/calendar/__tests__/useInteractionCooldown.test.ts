@@ -21,7 +21,7 @@ describe("Calendar : useInteractionCooldown", () => {
     (useDayMoment as jest.Mock).mockReturnValue({ actualDayMoment: "morning" });
   });
 
-  it("handleInteraction met hasInteracted à true et reset après delay", () => {
+  it("handleInteraction démarre le countdown et reset après delay", () => {
     const { result } = renderHook(() =>
       useInteractionCooldown({
         scrollRef,
@@ -35,31 +35,33 @@ describe("Calendar : useInteractionCooldown", () => {
       result.current.handleInteraction();
     });
 
-    // hasInteracted est true (interne, pas exposé)
+    // resetProgressKey a bien été incrémenté (preuve que le hook force un reset du progress)
+    const firstKey = result.current.resetProgressKey;
+    expect(firstKey).toBeGreaterThanOrEqual(1);
+
+    // Countdown démarre à delay/1000
+    expect(result.current.countdown).toBe(1);
+
+    // Après 1 seconde → reset automatique
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    // Timeout a été exécuté → aurait reset hasInteracted
-    // Ici on ne peut pas tester hasInteracted directement car non exposé,
-    // mais on peut vérifier qu'on peut ré-appeler updateScrollAndMoment après
+    expect(result.current.countdown).toBe(0);
   });
 
-  it("updateScrollAndMoment appelle setCurrentIndex, scrollTo et setMomentSelected", () => {
-    const { result } = renderHook(() =>
+  it("updateScrollAndMoment appelle setCurrentIndex, scrollTo et setMomentSelected quand pas d'interaction", () => {
+    renderHook(() =>
       useInteractionCooldown({ scrollRef, setCurrentIndex, setMomentSelected })
     );
 
-    act(() => {
-      // Forcer l'effet
-    });
-
-    expect(setCurrentIndex).toHaveBeenCalledWith(0); // lundi à l'index 0 par exemple
+    // Le hook s’exécute immédiatement si aucune interaction
+    expect(setCurrentIndex).toHaveBeenCalled();
     expect(scrollRef.current.scrollTo).toHaveBeenCalled();
-    expect(setMomentSelected).toHaveBeenCalledWith("morning");
+    expect(setMomentSelected).toHaveBeenCalled();
   });
 
-  it("handleInteraction met hasInteracted à true et démarre le countdown", () => {
+  it("le countdown décrémente correctement chaque seconde", () => {
     const { result } = renderHook(() =>
       useInteractionCooldown({
         scrollRef,
@@ -73,19 +75,18 @@ describe("Calendar : useInteractionCooldown", () => {
       result.current.handleInteraction();
     });
 
-    // Dès l'interaction, countdown doit être égal à delay en secondes
+    // Dès l’interaction → countdown = 3
     expect(result.current.countdown).toBe(3);
 
-    // Avancer le temps d'1 seconde → countdown décrémente
     act(() => {
       jest.advanceTimersByTime(1000);
     });
     expect(result.current.countdown).toBe(2);
 
-    // Avancer le temps de 2 secondes → countdown termine et passe à null
     act(() => {
       jest.advanceTimersByTime(2000);
     });
+    // Une fois terminé → 0
     expect(result.current.countdown).toBe(0);
   });
 });

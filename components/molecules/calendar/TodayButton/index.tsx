@@ -8,11 +8,13 @@ import { useSmoothProgress } from "@hooks/animations/calendar/TodayButton/useSmo
 interface TodayButtonProps {
   setHasInteracted: (interacted: boolean) => void;
   countdown: number | null;
+  resetProgressKey: number;
 }
 
 export default function TodayButton({
   setHasInteracted,
   countdown,
+  resetProgressKey
 }: TodayButtonProps) {
   const { localCountdown, handlePressIn, handlePressOut, isPressed } =
     useTodayButton(countdown, setHasInteracted);
@@ -26,7 +28,7 @@ export default function TodayButton({
     },
   ]);
 
-  const smoothProgress = useSmoothProgress(localCountdown, 15);
+  const smoothProgress = useSmoothProgress(localCountdown, 15, resetProgressKey);
 
   return (
     <Pressable

@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-export function useSmoothProgress(localCountdown: number | null, total = 15) {
+export function useSmoothProgress(
+  localCountdown: number | null,
+  total = 15,
+  resetProgressKey: number
+) {
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef<number | null>(null);
   const animRef = useRef<number | null>(null);
@@ -18,7 +22,8 @@ export function useSmoothProgress(localCountdown: number | null, total = 15) {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
 
       const elapsed = timestamp - startTimeRef.current;
-      const currentProgress = ((total * 1000 - targetTime + elapsed) / (total * 1000)) * 100;
+      const currentProgress =
+        ((total * 1000 - targetTime + elapsed) / (total * 1000)) * 100;
 
       setProgress(Math.min(currentProgress, 100));
 
@@ -35,7 +40,7 @@ export function useSmoothProgress(localCountdown: number | null, total = 15) {
       if (animRef.current) cancelAnimationFrame(animRef.current);
       startTimeRef.current = null;
     };
-  }, [localCountdown, total]);
+  }, [localCountdown, total, resetProgressKey]);
 
   return progress;
 }
