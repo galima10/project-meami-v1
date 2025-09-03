@@ -2,12 +2,13 @@ import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
 import MomentModule from "@components/organisms/calendar/MomentModule";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
-import { useState} from "react";
+import { useState } from "react";
 import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
 import DayNavigation from "@components/organisms/calendar/DayNavigation";
 import DaySliderDisplay from "@components/organisms/calendar/DaySlider";
 import { useDaySlider } from "@hooks/calendar/useDaySlider";
 import TodayButton from "@components/molecules/calendar/TodayButton";
+import NavigationDotsModule from "@components/molecules/calendar/NavigationDotsModule";
 
 export default function CalendarView() {
   const { actualDayMoment } = useDayMoment();
@@ -22,12 +23,12 @@ export default function CalendarView() {
     setCurrentIndex,
   } = useDaySlider();
 
-  const { handleInteraction, setHasInteracted, countdown, resetProgressKey } = useInteractionCooldown({
-    setMomentSelected,
-    setCurrentIndex,
-    scrollRef,
-    
-  });
+  const { handleInteraction, setHasInteracted, countdown, resetProgressKey } =
+    useInteractionCooldown({
+      setMomentSelected,
+      setCurrentIndex,
+      scrollRef,
+    });
 
   return (
     <View
@@ -61,8 +62,17 @@ export default function CalendarView() {
           setMomentSelected={setMomentSelected}
           handleInteraction={handleInteraction}
         />
-        <TodayButton resetProgressKey={resetProgressKey} setHasInteracted={setHasInteracted} countdown={countdown} />
+        <TodayButton
+          resetProgressKey={resetProgressKey}
+          setHasInteracted={setHasInteracted}
+          countdown={countdown}
+        />
       </View>
+      <NavigationDotsModule
+        currentIndex={currentIndex}
+        goToSlide={goToSlide}
+        handleInteraction={handleInteraction}
+      />
     </View>
   );
 }
@@ -78,7 +88,7 @@ const styles = StyleSheet.create({
     bottom: 50,
     left: 0,
     padding: 12,
-    alignItems: "center"
+    alignItems: "center",
   },
   container: {
     flex: 1,
