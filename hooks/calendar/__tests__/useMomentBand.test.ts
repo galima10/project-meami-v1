@@ -4,7 +4,7 @@ import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 
 jest.mock("@hooks/dayMoment/useDayMoment");
 
-describe("useMomentBand", () => {
+describe("Calendar : useMomentBand", () => {
   beforeEach(() => {
     (useDayMoment as jest.Mock).mockReturnValue({
       actualDayMoment: "noon",
