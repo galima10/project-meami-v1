@@ -32,7 +32,7 @@ export default function TodayButton({
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 40,
+    marginTop: 32,
     backgroundColor: theme.properties.darkRed,
     borderColor: theme.properties.redBorder,
     borderWidth: 2,

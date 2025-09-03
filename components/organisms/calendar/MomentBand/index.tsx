@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   dayMomentText: {
-    marginBottom: 280,
+    marginBottom: 300,
     transform: [{ rotate: "-90deg" }],
     textTransform: "uppercase",
     color: theme.properties.white,
