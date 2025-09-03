@@ -1,14 +1,14 @@
 // WaveText.tsx
+import { AnimatedAppText } from "@components/atoms/global/Texts";
+import { useWaveAnimation } from "@hooks/animations/splashScreen/useWaveAnimation/";
 import React from "react";
 import {
-  View,
+  StyleProp,
   StyleSheet,
   TextProps,
-  StyleProp,
   TextStyle,
+  View,
 } from "react-native";
-import { useWaveAnimation } from "@hooks/animations/useWaveAnimation";
-import { AnimatedAppText } from "@components/atoms/global/Texts";
 
 type WaveTextProps = TextProps & {
   text: string;

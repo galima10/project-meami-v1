@@ -21,7 +21,7 @@ export function useInteractionCooldown({
   const { dayOfWeek } = useDate();
   const { actualDayMoment } = useDayMoment();
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [countdown, setCountdown] = useState<number | null>(null);
+  const [countdown, setCountdown] = useState<number | null>(0);
 
   const timeoutRef = useRef<number | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -35,7 +35,6 @@ export function useInteractionCooldown({
 
   const handleInteraction = useCallback(() => {
     setHasInteracted(true);
-    console.log("Interaction détectée !");
     cleanupTimers();
 
     // init countdown (en secondes)
@@ -63,7 +62,7 @@ export function useInteractionCooldown({
 
   const resetInteractionCooldown = () => {
     setHasInteracted(false);
-    setCountdown(null);
+    setCountdown(0);
     // console.log("Retour sur la màj auto !");
     cleanupTimers();
   };
@@ -85,7 +84,6 @@ export function useInteractionCooldown({
           dayOfWeek,
           actualDayMoment
         );
-        console.log("Retour sur la màj auto !");
       }
     }, [
       scrollRef,
@@ -101,7 +99,7 @@ export function useInteractionCooldown({
     if (!hasInteracted) {
       // stoppe tous les timers existants
       cleanupTimers();
-      setCountdown(null);
+      setCountdown(0);
 
       // appelle la fonction utilitaire
       updateScrollAndMoment(
@@ -111,8 +109,6 @@ export function useInteractionCooldown({
         dayOfWeek,
         actualDayMoment
       );
-
-      console.log("Retour sur la màj auto !");
     }
   }, [
     hasInteracted,
@@ -123,17 +119,9 @@ export function useInteractionCooldown({
     actualDayMoment,
   ]);
 
-  // 🔹 Juste pour debug dans la console
-  useEffect(() => {
-    if (countdown !== null) {
-      console.log(`⏳ Countdown: ${countdown}s restantes`);
-    }
-  }, [countdown]);
-
   return {
     handleInteraction,
     countdown,
     setHasInteracted,
-    hasInteracted,
   };
 }

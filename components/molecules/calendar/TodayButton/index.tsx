@@ -2,29 +2,47 @@ import { View, StyleSheet, Pressable } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
+import { useTodayButton } from "@hooks/calendar/useTodayButton";
+import { useSmoothProgress } from "@hooks/animations/calendar/TodayButton/useSmoothProgress";
 
 interface TodayButtonProps {
   setHasInteracted: (interacted: boolean) => void;
+  countdown: number | null;
 }
 
 export default function TodayButton({
   setHasInteracted,
+  countdown,
 }: TodayButtonProps) {
+  const { localCountdown, handlePressIn, handlePressOut, isPressed } =
+    useTodayButton(countdown, setHasInteracted);
+
   const todayStyles = StyleSheet.flatten([
     styles.button,
     globalStyles.littleShadow,
+    isPressed && {
+      backgroundColor: theme.properties.lightRed,
+      borderColor: theme.properties.lightRedBorder,
+    },
   ]);
+
+  const smoothProgress = useSmoothProgress(localCountdown, 15);
+
   return (
     <Pressable
-    //   style={todayStyles}
-      style={({ pressed }) => [
-        todayStyles,
-        pressed && { backgroundColor: theme.properties.lightRed, borderColor: theme.properties.lightRedBorder },
-      ]}
-      onPress={() => {
-        setHasInteracted(false);
-      }}
+      style={todayStyles}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
     >
+      <View
+        style={[
+          styles.chargementBackground,
+          localCountdown !== null && {
+            width: `${smoothProgress}%`,
+          },
+          (isPressed || localCountdown === 0) && { opacity: 0 },
+        ]}
+      ></View>
       <AppText style={styles.buttonText}>Auj.</AppText>
     </Pressable>
   );
@@ -41,11 +59,20 @@ const styles = StyleSheet.create({
     height: 48,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
   },
   buttonText: {
     color: theme.properties.beige,
     fontSize: 20,
     fontWeight: theme.properties.bold,
     lineHeight: 24,
+  },
+  chargementBackground: {
+    height: "100%",
+    width: "0%",
+    backgroundColor: theme.properties.lightRed,
+    position: "absolute",
+    top: 0,
+    left: 0,
   },
 });

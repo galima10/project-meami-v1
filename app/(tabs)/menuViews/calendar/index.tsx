@@ -22,7 +22,7 @@ export default function CalendarView() {
     setCurrentIndex,
   } = useDaySlider();
 
-  const { handleInteraction, setHasInteracted, hasInteracted } = useInteractionCooldown({
+  const { handleInteraction, setHasInteracted, countdown } = useInteractionCooldown({
     setMomentSelected,
     setCurrentIndex,
     scrollRef,
@@ -61,7 +61,7 @@ export default function CalendarView() {
           setMomentSelected={setMomentSelected}
           handleInteraction={handleInteraction}
         />
-        <TodayButton setHasInteracted={setHasInteracted} />
+        <TodayButton setHasInteracted={setHasInteracted} countdown={countdown} />
       </View>
     </View>
   );

@@ -9,7 +9,7 @@ import {
   Text,
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { useBounceSpring } from "@hooks/animations/useBounceSpring";
+import { useBounceSpring } from "@hooks/animations/splashScreen/useBounceSpring";
 
 export default function BounceSpring({
   children,

@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
-import { useBounceSpring } from './useBounceSpring';
 import { useWaveAnimation } from './useWaveAnimation';
+import { useBounceSpring } from './useBounceSpring';
 
 describe('useBounceSpring', () => {
   it('returns an animated style with a transform scale property', () => {

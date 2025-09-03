@@ -24,7 +24,6 @@ export default function DaySliderDisplay({
     <View style={styles.container}>
       <ScrollView
         horizontal
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
         ref={scrollRef}
         onMomentumScrollEnd={(e) => {
