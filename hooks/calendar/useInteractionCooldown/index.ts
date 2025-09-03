@@ -1,10 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useFocusEffect } from "@react-navigation/native";
-import { days } from "@utils/getDate";
-import { getScreenWidth } from "@utils/getScreenDimensions";
 import { useDate } from "@hooks/dayMoment/useDate";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 import { ScrollView } from "react-native";
+import { updateScrollAndMoment } from "@utils/scrollCalendarView";
 
 interface UseInteractionCooldownParams {
   delay?: number;
@@ -57,7 +56,7 @@ export function useInteractionCooldown({
     timeoutRef.current = setTimeout(() => {
       setHasInteracted(false);
       setCountdown(null);
-      console.log("Retour sur la màj auto !");
+      // console.log("Retour sur la màj auto !");
       cleanupTimers();
     }, delay);
   }, [delay]);
@@ -65,22 +64,8 @@ export function useInteractionCooldown({
   const resetInteractionCooldown = () => {
     setHasInteracted(false);
     setCountdown(null);
-    console.log("Retour sur la màj auto !");
+    // console.log("Retour sur la màj auto !");
     cleanupTimers();
-  };
-
-  const updateScrollAndMoment = () => {
-    if (!hasInteracted) {
-      const todayIndex = days.findIndex((day) => day === dayOfWeek);
-      if (todayIndex !== -1) {
-        setCurrentIndex(todayIndex);
-        scrollRef.current?.scrollTo({
-          x: getScreenWidth() * todayIndex,
-          animated: true,
-        });
-      }
-      setMomentSelected(actualDayMoment);
-    }
   };
 
   useFocusEffect(
@@ -92,13 +77,51 @@ export function useInteractionCooldown({
 
   useFocusEffect(
     useCallback(() => {
-      updateScrollAndMoment();
-    }, [hasInteracted, dayOfWeek, actualDayMoment])
+      if (!hasInteracted) {
+        updateScrollAndMoment(
+          scrollRef,
+          setCurrentIndex,
+          setMomentSelected,
+          dayOfWeek,
+          actualDayMoment
+        );
+        console.log("Retour sur la màj auto !");
+      }
+    }, [
+      scrollRef,
+      setCurrentIndex,
+      setMomentSelected,
+      hasInteracted,
+      dayOfWeek,
+      actualDayMoment,
+    ])
   );
 
   useEffect(() => {
-    updateScrollAndMoment();
-  }, [hasInteracted, dayOfWeek, actualDayMoment]);
+    if (!hasInteracted) {
+      // stoppe tous les timers existants
+      cleanupTimers();
+      setCountdown(null);
+
+      // appelle la fonction utilitaire
+      updateScrollAndMoment(
+        scrollRef,
+        setCurrentIndex,
+        setMomentSelected,
+        dayOfWeek,
+        actualDayMoment
+      );
+
+      console.log("Retour sur la màj auto !");
+    }
+  }, [
+    hasInteracted,
+    scrollRef,
+    setCurrentIndex,
+    setMomentSelected,
+    dayOfWeek,
+    actualDayMoment,
+  ]);
 
   // 🔹 Juste pour debug dans la console
   useEffect(() => {
@@ -107,5 +130,10 @@ export function useInteractionCooldown({
     }
   }, [countdown]);
 
-  return { handleInteraction, countdown };
+  return {
+    handleInteraction,
+    countdown,
+    setHasInteracted,
+    hasInteracted,
+  };
 }

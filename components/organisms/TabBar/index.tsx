@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     backgroundColor: theme.properties.beige,
     borderColor: theme.properties.beigeBorder,
-    borderWidth: 1,
+    borderWidth: 1.5,
   },
 });

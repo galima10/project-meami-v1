@@ -20,7 +20,7 @@ export const tabBarStyles = StyleSheet.create({
   active: {
     opacity: 1,
     borderColor: theme.properties.beigeBorder,
-    borderWidth: 1,
+    borderWidth: 1.5,
   },
 });
 
@@ -29,7 +29,7 @@ export const topBarStyles = StyleSheet.create({
     opacity: 1,
     backgroundColor: theme.properties.lightOrange,
     borderColor: theme.properties.orangeBorder,
-    borderWidth: 0.5,
+    borderWidth: 1,
   },
   greenActive: {
     opacity: 1,
@@ -39,6 +39,6 @@ export const topBarStyles = StyleSheet.create({
     opacity: 1,
     backgroundColor: theme.properties.darkGreen,
     borderColor: theme.properties.greenBorder,
-    borderWidth: 1,
+    borderWidth: 1.5,
   }
 });

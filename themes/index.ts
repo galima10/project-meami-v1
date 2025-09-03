@@ -45,6 +45,7 @@ const theme = {
     beigeBorder: "#D1BFB4",
     whiteBorder: "#D1BFB4",
     vibrantOrangeBorder: "#C47031",
+    lightRedBorder: "#B14356",
 
     // active: "#000000",
     // iconActive: "#ffffff",
@@ -90,6 +91,7 @@ export interface ThemeType {
   beigeBorder: string;
   whiteBorder: string;
   vibrantOrangeBorder: string;
+  lightRedBorder: string;
   // inputColor: string;
   // gray: string;
 }

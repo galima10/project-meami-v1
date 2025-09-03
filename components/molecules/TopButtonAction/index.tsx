@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.properties.darkGreen,
     borderColor: theme.properties.borderColor,
-    borderWidth: 1,
+    borderWidth: 1.5,
   },
 });

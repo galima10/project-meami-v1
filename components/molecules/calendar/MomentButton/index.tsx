@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.properties.buttonRadius,
     marginVertical: 8,
     borderColor: theme.properties.whiteBorder,
-    borderWidth: 1,
+    borderWidth: 1.5,
     alignSelf: "flex-start",
     opacity: 0.5,
   },

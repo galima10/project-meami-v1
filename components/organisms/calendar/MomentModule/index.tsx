@@ -10,16 +10,10 @@ interface MomentModuleProps {
 export default function MomentModule({momentSelected, setMomentSelected, handleInteraction}: MomentModuleProps) {
 
   return (
-    <View style={styles.container}>
+    <View>
       <MomentButton handleInteraction={handleInteraction} moment="morning" setMomentSelected={setMomentSelected} isActive={momentSelected === "morning"} />
       <MomentButton handleInteraction={handleInteraction} moment="noon" setMomentSelected={setMomentSelected} isActive={momentSelected === "noon"} />
       <MomentButton handleInteraction={handleInteraction} moment="evening" setMomentSelected={setMomentSelected} isActive={momentSelected === "evening"} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 12,
-  },
-});

@@ -7,6 +7,7 @@ import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
 import DayNavigation from "@components/organisms/calendar/DayNavigation";
 import DaySliderDisplay from "@components/organisms/calendar/DaySlider";
 import { useDaySlider } from "@hooks/calendar/useDaySlider";
+import TodayButton from "@components/molecules/calendar/TodayButton";
 
 export default function CalendarView() {
   const { actualDayMoment } = useDayMoment();
@@ -21,7 +22,7 @@ export default function CalendarView() {
     setCurrentIndex,
   } = useDaySlider();
 
-  const { handleInteraction } = useInteractionCooldown({
+  const { handleInteraction, setHasInteracted, hasInteracted } = useInteractionCooldown({
     setMomentSelected,
     setCurrentIndex,
     scrollRef,
@@ -60,6 +61,7 @@ export default function CalendarView() {
           setMomentSelected={setMomentSelected}
           handleInteraction={handleInteraction}
         />
+        <TodayButton setHasInteracted={setHasInteracted} />
       </View>
     </View>
   );
@@ -73,8 +75,10 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     position: "absolute",
-    bottom: 100,
+    bottom: 50,
     left: 0,
+    padding: 12,
+    alignItems: "center"
   },
   container: {
     flex: 1,

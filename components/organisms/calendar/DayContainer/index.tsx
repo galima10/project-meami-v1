@@ -48,8 +48,8 @@ export default function DayContainer({
 const styles = StyleSheet.create({
   band: {
     flex: 1,
-    borderColor: theme.properties.brown,
-    borderWidth: 0.5,
+    borderColor: theme.properties.orangeBorder,
+    borderWidth: 1,
   },
   menuContainer: {
     flex: 3,
