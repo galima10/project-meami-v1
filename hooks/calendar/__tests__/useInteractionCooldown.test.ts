@@ -7,7 +7,7 @@ jest.mock("@hooks/dayMoment/useDate");
 jest.mock("@hooks/dayMoment/useDayMoment");
 jest.useFakeTimers();
 
-describe("useInteractionCooldown", () => {
+describe("Calendar : useInteractionCooldown", () => {
   let scrollRef: any;
   let setCurrentIndex: jest.Mock;
   let setMomentSelected: jest.Mock;

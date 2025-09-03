@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react";
 import { useDayNavigation } from "../useDayNavigation";
 
-describe("useDayNavigation", () => {
+describe("Calendar : useDayNavigation", () => {
   it("appel goToSlide et handleInteraction correctement pour goNext", () => {
     const goToSlide = jest.fn();
     const setMomentSelected = jest.fn();

@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import { useWaveAnimation } from './useWaveAnimation';
 import { useBounceSpring } from './useBounceSpring';
 
-describe('useBounceSpring', () => {
+describe('Splash Screen : useBounceSpring', () => {
   it('returns an animated style with a transform scale property', () => {
     const { result } = renderHook(() => useBounceSpring());
 
@@ -20,7 +20,7 @@ describe('useBounceSpring', () => {
   });
 });
 
-describe('useWaveAnimation', () => {
+describe('Splash Screen : useWaveAnimation', () => {
   it('returns an animated style with a transform translateY property', () => {
     const { result } = renderHook(() => useWaveAnimation(1));
 

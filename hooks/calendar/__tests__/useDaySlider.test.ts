@@ -6,7 +6,7 @@ import { useDate } from "@hooks/dayMoment/useDate";
 jest.mock("@hooks/dayMoment/useDate");
 jest.mock("@utils/getScreenDimensions");
 
-describe("useDaySlider", () => {
+describe("Calendar : useDaySlider", () => {
   beforeEach(() => {
     (useDate as jest.Mock).mockReturnValue({ todayIndex: 2 });
     (getScreenWidth as jest.Mock).mockReturnValue(400);
