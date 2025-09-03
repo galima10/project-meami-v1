@@ -63,7 +63,7 @@
         - Vendredi : Photographie rose
         - Samedi : Photographie violette
         - Dimanche : Photographie blanche
+    > Ajout d'un bouton "Aller à aujourd'hui" qui renvoit directement au jour et au moment actuel et qui annule immédiatement le délai d'inactivité
+        > Affichage visuel du cooldown sur le bouton
 
 ### À faire la prochaine fois
-
-- Enlever les consoles logs du délai d'inactivité
