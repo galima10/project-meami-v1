@@ -6,19 +6,15 @@ import { useDate } from "@hooks/dayMoment/useDate";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 import { ScrollView } from "react-native";
 
-/**
- * Hook pour gérer l'interaction avec cooldown
- * @param delay temps d'inactivité en ms avant reset
- */
-
 interface UseInteractionCooldownParams {
   delay?: number;
   setMomentSelected: (moment: any) => void;
   setCurrentIndex: (index: number) => void;
   scrollRef: React.RefObject<ScrollView | null>;
 }
+
 export function useInteractionCooldown({
-  delay = 10000,
+  delay = 15000,
   setMomentSelected,
   setCurrentIndex,
   scrollRef,
@@ -26,32 +22,51 @@ export function useInteractionCooldown({
   const { dayOfWeek } = useDate();
   const { actualDayMoment } = useDayMoment();
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [countdown, setCountdown] = useState<number | null>(null);
+
   const timeoutRef = useRef<number | null>(null);
+  const intervalRef = useRef<number | null>(null);
+
+  const cleanupTimers = () => {
+    if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
+    if (intervalRef.current !== null) clearInterval(intervalRef.current);
+    timeoutRef.current = null;
+    intervalRef.current = null;
+  };
 
   const handleInteraction = useCallback(() => {
     setHasInteracted(true);
     console.log("Interaction détectée !");
+    cleanupTimers();
 
-    // reset le timeout si déjà existant
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    // init countdown (en secondes)
+    setCountdown(delay / 1000);
 
-    // crée un nouveau timeout
+    // décrémenter chaque seconde
+    intervalRef.current = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev === null || prev <= 1) {
+          clearInterval(intervalRef.current!);
+          return null;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    // timer principal
     timeoutRef.current = setTimeout(() => {
       setHasInteracted(false);
+      setCountdown(null);
       console.log("Retour sur la màj auto !");
-      timeoutRef.current = null;
+      cleanupTimers();
     }, delay);
   }, [delay]);
 
   const resetInteractionCooldown = () => {
     setHasInteracted(false);
+    setCountdown(null);
     console.log("Retour sur la màj auto !");
-  };
-
-  const cleanupTimeout = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    cleanupTimers();
   };
 
   const updateScrollAndMoment = () => {
@@ -68,11 +83,10 @@ export function useInteractionCooldown({
     }
   };
 
-  // 🔹 Reset automatique quand l'écran est de nouveau actif
   useFocusEffect(
     useCallback(() => {
       resetInteractionCooldown();
-      return cleanupTimeout;
+      return cleanupTimers;
     }, [])
   );
 
@@ -86,5 +100,12 @@ export function useInteractionCooldown({
     updateScrollAndMoment();
   }, [hasInteracted, dayOfWeek, actualDayMoment]);
 
-  return { handleInteraction };
+  // 🔹 Juste pour debug dans la console
+  useEffect(() => {
+    if (countdown !== null) {
+      console.log(`⏳ Countdown: ${countdown}s restantes`);
+    }
+  }, [countdown]);
+
+  return { handleInteraction, countdown };
 }
