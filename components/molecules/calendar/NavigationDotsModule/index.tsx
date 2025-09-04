@@ -6,13 +6,31 @@ interface NavigationDotsModuleProps {
   currentIndex: number;
   goToSlide: (index: number) => void;
   handleInteraction: () => void;
+  todayIndex: number;
+  setMomentSelected: React.Dispatch<
+    React.SetStateAction<"morning" | "noon" | "evening">
+  >;
+  actualDayMoment: "morning" | "noon" | "evening";
 }
 
 export default function NavigationDotsModule({
   currentIndex,
   goToSlide,
   handleInteraction,
+  todayIndex,
+  setMomentSelected,
+  actualDayMoment,
 }: NavigationDotsModuleProps) {
+  function handleDotPress(index: number) {
+    handleInteraction();
+    goToSlide(index);
+
+    if (todayIndex === index) {
+      setMomentSelected(actualDayMoment);
+    } else {
+      setMomentSelected("morning");
+    }
+  }
   return (
     <View style={styles.container}>
       {days.map((day, index) => (
@@ -20,8 +38,7 @@ export default function NavigationDotsModule({
           key={index}
           index={index}
           currentIndex={currentIndex}
-          goToSlide={goToSlide}
-          handleInteraction={handleInteraction}
+          action={() => handleDotPress(index)}
         />
       ))}
     </View>

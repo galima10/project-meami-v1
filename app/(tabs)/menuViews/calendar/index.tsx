@@ -23,12 +23,17 @@ export default function CalendarView() {
     setCurrentIndex,
   } = useDaySlider();
 
-  const { handleInteraction, setHasInteracted, countdown, resetProgressKey } =
-    useInteractionCooldown({
-      setMomentSelected,
-      setCurrentIndex,
-      scrollRef,
-    });
+  const {
+    handleInteraction,
+    setHasInteracted,
+    countdown,
+    resetProgressKey,
+    forceRefresh,
+  } = useInteractionCooldown({
+    setMomentSelected,
+    setCurrentIndex,
+    scrollRef,
+  });
 
   return (
     <View
@@ -66,12 +71,16 @@ export default function CalendarView() {
           resetProgressKey={resetProgressKey}
           setHasInteracted={setHasInteracted}
           countdown={countdown}
+          forceRefresh={forceRefresh}
         />
       </View>
       <NavigationDotsModule
         currentIndex={currentIndex}
         goToSlide={goToSlide}
         handleInteraction={handleInteraction}
+        todayIndex={todayIndex}
+        setMomentSelected={setMomentSelected}
+        actualDayMoment={actualDayMoment}
       />
     </View>
   );

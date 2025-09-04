@@ -4,6 +4,7 @@ import { useDate } from "@hooks/dayMoment/useDate";
 import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 import { ScrollView } from "react-native";
 import { updateScrollAndMoment } from "@utils/scrollCalendarView";
+import { getDateInfo } from "@utils/getDate";
 
 interface UseInteractionCooldownParams {
   delay?: number;
@@ -18,14 +19,19 @@ export function useInteractionCooldown({
   setCurrentIndex,
   scrollRef,
 }: UseInteractionCooldownParams) {
-  const { dayOfWeek } = useDate();
-  const { actualDayMoment } = useDayMoment();
+  const { dayOfWeek, refreshDateInfo, rawDateInfo } = useDate();
+  const { actualDayMoment } = useDayMoment(rawDateInfo.hour);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(0);
   const [resetProgressKey, setResetProgressKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const timeoutRef = useRef<number | null>(null);
   const intervalRef = useRef<number | null>(null);
+
+  const forceRefresh = () => {
+    setRefreshKey((prev) => prev + 1);
+  };
 
   const cleanupTimers = () => {
     if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
@@ -101,6 +107,8 @@ export function useInteractionCooldown({
       cleanupTimers();
       setCountdown(0);
 
+      refreshDateInfo();
+
       // appelle la fonction utilitaire
       updateScrollAndMoment(
         scrollRef,
@@ -115,14 +123,18 @@ export function useInteractionCooldown({
     scrollRef,
     setCurrentIndex,
     setMomentSelected,
-    dayOfWeek,
+    rawDateInfo.dayOfWeek,
+    rawDateInfo.hour,
     actualDayMoment,
+    refreshDateInfo,
+    refreshKey,
   ]);
 
   return {
     handleInteraction,
     countdown,
     setHasInteracted,
-    resetProgressKey
+    resetProgressKey,
+    forceRefresh
   };
 }

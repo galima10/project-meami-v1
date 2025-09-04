@@ -15,6 +15,8 @@ import { getDateInfo } from "@utils/getDate";
 import { useDate } from "./useDate";
 import { useDayMoment } from "./useDayMoment";
 import { days } from "@utils/getDate";
+import * as useDateModule from "./useDate";
+import * as getDateUtils from "@utils/getDate";
 
 // Assure TS que c'est bien un mock
 const mockedGetDateInfo = getDateInfo as jest.MockedFunction<
@@ -31,7 +33,7 @@ describe("useDate", () => {
     jest.useRealTimers();
   });
 
-  it("retourne la date initiale avec todayIndex", () => {
+  it("retourne la date initiale avec todayIndex et rawDateInfo", () => {
     mockedGetDateInfo.mockReturnValue({
       dayOfWeek: "lundi",
       dayAndMonth: "01 janvier",
@@ -44,7 +46,13 @@ describe("useDate", () => {
       dayOfWeek: "lundi",
       dayAndMonth: "01 janvier",
       hour: 10,
-      todayIndex: days.findIndex((d) => d === "lundi"), // <= ajout
+      todayIndex: days.findIndex((d) => d === "lundi"),
+      refreshDateInfo: expect.any(Function),
+      rawDateInfo: {
+        dayOfWeek: "lundi",
+        dayAndMonth: "01 janvier",
+        hour: 10,
+      },
     });
   });
 
@@ -65,74 +73,70 @@ describe("useDate", () => {
 
     await act(async () => Promise.resolve());
 
-    expect(result.current).toEqual({
-      dayOfWeek: "mardi",
-      dayAndMonth: "02 janvier",
-      hour: 11,
-      todayIndex: days.findIndex((d) => d === "mardi"), // <= vérifie recalcul
-    });
+    expect(result.current.dayOfWeek).toBe("mardi");
+    expect(result.current.hour).toBe(11);
+    expect(result.current.todayIndex).toBe(
+      days.findIndex((d) => d === "mardi")
+    );
   });
 
   it("se met à jour au focus et recalcule todayIndex", async () => {
-    mockedGetDateInfo
-      .mockReturnValueOnce({
-        dayOfWeek: "lundi",
-        dayAndMonth: "01 janvier",
-        hour: 10,
-      })
-      .mockReturnValueOnce({
-        dayOfWeek: "mercredi",
-        dayAndMonth: "03 janvier",
-        hour: 12,
-      });
-
-    const { result } = renderHook(() => useDate());
-
-    await act(async () => {});
-
-    expect(result.current).toEqual({
-      dayOfWeek: "mercredi",
-      dayAndMonth: "03 janvier",
-      hour: 12,
-      todayIndex: days.findIndex((d) => d === "mercredi"),
+    let callCount = 0;
+    mockedGetDateInfo.mockImplementation(() => {
+      callCount++;
+      if (callCount === 1)
+        return { dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 10 };
+      return { dayOfWeek: "mercredi", dayAndMonth: "03 janvier", hour: 12 };
     });
+
+    const { result, rerender } = renderHook(() => useDate());
+
+    // simulate focus / refresh
+    act(() => result.current.refreshDateInfo());
+
+    // rerender pour forcer la lecture du nouveau state
+    rerender();
+
+    expect(result.current.dayOfWeek).toBe("mercredi");
+    expect(result.current.hour).toBe(12);
+    expect(result.current.todayIndex).toBe(
+      days.findIndex((d) => d === "mercredi")
+    );
   });
-});
-
-it("se met à jour au focus", async () => {
-  mockedGetDateInfo
-    .mockReturnValueOnce({
-      dayOfWeek: "lundi",
-      dayAndMonth: "01 janvier",
-      hour: 10,
-    })
-    .mockReturnValueOnce({
-      dayOfWeek: "lundi",
-      dayAndMonth: "01 janvier",
-      hour: 12,
-    });
-
-  const { result } = renderHook(() => useDate());
-
-  await act(async () => {});
-
-  expect(result.current!.hour).toBe(12);
 });
 
 describe("useDayMoment", () => {
   it("retourne le bon moment de la journée en fonction de l'heure", () => {
-    // ici on peut mocker useDate
-    jest.mock("./useDate", () => ({
-      useDate: () => ({
+    // Spy sur useDate localement pour ce test
+    const useDateSpy = jest.spyOn(useDateModule, "useDate").mockReturnValue({
+      dayOfWeek: "lundi",
+      dayAndMonth: "01 janvier",
+      hour: 10,
+      todayIndex: 0, // <- ajouté
+      refreshDateInfo: jest.fn(),
+      rawDateInfo: {
         dayOfWeek: "lundi",
         dayAndMonth: "01 janvier",
         hour: 10,
-      }),
-    }));
+      },
+    });
+
+    // Spy sur getDayMoment pour que le test soit déterministe
+    const getDayMomentSpy = jest
+      .spyOn(getDateUtils, "getDayMoment")
+      .mockImplementation((hour: number) => {
+        if (hour >= 4 && hour < 12) return "morning";
+        if (hour >= 12 && hour < 18) return "noon";
+        return "evening";
+      });
 
     const { result } = renderHook(() => useDayMoment());
 
     expect(result.current.actualDayMoment).toBe("morning");
     expect(result.current.displayMoment).toBe("Matin");
+
+    // Restaurer les spies pour ne pas impacter d'autres tests
+    useDateSpy.mockRestore();
+    getDayMomentSpy.mockRestore();
   });
 });

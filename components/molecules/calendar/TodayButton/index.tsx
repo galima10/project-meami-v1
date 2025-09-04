@@ -9,15 +9,17 @@ interface TodayButtonProps {
   setHasInteracted: (interacted: boolean) => void;
   countdown: number | null;
   resetProgressKey: number;
+  forceRefresh: () => void;
 }
 
 export default function TodayButton({
   setHasInteracted,
   countdown,
-  resetProgressKey
+  resetProgressKey,
+  forceRefresh
 }: TodayButtonProps) {
   const { localCountdown, handlePressIn, handlePressOut, isPressed } =
-    useTodayButton(countdown, setHasInteracted);
+    useTodayButton(countdown, setHasInteracted, forceRefresh);
 
   const todayStyles = StyleSheet.flatten([
     styles.button,

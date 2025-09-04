@@ -4,22 +4,17 @@ import theme from "@themes/index";
 interface NavigationDotProps {
   index: number;
   currentIndex: number;
-  goToSlide: (index: number) => void;
-  handleInteraction: () => void;
+  action: () => void;
 }
 
 export default function NavigationDot({
   index,
   currentIndex,
-  goToSlide,
-  handleInteraction
+  action
 }: NavigationDotProps) {
   return (
     <Pressable
-      onPress={() => {
-        goToSlide(index);
-        handleInteraction();
-      }}
+      onPress={action}
       style={styles.dotContainer}
     >
       <View style={[styles.dot, index === currentIndex && { opacity: 1 }]} />
