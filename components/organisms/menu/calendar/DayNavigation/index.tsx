@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
 import { useDayNavigation } from "@hooks/calendar/useDayNavigation";
-import DayNavigationButton from "@components/molecules/calendar/DayNavigationButton";
+import DayNavigationButton from "@components/molecules/menu/calendar/DayNavigationButton";
 
 interface DayNavigationProps {
   goToSlide: (index: number) => void;

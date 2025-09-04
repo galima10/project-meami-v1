@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import NavigationDot from "@components/atoms/calendar/NavigationDot";
+import NavigationDot from "@components/atoms/menu/calendar/NavigationDot";
 import { days } from "@utils/getDate";
 
 interface NavigationDotsModuleProps {

@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import MomentButton from "@components/molecules/calendar/MomentButton";
+import MomentButton from "@components/molecules/menu/calendar/MomentButton";
 
 interface MomentModuleProps {
   momentSelected: "morning" | "noon" | "evening";

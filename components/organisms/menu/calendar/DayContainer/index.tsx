@@ -1,5 +1,5 @@
-import DayMenu from "@components/molecules/calendar/DayMenu";
-import MomentBand from "@components/organisms/calendar/MomentBand";
+import DayMenu from "@components/molecules/menu/calendar/DayMenu";
+import MomentBand from "@components/organisms/menu/calendar/MomentBand";
 import { StyleSheet, View } from "react-native";
 import { DayMomentType } from "@app-types/DayMomentType";
 import { globalStyles } from "@themes/styles";

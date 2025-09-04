@@ -1,8 +1,8 @@
-import { View, StyleSheet, ScrollView } from "react-native";
 import theme from "@themes/index";
-import DayContainer from "../DayContainer";
-import { getScreenWidth } from "@utils/getScreenDimensions";
 import { FrenchDayOfWeek } from "@utils/getDate";
+import { getScreenWidth } from "@utils/getScreenDimensions";
+import { ScrollView, StyleSheet, View } from "react-native";
+import DayContainer from "../DayContainer";
 
 interface DaySliderDisplayProps {
   days: FrenchDayOfWeek[];

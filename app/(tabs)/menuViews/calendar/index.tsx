@@ -1,14 +1,14 @@
-import { View, StyleSheet } from "react-native";
-import theme from "@themes/index";
-import MomentModule from "@components/organisms/calendar/MomentModule";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
-import { useState } from "react";
-import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
-import DayNavigation from "@components/organisms/calendar/DayNavigation";
-import DaySliderDisplay from "@components/organisms/calendar/DaySlider";
+import NavigationDotsModule from "@components/molecules/menu/calendar/NavigationDotsModule";
+import TodayButton from "@components/molecules/menu/calendar/TodayButton";
+import MomentModule from "@components/organisms/menu/calendar/MomentModule";
+import DayNavigation from "@components/organisms/menu/calendar/DayNavigation";
+import DaySliderDisplay from "@components/organisms/menu/calendar/DaySlider";
 import { useDaySlider } from "@hooks/calendar/useDaySlider";
-import TodayButton from "@components/molecules/calendar/TodayButton";
-import NavigationDotsModule from "@components/molecules/calendar/NavigationDotsModule";
+import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
+import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import theme from "@themes/index";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
 
 export default function CalendarView() {
   const { actualDayMoment } = useDayMoment();
