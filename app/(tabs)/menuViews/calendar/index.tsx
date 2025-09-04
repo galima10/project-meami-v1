@@ -12,14 +12,6 @@ import { StyleSheet, View } from "react-native";
 import { useUnmountOnBlur } from "@hooks/global/useUnmountOnBlur";
 
 export default function CalendarView() {
-  // useUnmountOnBlur(
-  //   () => {
-  //     /* montage */
-  //   },
-  //   () => {
-  //     /* démontage */
-  //   }
-  // );
   useUnmountOnBlur(
     () => {
       // montage
