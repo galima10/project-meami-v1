@@ -48,7 +48,6 @@ export function useDate() {
 
   const refreshDateInfo = useCallback(() => {
     setDateInfo(getDateInfo());
-    console.log("Date info refreshed", getDateInfo());
     startMinuteInterval(); // relance l’intervalle à 0
   }, [startMinuteInterval]);
 

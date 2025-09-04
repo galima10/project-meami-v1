@@ -7,7 +7,6 @@ export function useDayMoment(hour?: number) {
   // si un hour est passé en paramètre, on l'utilise, sinon on prend celui de useDate
   const currentHour = hour ?? dateHour;
   const actualDayMoment = getDayMoment(currentHour); // recalcul direct
-  console.log("Day moment recalculated:", actualDayMoment);
   const displayMoment = {
     morning: "Matin",
     noon: "Midi",
