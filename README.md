@@ -50,6 +50,7 @@
 [1.3.0]
 - **Vue Calendrier** :
     > Ajout d'un slider pour afficher les jours de la semaine pour voir le (futur) menu
+        > La semaine culinaire commence le samedi
     > Ajout de boutons de navigation pour naviguer entre chaque slide
         > Les boutons deviennent clairs si le fond est trop sombre
     > Ajout d'une barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue

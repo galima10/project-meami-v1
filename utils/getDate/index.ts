@@ -10,13 +10,13 @@ export type FrenchDayOfWeek =
   | "dimanche";
 
 export const days: FrenchDayOfWeek[] = [
+  "samedi",
+  "dimanche",
   "lundi",
   "mardi",
   "mercredi",
   "jeudi",
   "vendredi",
-  "samedi",
-  "dimanche",
 ];
 
 export function getDateInfo() {

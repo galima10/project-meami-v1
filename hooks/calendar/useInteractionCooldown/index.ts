@@ -57,7 +57,6 @@ export function useInteractionCooldown({
     timeoutRef.current = setTimeout(() => {
       setHasInteracted(false);
       setCountdown(0);
-      // console.log("Retour sur la màj auto !");
       cleanupTimers();
     }, delay);
   }, [delay]);
@@ -65,7 +64,6 @@ export function useInteractionCooldown({
   const resetInteractionCooldown = () => {
     setHasInteracted(false);
     setCountdown(0);
-    // console.log("Retour sur la màj auto !");
     cleanupTimers();
   };
 
