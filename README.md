@@ -51,20 +51,21 @@
 - **Vue Calendrier** :
     > Ajout d'un slider pour afficher les jours de la semaine pour voir le (futur) menu
         > La semaine culinaire commence le samedi
+        > Chaque jour a un thème de couleur de menu attribué :
+            - Samedi : Violet
+            - Dimanche : Blanc
+            - Lundi : Orange
+            - Mardi : Vert
+            - Mercredi : Jaune
+            - Jeudi : Rouge
+            - Vendredi : Rose
     > Ajout de boutons de navigation pour naviguer entre chaque slide
         > Les boutons deviennent clairs si le fond est trop sombre
     > Ajout d'une barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue
     > Ajout d'un module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
     > Ajout d'un délai d'inactivité de 15 secondes : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
     > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
-    > Ajout d'une bande imagée colorée pour chaque jour de la semaine avec des variantes pour chaque, matin, midi et soir : 
-        - Lundi : Photographie orange
-        - Mardi : Photographie verte
-        - Mercredi : Photographie jaune
-        - Jeudi : Photographie rouge
-        - Vendredi : Photographie rose
-        - Samedi : Photographie violette
-        - Dimanche : Photographie blanche
+    > Ajout d'une bande imagée colorée en fonction de la couleur attribuée pour chaque jour de la semaine avec des variantes pour chaque, matin, midi et soir
     > Ajout d'un bouton "Aller à aujourd'hui" qui renvoit directement au jour et au moment actuel et qui annule immédiatement le délai d'inactivité
         > Affichage visuel du cooldown sur le bouton
 
