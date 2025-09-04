@@ -1,9 +1,9 @@
-import { View, StyleSheet, Pressable } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
+import { useSmoothProgress } from "@hooks/animations/calendar/TodayButton/useSmoothProgress";
+import { useTodayButton } from "@hooks/menu/calendar/useTodayButton";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
-import { useTodayButton } from "@hooks/calendar/useTodayButton";
-import { useSmoothProgress } from "@hooks/animations/calendar/TodayButton/useSmoothProgress";
+import { Pressable, StyleSheet, View } from "react-native";
 
 interface TodayButtonProps {
   setHasInteracted: (interacted: boolean) => void;

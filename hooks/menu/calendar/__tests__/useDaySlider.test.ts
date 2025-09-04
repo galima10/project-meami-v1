@@ -1,9 +1,9 @@
-import { renderHook, act } from "@testing-library/react";
-import { useDaySlider } from "../useDaySlider";
+import { useDate } from "@hooks/menu/dayMoment/useDate";
+import { act, renderHook } from "@testing-library/react";
 import { getScreenWidth } from "@utils/getScreenDimensions";
-import { useDate } from "@hooks/dayMoment/useDate";
+import { useDaySlider } from "../useDaySlider";
 
-jest.mock("@hooks/dayMoment/useDate");
+jest.mock("@hooks/menu/dayMoment/useDate");
 jest.mock("@utils/getScreenDimensions");
 
 describe("Calendar : useDaySlider", () => {

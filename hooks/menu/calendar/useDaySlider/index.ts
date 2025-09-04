@@ -1,8 +1,8 @@
+import { useDate } from "@hooks/menu/dayMoment/useDate";
 import { days } from "@utils/getDate";
+import { getScreenWidth } from "@utils/getScreenDimensions";
 import { useRef, useState } from "react";
 import { ScrollView } from "react-native";
-import { useDate } from "@hooks/dayMoment/useDate";
-import { getScreenWidth } from "@utils/getScreenDimensions";
 
 export function useDaySlider() {
   const { todayIndex } = useDate();

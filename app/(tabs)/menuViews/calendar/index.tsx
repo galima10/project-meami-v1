@@ -1,16 +1,34 @@
 import NavigationDotsModule from "@components/molecules/menu/calendar/NavigationDotsModule";
 import TodayButton from "@components/molecules/menu/calendar/TodayButton";
-import MomentModule from "@components/organisms/menu/calendar/MomentModule";
 import DayNavigation from "@components/organisms/menu/calendar/DayNavigation";
 import DaySliderDisplay from "@components/organisms/menu/calendar/DaySlider";
-import { useDaySlider } from "@hooks/calendar/useDaySlider";
-import { useInteractionCooldown } from "@hooks/calendar/useInteractionCooldown";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import MomentModule from "@components/organisms/menu/calendar/MomentModule";
+import { useDaySlider } from "@hooks/menu/calendar/useDaySlider";
+import { useInteractionCooldown } from "@hooks/menu/calendar/useInteractionCooldown";
+import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import theme from "@themes/index";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { useUnmountOnBlur } from "@hooks/global/useUnmountOnBlur";
 
 export default function CalendarView() {
+  // useUnmountOnBlur(
+  //   () => {
+  //     /* montage */
+  //   },
+  //   () => {
+  //     /* démontage */
+  //   }
+  // );
+  useUnmountOnBlur(
+    () => {
+      // montage
+    },
+    () => {
+      // démontage
+    }
+  );
+
   const { actualDayMoment } = useDayMoment();
   const [momentSelected, setMomentSelected] = useState(actualDayMoment);
 

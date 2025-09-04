@@ -1,12 +1,11 @@
-import { renderHook, act } from "@testing-library/react";
-import { useInteractionCooldown } from "../useInteractionCooldown";
-import { useDate } from "@hooks/dayMoment/useDate";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import { useDate } from "@hooks/menu/dayMoment/useDate";
+import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
+import { act, renderHook } from "@testing-library/react";
 import { updateScrollAndMoment } from "@utils/scrollCalendarView";
-import * as scrollUtils from "@utils/scrollCalendarView";
+import { useInteractionCooldown } from "../useInteractionCooldown";
 
-jest.mock("@hooks/dayMoment/useDate");
-jest.mock("@hooks/dayMoment/useDayMoment");
+jest.mock("@hooks/menu/dayMoment/useDate");
+jest.mock("@hooks/menu/dayMoment/useDayMoment");
 jest.mock("@utils/scrollCalendarView");
 jest.useFakeTimers();
 

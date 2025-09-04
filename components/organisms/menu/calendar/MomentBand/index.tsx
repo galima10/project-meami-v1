@@ -1,9 +1,9 @@
-import { StyleSheet, ImageBackground } from "react-native";
-import { AppText } from "@components/atoms/global/Texts";
-import theme from "@themes/index";
 import { DayMomentType } from "@app-types/DayMomentType";
+import { AppText } from "@components/atoms/global/Texts";
 import { imagesMap } from "@constants/imagesBandMap";
-import { useMomentBand } from "@hooks/calendar/useMomentBand";
+import { useMomentBand } from "@hooks/menu/calendar/useMomentBand";
+import theme from "@themes/index";
+import { ImageBackground, StyleSheet } from "react-native";
 
 interface MomentBandProps extends DayMomentType {
   day: string;

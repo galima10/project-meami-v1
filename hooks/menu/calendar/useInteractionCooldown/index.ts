@@ -1,10 +1,9 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useDate } from "@hooks/menu/dayMoment/useDate";
+import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import { useFocusEffect } from "@react-navigation/native";
-import { useDate } from "@hooks/dayMoment/useDate";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
-import { ScrollView } from "react-native";
 import { updateScrollAndMoment } from "@utils/scrollCalendarView";
-import { getDateInfo } from "@utils/getDate";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ScrollView } from "react-native";
 
 interface UseInteractionCooldownParams {
   delay?: number;

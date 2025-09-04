@@ -1,4 +1,4 @@
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
+import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import { useCallback } from "react";
 
 interface UseDayNavigationParams {

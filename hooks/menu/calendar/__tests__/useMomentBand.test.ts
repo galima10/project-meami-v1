@@ -1,8 +1,8 @@
+import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import { renderHook } from "@testing-library/react";
 import { useMomentBand } from "../useMomentBand";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 
-jest.mock("@hooks/dayMoment/useDayMoment");
+jest.mock("@hooks/menu/dayMoment/useDayMoment");
 
 describe("Calendar : useMomentBand", () => {
   beforeEach(() => {

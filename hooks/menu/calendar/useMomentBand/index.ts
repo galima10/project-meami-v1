@@ -1,5 +1,5 @@
+import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import { useMemo } from "react";
-import { useDayMoment } from "@hooks/dayMoment/useDayMoment";
 
 interface UseMomentBandParams {
   momentSelected: "morning" | "noon" | "evening";
