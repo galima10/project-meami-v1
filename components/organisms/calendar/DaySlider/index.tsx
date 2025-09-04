@@ -2,9 +2,10 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import theme from "@themes/index";
 import DayContainer from "../DayContainer";
 import { getScreenWidth } from "@utils/getScreenDimensions";
+import { FrenchDayOfWeek } from "@utils/getDate";
 
 interface DaySliderDisplayProps {
-  days: string[];
+  days: FrenchDayOfWeek[];
   currentIndex: number;
   setCurrentIndex: (index: number) => void;
   momentSelected: any;

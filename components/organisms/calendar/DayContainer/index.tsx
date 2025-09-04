@@ -5,9 +5,10 @@ import { DayMomentType } from "@app-types/DayMomentType";
 import { globalStyles } from "@themes/styles";
 import theme from "@themes/index";
 import { AppText } from "@components/atoms/global/Texts";
+import { FrenchDayOfWeek } from "@utils/getDate";
 
 interface DayContainerProps extends DayMomentType {
-  day: string;
+  day: FrenchDayOfWeek;
   currentIndex: number;
   index: number;
   todayIndex: number
@@ -26,7 +27,7 @@ export default function DayContainer({
         style={{ flexDirection: "row-reverse", flex: 1 }}
       >
         <View style={styles.menuContainer}>
-          <DayMenu />
+          <DayMenu day={day} />
         </View>
         <View style={[styles.band, globalStyles.bigShadow]}>
           <MomentBand

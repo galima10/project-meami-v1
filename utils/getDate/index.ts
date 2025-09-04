@@ -1,4 +1,5 @@
 // /utils/getDate.ts
+import theme from "@themes/index";
 
 export type FrenchDayOfWeek =
   | "lundi"
@@ -18,6 +19,18 @@ export const days: FrenchDayOfWeek[] = [
   "jeudi",
   "vendredi",
 ];
+
+export const dayColors: {
+  [key in FrenchDayOfWeek]: string;
+} = {
+  lundi: theme.properties.lightOrange,
+  mardi: theme.properties.lightGreen,
+  mercredi: theme.properties.lightYellow,
+  jeudi: theme.properties.lightRed,
+  vendredi: theme.properties.lightPink,
+  samedi: theme.properties.lightPurple,
+  dimanche: theme.properties.white,
+};
 
 export function getDateInfo() {
   const now = new Date();

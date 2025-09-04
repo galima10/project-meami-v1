@@ -16,8 +16,8 @@ export default function DayNavigationButton({
 }: DayNavigationButtonProps) {
   const safeIndex = currentIndex ?? -1;
   const shouldBeWhite =
-    (momentSelected === "evening" && [1, 2, 3, 5].includes(safeIndex)) ||
-    (momentSelected === "noon" && safeIndex === 2);
+    (momentSelected === "evening" && [0, 3, 4, 5].includes(safeIndex)) ||
+    (momentSelected === "noon" && safeIndex === 4);
   const conditionalStyle = StyleSheet.flatten([
     styles.buttonText,
     direction === "left" && shouldBeWhite && { color: "white" },
