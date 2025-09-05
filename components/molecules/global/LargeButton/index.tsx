@@ -1,4 +1,4 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable, PressableProps, StyleProp, ViewStyle } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import Icon from "@components/atoms/global/Icon";
@@ -6,11 +6,12 @@ import { useState } from "react";
 import { globalStyles } from "@themes/styles";
 import { useLargeButton } from "@hooks/global/useLargeButton";
 
-interface LargeButtonProps {
+interface LargeButtonProps extends PressableProps {
   text: string;
   icon?: string;
   type?: "primary" | "secondary";
   action?: () => void;
+  style?: StyleProp<ViewStyle>;
 }
 
 export default function LargeButton({
@@ -18,13 +19,12 @@ export default function LargeButton({
   icon,
   type = "primary",
   action,
+  style,
+  ...props
+  
 }: LargeButtonProps) {
-  const {
-    handlePressIn,
-    handlePressOut,
-    secondaryColor,
-    isPressed
-  } = useLargeButton(type);
+  const { handlePressIn, handlePressOut, secondaryColor, isPressed } =
+    useLargeButton(type);
 
   const primaryContainerStyles = StyleSheet.flatten([
     globalStyles.buttonGreen,
@@ -32,19 +32,25 @@ export default function LargeButton({
     isPressed && globalStyles.buttonGreenPressed,
   ]);
 
-
   return (
     <Pressable
-      style={[styles.button, type === "primary" && primaryContainerStyles]}
+      style={[styles.button, type === "primary" && primaryContainerStyles, style]}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onPress={action}
+      {...props}
     >
       <View>
         <AppText
           style={[
             styles.text,
-            type === "secondary" ? { color: secondaryColor, borderBottomWidth: 2, borderBottomColor: secondaryColor } : styles.primary,
+            type === "secondary"
+              ? {
+                  color: secondaryColor,
+                  borderBottomWidth: 2,
+                  borderBottomColor: secondaryColor,
+                }
+              : styles.primary,
           ]}
         >
           {text}
@@ -68,10 +74,10 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "flex-start",
     flexDirection: "row",
     maxHeight: 48,
     borderRadius: 50,
+    alignSelf: "center",
   },
   primary: {
     textShadowColor: "rgba(0, 0, 0, 0.4)", // couleur

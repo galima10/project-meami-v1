@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   separator: {
-    height: 1.5,
+    height: 1,
     width: "60%",
     backgroundColor: theme.properties.brown,
   },

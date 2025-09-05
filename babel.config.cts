@@ -17,6 +17,7 @@ module.exports = function (api: any): TransformOptions {
             "@assets": "./assets",
             "@components": "./components",
             "@constants": "./constants",
+            "@contexts": "./contexts",
             "@hooks": "./hooks",
             "@services": "./services",
             "@stores": "./stores",

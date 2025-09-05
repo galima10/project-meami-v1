@@ -4,6 +4,7 @@ import { getScreenWidth } from "@utils/getScreenDimensions";
 import { ScrollView, StyleSheet, View } from "react-native";
 import DayContainer from "../DayContainer";
 import { mockedMenu, mockedMenuEmpty } from "@constants/mockedMenu";
+import { useMenu } from "@contexts/MenuContext";
 
 interface DaySliderDisplayProps {
   days: FrenchDayOfWeek[];
@@ -22,6 +23,7 @@ export default function DaySliderDisplay({
   todayIndex,
   scrollRef
 }: DaySliderDisplayProps) {
+  const { menu } = useMenu();
   return (
     <View style={styles.container}>
       <ScrollView
@@ -42,7 +44,7 @@ export default function DaySliderDisplay({
               day={day}
               momentSelected={momentSelected}
               todayIndex={todayIndex}
-              menu={mockedMenu[day]}
+              menu={menu[day]}
             />
           </View>
         ))}

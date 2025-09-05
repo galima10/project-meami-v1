@@ -1,8 +1,12 @@
 import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
+import LargeButton from "@components/molecules/global/LargeButton";
+import { mockedMenu } from "@constants/mockedMenu";
+import { useMenu } from "@contexts/MenuContext";
 
 export default function RecipesListView() {
+  const { setMenu } = useMenu();
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/recipes_3x.jpg")}
@@ -12,6 +16,11 @@ export default function RecipesListView() {
       <AppText style={styles.text}>
         Menu de la semaine Vue liste des recettes
       </AppText>
+      <LargeButton
+        action={() => setMenu(mockedMenu)}
+        text="Ajouter des recettes"
+        style={{ marginTop: 20 }}
+      />
     </ImageBackground>
   );
 }

@@ -1,9 +1,10 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import MenuElementList from "@components/molecules/menu/list/MenuElementList";
 import { days } from "@utils/getDate";
-import { mockedMenu, mockedMenuEmpty } from "@constants/mockedMenu";
+import { useMenu } from "@contexts/MenuContext";
 
 export default function MenuList() {
+  const { menu } = useMenu();
   return (
     <ScrollView
       style={styles.menuList}
@@ -11,7 +12,7 @@ export default function MenuList() {
       contentContainerStyle={{ paddingBottom: 16 }}
     >
       {days.map((day) => (
-        <MenuElementList key={day} day={day} menu={mockedMenuEmpty[day]} />
+        <MenuElementList key={day} day={day} menu={menu[day]} />
       ))}
     </ScrollView>
   );

@@ -1,11 +1,15 @@
 import { View, StyleSheet, ImageBackground } from "react-native";
-import { getDateInfo } from "@utils/getDate";
 import LargeButton from "@components/molecules/global/LargeButton";
 import { useRouter } from "expo-router";
 import MenuList from "@components/organisms/menu/list/MenuList";
+import { useMenu } from "@contexts/MenuContext";
+import { mockedMenuEmpty } from "@constants/mockedMenu";
+
 
 export default function ListView() {
   const router = useRouter();
+  const { setMenu } = useMenu();
+
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/menu_3x.jpg")}
@@ -17,7 +21,7 @@ export default function ListView() {
           text="Liste des recettes"
           action={() => router.push("/menuViews/recipesList")}
         />
-        <LargeButton text="Vider le menu" icon="trash" type="secondary" />
+        <LargeButton text="Vider le menu" icon="trash" type="secondary" action={() => setMenu(mockedMenuEmpty)} />
       </View>
       <MenuList />
     </ImageBackground>
