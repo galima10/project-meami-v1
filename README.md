@@ -101,4 +101,5 @@
   > Séparation de la logique métier en hooks des composants
   > Déplacements dans des dossiers séparés
 
-### À faire la prochaine fois
+### Notes importantes : 
+  - Ne pas oublier de faire la pop-up de validation de la vue Liste de l'onglet Menu de la semaine quand on appuie sur Vider le menu et faire la redirection
