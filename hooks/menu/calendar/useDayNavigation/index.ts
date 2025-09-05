@@ -1,5 +1,6 @@
 import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import { useCallback } from "react";
+import { days } from "@utils/getDate";
 
 interface UseDayNavigationParams {
   currentIndex: number;
@@ -21,6 +22,7 @@ export function useDayNavigation({
   const { actualDayMoment } = useDayMoment();
 
   const goPrevious = useCallback(() => {
+    if (currentIndex <= 0) return;
     const newIndex = currentIndex - 1;
     goToSlide(newIndex);
 
@@ -33,9 +35,17 @@ export function useDayNavigation({
     }, 100);
 
     handleInteraction();
-  }, [currentIndex, todayIndex, goToSlide, setMomentSelected, actualDayMoment, handleInteraction]);
+  }, [
+    currentIndex,
+    todayIndex,
+    goToSlide,
+    setMomentSelected,
+    actualDayMoment,
+    handleInteraction,
+  ]);
 
   const goNext = useCallback(() => {
+    if (currentIndex >= days.length - 1) return; // Empêche de dépasser le dernier jour (index 6)
     const newIndex = currentIndex + 1;
     goToSlide(newIndex);
 
@@ -48,7 +58,14 @@ export function useDayNavigation({
     }, 100);
 
     handleInteraction();
-  }, [currentIndex, todayIndex, goToSlide, setMomentSelected, actualDayMoment, handleInteraction]);
+  }, [
+    currentIndex,
+    todayIndex,
+    goToSlide,
+    setMomentSelected,
+    actualDayMoment,
+    handleInteraction,
+  ]);
 
   return { goPrevious, goNext };
 }
