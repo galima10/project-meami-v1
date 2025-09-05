@@ -6,9 +6,10 @@ import theme from "@themes/index";
 interface AddInfoProps {
   icon: string;
   withStroke?: boolean;
+  action?: () => void;
 }
 
-export default function AddInfo({ icon, withStroke }: AddInfoProps) {
+export default function AddInfo({ icon, withStroke, action }: AddInfoProps) {
   return (
     <Pressable
       style={[
@@ -16,6 +17,7 @@ export default function AddInfo({ icon, withStroke }: AddInfoProps) {
         globalStyles.littleShadow,
         styles.button,
       ]}
+      onPress={action}
     >
       <Icon
         name={icon}

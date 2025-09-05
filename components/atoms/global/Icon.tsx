@@ -1,6 +1,6 @@
+import { IconName, useIconComponent } from "@hooks/icon/useIcon";
 import React from "react";
 import { SvgProps } from "react-native-svg";
-import { useIconComponent, IconName } from "@hooks/icon/useIcon";
 
 interface IconProps extends SvgProps {
   name: IconName;

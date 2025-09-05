@@ -2,6 +2,7 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
+import LargeButton from "@components/molecules/global/LargeButton";
 
 export default function ListView() {
   const { dayOfWeek } = getDateInfo();
@@ -11,8 +12,12 @@ export default function ListView() {
       style={styles.screen}
       resizeMode="cover"
     >
-      <AppText style={styles.text}>Menu de la semaine Vue liste</AppText>
-      <AppText style={{marginTop: 20}}>{dayOfWeek}</AppText>
+      <View style={styles.buttonsContainer}>
+        <LargeButton text="Liste des recettes" />
+        <LargeButton text="Vider le menu" icon="trash" type="secondary" />
+      </View>
+      {/* <AppText style={styles.text}>Menu de la semaine Vue liste</AppText>
+      <AppText style={{marginTop: 20}}>{dayOfWeek}</AppText> */}
     </ImageBackground>
   );
 }
@@ -20,8 +25,8 @@ export default function ListView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   text: {
     fontFamily: "SN",
@@ -30,4 +35,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: 20,
   },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingHorizontal: 16,
+    marginTop: 16,
+  }
 });

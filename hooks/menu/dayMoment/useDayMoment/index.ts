@@ -1,5 +1,5 @@
-import { useDate } from "./useDate";
 import { getDayMoment } from "@utils/getDate";
+import { useDate } from "../useDate";
 
 export function useDayMoment(hour?: number) {
   const { hour: dateHour } = useDate();

@@ -3,8 +3,8 @@ import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { globalStyles, tabBarStyles } from "@themes/styles";
 import { Link } from "expo-router";
-import { usePathname } from "expo-router";
 import Icon from "@components/atoms/global/Icon";
+import { useTabButton } from "@hooks/navigationBars/useTabButton";
 
 interface TabButtonProps {
   routeName:
@@ -17,10 +17,7 @@ interface TabButtonProps {
 }
 
 export default function TabButton({ routeName, icon, label }: TabButtonProps) {
-  const pathname = usePathname();
-  const firstSegmentOfActualRoute = pathname.split("/")[1];
-  const firstSegmentOfRouteName = routeName.split("/")[0];
-  const isActive = firstSegmentOfActualRoute === firstSegmentOfRouteName;
+  const { isActive } = useTabButton(routeName);
 
   // Styles fusionnés (car le <Link> wrapper ne permet pas les tableaux de styles)
   const mergedButtonStyle = StyleSheet.flatten([

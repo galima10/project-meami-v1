@@ -3,13 +3,13 @@ import TodayButton from "@components/molecules/menu/calendar/TodayButton";
 import DayNavigation from "@components/organisms/menu/calendar/DayNavigation";
 import DaySliderDisplay from "@components/organisms/menu/calendar/DaySlider";
 import MomentModule from "@components/organisms/menu/calendar/MomentModule";
+import { useUnmountOnBlur } from "@hooks/global/useUnmountOnBlur";
 import { useDaySlider } from "@hooks/menu/calendar/useDaySlider";
 import { useInteractionCooldown } from "@hooks/menu/calendar/useInteractionCooldown";
 import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
 import theme from "@themes/index";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { useUnmountOnBlur } from "@hooks/global/useUnmountOnBlur";
 
 export default function CalendarView() {
   useUnmountOnBlur(

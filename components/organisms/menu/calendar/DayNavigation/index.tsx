@@ -1,5 +1,5 @@
 import DayNavigationButton from "@components/molecules/menu/calendar/DayNavigationButton";
-import { useDayNavigation } from "@hooks/menu/calendar/useDayNavigation";
+import { useDayNavigation } from "@hooks/menu/calendar/dayNavigation/useDayNavigation";
 import theme from "@themes/index";
 import { StyleSheet, View } from "react-native";
 

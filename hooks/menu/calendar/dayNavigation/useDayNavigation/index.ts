@@ -1,6 +1,6 @@
 import { useDayMoment } from "@hooks/menu/dayMoment/useDayMoment";
-import { useCallback } from "react";
 import { days } from "@utils/getDate";
+import { useCallback } from "react";
 
 interface UseDayNavigationParams {
   currentIndex: number;

@@ -13,7 +13,27 @@ export const globalStyles = StyleSheet.create({
   },
   bigShadow: {
     boxShadow: "-3px 3px 15px rgba(0, 0, 0, 0.25)",
-  }
+  },
+  buttonGreen: {
+    backgroundColor: theme.properties.darkGreen,
+    borderColor: theme.properties.greenBorder,
+    borderWidth: 1.5,
+  },
+  buttonGreenPressed: {
+    backgroundColor: theme.properties.lightGreen,
+    borderColor: theme.properties.lightGreenBorder,
+    borderWidth: 1.5,
+  },
+  buttonRed: {
+    backgroundColor: theme.properties.darkRed,
+    borderColor: theme.properties.redBorder,
+    borderWidth: 1.5,
+  },
+  buttonRedPressed: {
+    backgroundColor: theme.properties.lightRed,
+    borderColor: theme.properties.lightRedBorder,
+    borderWidth: 1.5,
+  },
 });
 
 export const tabBarStyles = StyleSheet.create({

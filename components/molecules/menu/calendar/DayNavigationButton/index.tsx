@@ -1,5 +1,6 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
+import { useDayNavigationButton } from "@hooks/menu/calendar/dayNavigation/useDayNavigationButton";
 
 interface DayNavigationButtonProps {
   action: () => void;
@@ -13,25 +14,32 @@ export default function DayNavigationButton({
   direction,
   currentIndex,
   momentSelected,
-}: DayNavigationButtonProps) {
-  const safeIndex = currentIndex ?? -1;
-  const shouldBeWhite =
-    (momentSelected === "evening" && [0, 3, 4, 5].includes(safeIndex)) ||
-    (momentSelected === "noon" && safeIndex === 4);
-  const conditionalStyle = StyleSheet.flatten([
-    styles.buttonText,
-    direction === "left" && shouldBeWhite && { color: "white" },
-  ]);
-  
+}: {
+  action: () => void;
+  direction: "left" | "right";
+  currentIndex?: number;
+  momentSelected?: "morning" | "noon" | "evening";
+}) {
+  const { shouldBeWhite, isLeft } = useDayNavigationButton(
+    momentSelected,
+    currentIndex,
+    direction
+  );
+
   return (
     <Pressable
       style={({ pressed }) => [
         styles.button,
-        pressed && { opacity: 1 }, // applique quand pressed = true
+        pressed && { opacity: 1 },
       ]}
       onPress={action}
     >
-      <AppText style={conditionalStyle}>
+      <AppText
+        style={[
+          styles.buttonText,
+          isLeft && shouldBeWhite && { color: "white" },
+        ]}
+      >
         {direction === "left" ? "◀" : "▶"}
       </AppText>
     </Pressable>

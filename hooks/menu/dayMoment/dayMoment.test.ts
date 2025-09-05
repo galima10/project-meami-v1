@@ -10,13 +10,12 @@ jest.mock("@utils/getDate", () => {
   };
 });
 
-import { renderHook, act } from "@testing-library/react";
-import { getDateInfo } from "@utils/getDate";
+import { act, renderHook } from "@testing-library/react";
+import * as getDateUtils from "@utils/getDate";
+import { days, getDateInfo } from "@utils/getDate";
+import * as useDateModule from "./useDate";
 import { useDate } from "./useDate";
 import { useDayMoment } from "./useDayMoment";
-import { days } from "@utils/getDate";
-import * as useDateModule from "./useDate";
-import * as getDateUtils from "@utils/getDate";
 
 // Assure TS que c'est bien un mock
 const mockedGetDateInfo = getDateInfo as jest.MockedFunction<

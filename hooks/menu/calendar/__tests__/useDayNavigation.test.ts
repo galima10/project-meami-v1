@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
-import { useDayNavigation } from "../useDayNavigation";
+import { useDayNavigation } from "../dayNavigation/useDayNavigation";
 
 describe("Calendar : useDayNavigation", () => {
   it("appel goToSlide et handleInteraction correctement pour goNext", () => {

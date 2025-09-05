@@ -3,6 +3,7 @@ import { Link, usePathname, useRouter } from "expo-router";
 import { globalStyles, topBarStyles } from "@themes/styles";
 import Icon from "@components/atoms/global/Icon";
 import theme from "@themes/index";
+import { useTopButtonNavigation } from "@hooks/navigationBars/useTopButtonNavigation";
 
 interface TopButtonProps {
   routeName?: string;
@@ -22,8 +23,7 @@ export default function TopButton({
   goBack,
 }: TopButtonProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const isActive = pathname === `/${routeName}`;
+  const { isActive } = useTopButtonNavigation({ routeName });
 
   const greenStyles = StyleSheet.flatten([
     topBarStyles.greenButton,

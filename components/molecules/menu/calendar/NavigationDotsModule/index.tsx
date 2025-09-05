@@ -1,6 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import NavigationDot from "@components/atoms/menu/calendar/NavigationDot";
 import { days } from "@utils/getDate";
+import { useNavigationDotsModule } from "@hooks/menu/calendar/dayNavigation/useNavigationDotsModule";
 
 interface NavigationDotsModuleProps {
   currentIndex: number;
@@ -21,16 +22,13 @@ export default function NavigationDotsModule({
   setMomentSelected,
   actualDayMoment,
 }: NavigationDotsModuleProps) {
-  function handleDotPress(index: number) {
-    handleInteraction();
-    goToSlide(index);
-
-    if (todayIndex === index) {
-      setMomentSelected(actualDayMoment);
-    } else {
-      setMomentSelected("morning");
-    }
-  }
+  const { handleDotPress } = useNavigationDotsModule(
+    goToSlide,
+    handleInteraction,
+    todayIndex,
+    setMomentSelected,
+    actualDayMoment
+  );
   return (
     <View style={styles.container}>
       {days.map((day, index) => (
