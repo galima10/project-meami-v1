@@ -52,7 +52,10 @@
 
 [1.3.0]
 
-- **Vue Calendrier** :
+- **Menu mocké** :
+  > Ajout d'un faux menu pré-rempli
+  > Ajout d'un faux menu vide
+- **Onglet Menu de la semaine : Vue Calendrier** :
   > Ajout d'un slider pour afficher les jours de la semaine pour voir le (futur) menu
   > La semaine culinaire commence le samedi
   > Chaque jour a un thème de couleur de menu attribué :
@@ -63,15 +66,36 @@
             - Mercredi : Jaune
             - Jeudi : Rouge
             - Vendredi : Rose
-        > Bande imagée colorée en fonction de la couleur attribuée pour chaque jour de la semaine avec des variantes pour chaque, matin, midi et soir
-        > Icônes en forme d'ingrédients pour chaque fond de menu en fonction de la couleur attribuée
-  > Ajout de boutons de navigation pour naviguer entre chaque slide
-  > Les boutons deviennent clairs si le fond est trop sombre
-  > Ajout d'une barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue
-  > Ajout d'un module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
+        + Bande imagée colorée en fonction de la couleur attribuée pour chaque jour de la semaine avec des variantes pour chaque, matin, midi et soir
+        + Icônes en forme d'ingrédients pour chaque fond de menu en fonction de la couleur attribuée
+  > Boutons de navigation en haut de la vue avec le jour de la slide, pour naviguer entre chaque slide
+    ! Les boutons deviennent clairs si le fond est trop sombre
+  > Barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue
+  > Module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
   > Ajout d'un délai d'inactivité de 15 secondes : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
   > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
-  > Ajout d'un bouton "Aller à aujourd'hui" qui renvoit directement au jour et au moment actuel et qui annule immédiatement le délai d'inactivité
+  > Bouton "Aller à aujourd'hui" qui renvoit directement au jour et au moment actuel et qui annule immédiatement le délai d'inactivité
   > Affichage visuel du cooldown sur le bouton
+  > Affichage du menu pour chaque jour et chaque moment
+    ! Les recettes sont séparées dans l'affichage :
+      - Les Petits déjeuners sont regroupés
+      - Les Plats principaux sont regroupés
+      - Les Légumes et les Accompagnements sont regroupés ensemble
+      - Les Desserts sont regroupés
+    ! S'il n'y a aucune recette d'entrée, le message "Non renseigné" est affiché
+    + Feedback visuel si on clique sur une recette (aucune action pour l'instant)
+- **Onglet Menu de la semaine : Vue Liste** :
+  > Bouton pour naviguer vers la vue Liste des recettes ajoutées au menu
+    ! Le bouton retour de la vue Liste des recettes ajoutées au menu fait bien un retour en arrière
+  > Bouton pour vider la Liste des recettes ajoutées au menu
+    ! Le bouton ne fait que changer le menu mocké en "faux menu vide"
+    ! La vue Calendrier sera aussi vidée
+  > Affichage en cartes stylisées avec un effet glass du menu en ligne de chaque jour et chaque moment
+    ! S'il n'y a aucune recette d'entrée, les moments de la journées pour les cartes affichent "----"
+  > Le jour actuel a une bordure orange vif
+  > Possibilité de scroller verticalement dans la vue
+- **Onglet Menu de la semaine : Vue Modifier** :
+  > Ajout d'un bouton pour remplir le menu
+    ! Le bouton ne fait que changer le menu mocké en "faux menu pré-rempli"
 
 ### À faire la prochaine fois
