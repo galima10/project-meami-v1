@@ -97,5 +97,8 @@
 - **Onglet Menu de la semaine : Vue Modifier** :
   > Ajout d'un bouton pour remplir le menu
     ! Le bouton ne fait que changer le menu mocké en "faux menu pré-rempli"
+- **Réorganisation de fichiers** :
+  > Séparation de la logique métier en hooks des composants
+  > Déplacements dans des dossiers séparés
 
 ### À faire la prochaine fois
