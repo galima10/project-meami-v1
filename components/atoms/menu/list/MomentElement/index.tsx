@@ -3,7 +3,7 @@ import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 
 interface MomentElementProps {
-  menu: string[];
+  menu: { name: string; type: string }[];
   moment: "Matin" | "Midi" | "Soir";
 }
 
@@ -11,7 +11,7 @@ export default function MomentElement({ menu, moment }: MomentElementProps) {
   return (
     <AppText style={styles.text}>
       <AppText style={styles.title}>{moment} : </AppText>
-      {menu.length > 0 ? menu.join(" • ") : "----"}
+      {menu.length > 0 ? menu.map(item => item.name).join(" • ") : "----"}
     </AppText>
   );
 }

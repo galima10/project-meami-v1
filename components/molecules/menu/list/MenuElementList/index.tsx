@@ -9,9 +9,9 @@ import MomentElement from "@components/atoms/menu/list/MomentElement";
 interface MenuElementListProps {
   day: FrenchDayOfWeek;
   menu: {
-    matin: string[];
-    midi: string[];
-    soir: string[];
+    matin: { name: string; type: string }[];
+    midi: { name: string; type: string }[];
+    soir: { name: string; type: string }[];
   };
 }
 

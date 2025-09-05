@@ -44,16 +44,11 @@ export default function LargeButton({
         <AppText
           style={[
             styles.text,
-            type === "secondary" ? { color: secondaryColor } : styles.primary,
+            type === "secondary" ? { color: secondaryColor, borderBottomWidth: 2, borderBottomColor: secondaryColor } : styles.primary,
           ]}
         >
           {text}
         </AppText>
-        {type === "secondary" && (
-          <View
-            style={[styles.underline, { backgroundColor: secondaryColor }]}
-          />
-        )}
       </View>
       {icon && (
         <Icon
@@ -88,9 +83,5 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: theme.properties.semibold,
     color: theme.properties.beige,
-  },
-  underline: {
-    height: 1.5,
-    borderRadius: 1,
   },
 });

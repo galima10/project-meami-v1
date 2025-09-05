@@ -1,40 +1,350 @@
 export const mockedMenu: Record<
   string,
-  { matin: string[]; midi: string[]; soir: string[] }
+  {
+    matin: { name: string; type: string }[];
+    midi: { name: string; type: string }[];
+    soir: { name: string; type: string }[];
+  }
 > = {
   lundi: {
-    matin: ["Pancakes", "Coffee", "Croissant", "Fruit Salad"],
-    midi: ["Sandwich", "Juice", "Salad"],
-    soir: ["Steak", "Red Wine", "Cheese"],
+    matin: [
+      {
+        name: "Pancakes",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Omelette",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Smoothie",
+        type: "petit-dejeuner ",
+      },
+    ],
+    midi: [
+      {
+        name: "Poulet rôti",
+        type: "plat principal",
+      },
+      {
+        name: "Légumes grillés",
+        type: "légumes",
+      },
+      {
+        name: "Pâtes à la sauce tomate",
+        type: "accompagnement",
+      },
+      {
+        name: "Tarte aux pommes",
+        type: "dessert",
+      },
+    ],
+    soir: [
+      {
+        name: "Tacos",
+        type: "plat principal",
+      },
+      {
+        name: "Salade verte",
+        type: "légumes",
+      },
+      {
+        name: "Riz pilaf",
+        type: "accompagnement",
+      },
+      {
+        name: "Crêpes",
+        type: "dessert",
+      },
+    ],
   },
   mardi: {
-    matin: ["Omelette", "Tea", "Toast"],
-    midi: ["Salad", "Water", "Fruit"],
-    soir: ["Fish", "White Wine", "Rice"],
+    matin: [
+      {
+        name: "Yaourt avec granola",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Fruits frais",
+        type: "petit-dejeuner ",
+      },
+    ],
+    midi: [
+      {
+        name: "Salade César",
+        type: "plat principal",
+      },
+      {
+        name: "Soupe de légumes",
+        type: "légumes",
+      },
+      {
+        name: "Yaourt",
+        type: "dessert",
+      },
+    ],
+    soir: [
+      {
+        name: "Tacos",
+        type: "plat principal",
+      },
+      {
+        name: "Salade verte",
+        type: "légumes",
+      },
+      {
+        name: "Riz pilaf",
+        type: "accompagnement",
+      },
+      {
+        name: "Crêpes",
+        type: "dessert",
+      },
+    ],
   },
   mercredi: {
-    matin: ["Cereal", "Milk", "Banana"],
-    midi: ["Burger", "Soda", "Fries"],
-    soir: ["Pizza", "Beer", "Salad"],
+    matin: [
+      {
+        name: "Yaourt avec granola",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Fruits frais",
+        type: "petit-dejeuner ",
+      },
+    ],
+    midi: [
+      {
+        name: "Salade César",
+        type: "plat principal",
+      },
+      {
+        name: "Soupe de légumes",
+        type: "légumes",
+      },
+      {
+        name: "Yaourt",
+        type: "dessert",
+      },
+    ],
+    soir: [
+      {
+        name: "Tacos",
+        type: "plat principal",
+      },
+      {
+        name: "Salade verte",
+        type: "légumes",
+      },
+      {
+        name: "Riz pilaf",
+        type: "accompagnement",
+      },
+      {
+        name: "Crêpes",
+        type: "dessert",
+      },
+    ],
   },
   jeudi: {
-    matin: ["Yogurt", "Fruit", "Granola"],
-    midi: ["Pasta", "Lemonade", "Salad"],
-    soir: ["Chicken", "Rose Wine", "Vegetables"],
+    matin: [
+      {
+        name: "Yaourt avec granola",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Fruits frais",
+        type: "petit-dejeuner ",
+      },
+    ],
+    midi: [
+      {
+        name: "Salade César",
+        type: "plat principal",
+      },
+      {
+        name: "Fruits frais",
+        type: "dessert",
+      },
+    ],
+    soir: [
+      {
+        name: "Poulet rôti",
+        type: "plat principal",
+      },
+      {
+        name: "Légumes grillés",
+        type: "légumes",
+      },
+      {
+        name: "Pâtes à la sauce tomate",
+        type: "accompagnement",
+      },
+      {
+        name: "Tarte aux pommes",
+        type: "dessert",
+      },
+    ],
   },
   vendredi: {
-    matin: ["Bagel", "Smoothie", "Granola"],
-    midi: ["Quiche", "Iced Tea", "Salad"],
-    soir: ["Pasta", "Red Wine", "Vegetables"],
+    matin: [
+      {
+        name: "Pancakes",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Omelette",
+        type: "petit-dejeuner",
+      },
+    ],
+    midi: [
+      {
+        name: "Quiche Lorraine",
+        type: "plat principal",
+      },
+      {
+        name: "Ratatouille",
+        type: "légumes",
+      },
+      {
+        name: "Salade de fruits",
+        type: "dessert",
+      },
+    ],
+    soir: [
+      {
+        name: "Tacos",
+        type: "plat principal",
+      },
+      {
+        name: "Salade verte",
+        type: "légumes",
+      },
+      {
+        name: "Riz pilaf",
+        type: "accompagnement",
+      },
+      {
+        name: "Crêpes",
+        type: "dessert",
+      },
+    ],
   },
   samedi: {
-    matin: ["Croissant", "Coffee", "Jam"],
-    midi: ["Quiche", "Iced Tea", "Salad"],
-    soir: ["Tacos", "Margarita", "Guacamole"],
+    matin: [
+      {
+        name: "Pancakes",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Omelette",
+        type: "petit-dejeuner ",
+      },
+      {
+        name: "Smoothie",
+        type: "petit-dejeuner ",
+      },
+    ],
+    midi: [
+      {
+        name: "Poulet rôti",
+        type: "plat principal",
+      },
+      {
+        name: "Frites maison",
+        type: "accompagnement",
+      },
+    ],
+    soir: [
+      {
+        name: "Sandwichs variés",
+        type: "plat principal",
+      },
+      {
+        name: "Chips",
+        type: "accompagnement",
+      },
+    ],
   },
   dimanche: {
-    matin: ["Fruit Salad", "Juice", "Muffin"],
-    midi: ["Roast Beef", "Beer", "Vegetables"],
-    soir: ["Soup", "Herbal Tea", "Bread"],
+    matin: [
+      {
+        name: "Pancakes",
+        type: "petit-dejeuner",
+      },
+    ],
+    midi: [
+      {
+        name: "Côte de bœuf",
+        type: "plat principal",
+      },
+      {
+        name: "Pommes de terre sautées",
+        type: "accompagnement",
+      },
+      {
+        name: "Haricots verts",
+        type: "légumes",
+      },
+      {
+        name: "Tarte aux pommes",
+        type: "dessert",
+      },
+    ],
+    soir: [
+      {
+        name: "Soupe à l'oignon",
+        type: "plat principal",
+      },
+      {
+        name: "Fromage",
+        type: "accompagnement",
+      },
+    ],
+  },
+};
+
+export const mockedMenuEmpty: Record<
+  string,
+  {
+    matin: { name: string; type: string }[];
+    midi: { name: string; type: string }[];
+    soir: { name: string; type: string }[];
+  }
+> = {
+  lundi: {
+    matin: [],
+    midi: [],
+    soir: [],
+  },
+  mardi: {
+    matin: [],
+    midi: [],
+    soir: [],
+  },
+  mercredi: {
+    matin: [],
+    midi: [],
+    soir: [],
+  },
+  jeudi: {
+    matin: [],
+    midi: [],
+    soir: [],
+  },
+  vendredi: {
+    matin: [],
+    midi: [],
+    soir: [],
+  },
+  samedi: {
+    matin: [],
+    midi: [],
+    soir: [],
+  },
+  dimanche: {
+    matin: [],
+    midi: [],
+    soir: [],
   },
 };

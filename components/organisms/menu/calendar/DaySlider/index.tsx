@@ -3,6 +3,7 @@ import { FrenchDayOfWeek } from "@utils/getDate";
 import { getScreenWidth } from "@utils/getScreenDimensions";
 import { ScrollView, StyleSheet, View } from "react-native";
 import DayContainer from "../DayContainer";
+import { mockedMenu, mockedMenuEmpty } from "@constants/mockedMenu";
 
 interface DaySliderDisplayProps {
   days: FrenchDayOfWeek[];
@@ -41,6 +42,7 @@ export default function DaySliderDisplay({
               day={day}
               momentSelected={momentSelected}
               todayIndex={todayIndex}
+              menu={mockedMenu[day]}
             />
           </View>
         ))}

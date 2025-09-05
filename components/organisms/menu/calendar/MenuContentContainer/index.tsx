@@ -6,21 +6,25 @@ import { FrenchDayOfWeek } from "@utils/getDate";
 import { dayColors } from "@utils/getDate";
 import { useMemo } from "react";
 import { iconsMap } from "@constants/menuIconsMap";
+import MenuDisplayContent from "@components/molecules/menu/calendar/MenuDisplayContent";
+import { DayMomentType } from "@app-types/DayMomentType";
 
-interface DayMenuProps {
+interface DayMenuProps extends DayMomentType {
   day: FrenchDayOfWeek;
+  menu: {
+    matin: { name: string; type: string }[];
+    midi: { name: string; type: string }[];
+    soir: { name: string; type: string }[];
+  };
 }
-export default function DayMenu({ day }: DayMenuProps) {
+export default function MenuContentContainer({ day, menu, momentSelected }: DayMenuProps) {
   const key = useMemo(() => `${day.toLowerCase()}_icons`, [day]);
   return (
     <ImageBackground
       source={iconsMap[key]}
       resizeMode="contain"
       style={styles.container}
-      imageStyle={
-        day !== "dimanche" &&
-        { opacity: 0.6 }
-      }
+      imageStyle={day !== "dimanche" && { opacity: 0.6 }}
     >
       <LinearGradient
         colors={["transparent", dayColors[day]]}
@@ -28,11 +32,9 @@ export default function DayMenu({ day }: DayMenuProps) {
         style={{
           flex: 1,
           width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <AppText style={{ fontSize: 16 }}>Non renseigné</AppText>
+        <MenuDisplayContent momentSelected={momentSelected} menu={menu} />
       </LinearGradient>
     </ImageBackground>
   );

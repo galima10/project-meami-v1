@@ -1,4 +1,4 @@
-import DayMenu from "@components/molecules/menu/calendar/DayMenu";
+import MenuContentContainer from "@components/organisms/menu/calendar/MenuContentContainer";
 import MomentBand from "@components/organisms/menu/calendar/MomentBand";
 import { StyleSheet, View } from "react-native";
 import { DayMomentType } from "@app-types/DayMomentType";
@@ -11,7 +11,12 @@ interface DayContainerProps extends DayMomentType {
   day: FrenchDayOfWeek;
   currentIndex: number;
   index: number;
-  todayIndex: number
+  todayIndex: number;
+  menu: {
+    matin: { name: string; type: string }[];
+    midi: { name: string; type: string }[];
+    soir: { name: string; type: string }[];
+  };
 }
 
 export default function DayContainer({
@@ -19,15 +24,14 @@ export default function DayContainer({
   day,
   currentIndex,
   index,
-  todayIndex
+  todayIndex,
+  menu,
 }: DayContainerProps) {
   return (
     <View style={{ flex: 1 }}>
-      <View
-        style={{ flexDirection: "row-reverse", flex: 1 }}
-      >
+      <View style={{ flexDirection: "row-reverse", flex: 1 }}>
         <View style={styles.menuContainer}>
-          <DayMenu day={day} />
+          <MenuContentContainer day={day} menu={menu} momentSelected={momentSelected} />
         </View>
         <View style={[styles.band, globalStyles.bigShadow]}>
           <MomentBand

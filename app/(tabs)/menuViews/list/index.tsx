@@ -6,7 +6,6 @@ import MenuList from "@components/organisms/menu/list/MenuList";
 
 export default function ListView() {
   const router = useRouter();
-  const { dayOfWeek } = getDateInfo();
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/menu_3x.jpg")}
