@@ -4,13 +4,13 @@
 
 ### Liste des features
 
-[1.0.0]
+[1.0.0] - (20/08/2025)
 
 - **Template de base** :
   > Template de base Expo + React Native seulement
   > Configuration pour permettre un déploiement automatisé
 
-[1.1.0]
+[1.1.0] - (23/08/2025)
 
 - **Splash Screen** :
   > Faux splash screen après le vrai splash screen avec le logo principal avec une animation bounce et le slogan avec une animation wave
@@ -21,7 +21,7 @@
   > Suppression des écrans de base du templates
   > Ajout de 4 onglets à l'application : Menu, Cart, Stock et Infos
 
-[1.2.0]
+[1.2.0] - (29/08/2025)
 
 - **Utilisation d'icônes SVG** :
   > Affichage d'icônes SVG au sein de l'application
@@ -50,7 +50,7 @@
   > Le moment de la journée : Matin, Midi ou Soir est donc déterminé en fonction de l'heure récupérée et est affiché
   > Sur l'onglet Menu de la semaine Vue Liste, seul le jour de la semaine esr récupéré et affiché
 
-[1.3.0]
+[1.3.0] - (05/09/2025)
 
 - **Menu mocké** :
   > Ajout d'un faux menu pré-rempli
