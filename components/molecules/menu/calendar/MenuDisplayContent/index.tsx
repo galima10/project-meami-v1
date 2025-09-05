@@ -33,10 +33,18 @@ export default function MenuDisplayContent({
         ) : (
           <>
             <RecipesContainer meals={platsPrincipaux} />
-            <View style={styles.separator} />
-            <RecipesContainer meals={legumesAccompagnements} />
-            <View style={styles.separator} />
-            <RecipesContainer meals={desserts} />
+            {legumesAccompagnements.length > 0 && (
+              <>
+                <View style={styles.separator} />
+                <RecipesContainer meals={legumesAccompagnements} />
+              </>
+            )}
+            {desserts.length > 0 && (
+              <>
+                <View style={styles.separator} />
+                <RecipesContainer meals={desserts} />
+              </>
+            )}
           </>
         )
       ) : (
