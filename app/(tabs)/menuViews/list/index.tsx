@@ -3,8 +3,10 @@ import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import { getDateInfo } from "@utils/getDate";
 import LargeButton from "@components/molecules/global/LargeButton";
+import { useRouter } from "expo-router";
 
 export default function ListView() {
+  const router = useRouter();
   const { dayOfWeek } = getDateInfo();
   return (
     <ImageBackground
@@ -13,11 +15,9 @@ export default function ListView() {
       resizeMode="cover"
     >
       <View style={styles.buttonsContainer}>
-        <LargeButton text="Liste des recettes" />
+        <LargeButton text="Liste des recettes" action={() => router.push("/menuViews/recipesList")} />
         <LargeButton text="Vider le menu" icon="trash" type="secondary" />
       </View>
-      {/* <AppText style={styles.text}>Menu de la semaine Vue liste</AppText>
-      <AppText style={{marginTop: 20}}>{dayOfWeek}</AppText> */}
     </ImageBackground>
   );
 }
