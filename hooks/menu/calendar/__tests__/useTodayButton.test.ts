@@ -22,7 +22,7 @@ describe("useTodayButton", () => {
     expect(result.current.localCountdown).toBe(5);
   });
 
-  it("handlePressIn appelle setHasInteracted(false), forceRefresh et met isPressed à true", () => {
+  it("handlePressIn met isPressed à true", () => {
     const setHasInteracted = jest.fn();
     const forceRefresh = jest.fn();
 
@@ -34,12 +34,10 @@ describe("useTodayButton", () => {
       result.current.handlePressIn();
     });
 
-    expect(setHasInteracted).toHaveBeenCalledWith(false);
-    expect(forceRefresh).toHaveBeenCalled();
     expect(result.current.isPressed).toBe(true);
   });
 
-  it("handlePressOut met isPressed à false", () => {
+  it("handlePressOut appelle setHasInteracted(false), forceRefresh et met isPressed à false", () => {
     const setHasInteracted = jest.fn();
     const forceRefresh = jest.fn();
 
@@ -56,6 +54,8 @@ describe("useTodayButton", () => {
       result.current.handlePressOut();
     });
 
+    expect(setHasInteracted).toHaveBeenCalledWith(false);
+    expect(forceRefresh).toHaveBeenCalled();
     expect(result.current.isPressed).toBe(false);
   });
 });

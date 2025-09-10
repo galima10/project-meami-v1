@@ -13,14 +13,13 @@ export function useTodayButton(
     setLocalCountdown(countdown);
   }, [countdown]);
 
-
   function handlePressIn() {
-    setHasInteracted(false);
-    forceRefresh();
     setIsPressed(true);
   }
   function handlePressOut() {
     setIsPressed(false);
+    setHasInteracted(false);
+    forceRefresh();
   }
 
   return { localCountdown, handlePressIn, handlePressOut, isPressed };
