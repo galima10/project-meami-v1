@@ -73,9 +73,11 @@
   > Barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue
   > Module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
   > Ajout d'un délai d'inactivité de 15 secondes : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
+    + Met à jour la date et l'heure actuelles
   > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
   > Bouton "Aller à aujourd'hui" qui renvoit directement au jour et au moment actuel et qui annule immédiatement le délai d'inactivité
-  > Affichage visuel du cooldown sur le bouton
+    + Affichage visuel du cooldown sur le bouton
+    + Met à jour la date et l'heure actuelles
   > Affichage du menu pour chaque jour et chaque moment
     ! Les recettes sont séparées dans l'affichage :
       - Les Petits déjeuners sont regroupés
@@ -94,12 +96,18 @@
     ! S'il n'y a aucune recette d'entrée, les moments de la journées pour les cartes affichent "----"
   > Le jour actuel a une bordure orange vif
   > Possibilité de scroller verticalement dans la vue
-- **Onglet Menu de la semaine : Vue Modifier** :
+- **Onglet Menu de la semaine : Vue Liste des recettes** :
   > Ajout d'un bouton pour remplir le menu
     ! Le bouton ne fait que changer le menu mocké en "faux menu pré-rempli"
 - **Réorganisation de fichiers** :
   > Séparation de la logique métier en hooks des composants
   > Déplacements dans des dossiers séparés
 
+[1.4.0] - (../../....)
+
+  - Suppression de la mise à jour de la date toutes les minutes pour gagner en performances
+  - Fixs UI et bugs visuels
+  - Changement de condition pour associer les moments de la journée à l'heure actuelle
+  - Ajout d'une pop-up de validation quand on vide le menu dans l'onglet Menu de la semaine : Vue Liste
+
 ### Notes importantes : 
-  - Ne pas oublier de faire la pop-up de validation de la vue Liste de l'onglet Menu de la semaine quand on appuie sur Vider le menu et faire la redirection
