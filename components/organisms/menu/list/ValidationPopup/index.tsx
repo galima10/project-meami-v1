@@ -3,16 +3,18 @@ import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import LargeButton from "@components/molecules/global/LargeButton";
 import { mockedMenuEmpty } from "@constants/mockedMenu";
+import { useMenu } from "@contexts/MenuContext";
+import { useRouter } from "expo-router";
 
 interface ValidationPopupProps {
   setIsDarkScreenVisible: (visible: boolean) => void;
-  setMenu: (menu: typeof mockedMenuEmpty) => void;
 }
 
 export default function ValidationPopup({
   setIsDarkScreenVisible,
-  setMenu,
 }: ValidationPopupProps) {
+  const { setMenu } = useMenu();
+  const router = useRouter();
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
       <LargeButton
@@ -29,6 +31,7 @@ export default function ValidationPopup({
         action={() => {
           setMenu(mockedMenuEmpty);
           setIsDarkScreenVisible(false);
+          router.push("/stockViews/ingredients");
         }}
         style={styles.primaryButtons}
       />

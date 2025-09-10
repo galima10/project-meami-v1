@@ -2,15 +2,12 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import LargeButton from "@components/molecules/global/LargeButton";
 import { useRouter } from "expo-router";
 import MenuList from "@components/organisms/menu/list/MenuList";
-import { useMenu } from "@contexts/MenuContext";
-import { mockedMenuEmpty } from "@constants/mockedMenu";
 import { useState } from "react";
 import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
 import ValidationPopup from "@components/organisms/menu/list/ValidationPopup";
 
 export default function ListView() {
   const router = useRouter();
-  const { setMenu } = useMenu();
   const [isDarkScreenVisible, setIsDarkScreenVisible] = useState(false);
 
   return (
@@ -28,13 +25,12 @@ export default function ListView() {
           text="Vider le menu"
           icon="trash"
           type="secondary"
-          // action={() => setMenu(mockedMenuEmpty)}
           action={() => setIsDarkScreenVisible(true)}
         />
       </View>
       <MenuList />
       <DarkScreenContainer visible={isDarkScreenVisible}>
-        <ValidationPopup setIsDarkScreenVisible={setIsDarkScreenVisible} setMenu={setMenu} />
+        <ValidationPopup setIsDarkScreenVisible={setIsDarkScreenVisible} />
       </DarkScreenContainer>
     </ImageBackground>
   );
