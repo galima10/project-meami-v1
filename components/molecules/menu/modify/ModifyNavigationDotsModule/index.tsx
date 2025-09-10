@@ -4,10 +4,12 @@ import { StyleSheet, View } from "react-native";
 
 interface ModifyNavigationDotsModuleProps {
   currentIndex: number;
+  goToSlide: (index: number) => void;
 }
 
 export default function ModifyNavigationDotsModule({
   currentIndex,
+  goToSlide,
 }: ModifyNavigationDotsModuleProps) {
   return (
     <View style={styles.container}>
@@ -17,7 +19,7 @@ export default function ModifyNavigationDotsModule({
           index={index}
           currentIndex={currentIndex}
           action={() => {
-            // handleDotPress(index)
+            goToSlide(index);
           }}
         />
       ))}
@@ -28,7 +30,7 @@ export default function ModifyNavigationDotsModule({
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    bottom: 10,
+    bottom: 8,
     left: 0,
     right: 0,
     justifyContent: "center",

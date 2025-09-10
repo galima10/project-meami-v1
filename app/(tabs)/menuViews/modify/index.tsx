@@ -1,13 +1,11 @@
 import { View, StyleSheet, ImageBackground, ScrollView } from "react-native";
-import { days } from "@utils/getDate";
-import DaySlide from "@components/organisms/menu/modify/DaySlide";
-import { useRef, useState } from "react";
-import { getScreenWidth } from "@utils/getScreenDimensions";
 import ModifyNavigationDotsModule from "@components/molecules/menu/modify/ModifyNavigationDotsModule";
+import DaySlider from "@components/organisms/menu/modify/DaySlider";
+import { useDaySlider } from "@hooks/menu/modify/useDaySlider";
 
 export default function ModifyView() {
-  const scrollRef = useRef<ScrollView>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const { scrollRef, currentIndex, setCurrentIndex, goToSlide } =
+    useDaySlider();
 
   return (
     <ImageBackground
@@ -15,25 +13,14 @@ export default function ModifyView() {
       style={styles.screen}
       resizeMode="cover"
     >
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        ref={scrollRef}
-        scrollEnabled={true}
-        pagingEnabled
-        onMomentumScrollEnd={(e) => {
-          const offsetX = e.nativeEvent.contentOffset.x;
-          const newIndex = Math.round(offsetX / getScreenWidth());
-          setCurrentIndex(newIndex);
-        }}
-      >
-        {days.map((day, index) => (
-          <View key={index} style={{ width: getScreenWidth(), flex: 1 }}>
-            <DaySlide key={day} day={day} />
-          </View>
-        ))}
-      </ScrollView>
-      <ModifyNavigationDotsModule currentIndex={currentIndex} />
+      <DaySlider
+        scrollRef={scrollRef}
+        setCurrentIndex={setCurrentIndex}
+      />
+      <ModifyNavigationDotsModule
+        currentIndex={currentIndex}
+        goToSlide={goToSlide}
+      />
     </ImageBackground>
   );
 }
