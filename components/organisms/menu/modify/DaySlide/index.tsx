@@ -11,7 +11,9 @@ export default function DaySlide() {
         <AppButton icon="trash" type="secondary" iconSize={40} style={styles.trashButton} />
         <AppText style={styles.dayTitle}>Dimanche</AppText>
       </View>
-      <MomentElement />
+      <MomentElement moment="Matin" />
+      <MomentElement moment="Midi" />
+      <MomentElement moment="Soir" />
     </View>
   );
 }
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
     width: "100%",
+    marginBottom: 8,
   },
   dayTitle: {
     fontSize: 36,

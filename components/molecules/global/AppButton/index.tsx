@@ -19,6 +19,7 @@ interface AppButtonProps extends PressableProps {
   action?: () => void;
   style?: StyleProp<ViewStyle>;
   red?: boolean;
+  orange?: boolean;
   iconSize?: number;
 }
 
@@ -29,6 +30,7 @@ export default function AppButton({
   action,
   style,
   red,
+  orange,
   iconSize = 24,
   ...props
 }: AppButtonProps) {
@@ -36,10 +38,18 @@ export default function AppButton({
     useAppButton(type);
 
   const primaryContainerStyles = StyleSheet.flatten([
-    red ? globalStyles.buttonRed : globalStyles.buttonGreen,
+    orange
+      ? globalStyles.buttonOrange
+      : red
+      ? globalStyles.buttonRed
+      : globalStyles.buttonGreen,
     globalStyles.littleShadow,
     isPressed &&
-      (red ? globalStyles.buttonRedPressed : globalStyles.buttonGreenPressed),
+      (orange
+        ? globalStyles.buttonOrangePressed
+        : red
+        ? globalStyles.buttonRedPressed
+        : globalStyles.buttonGreenPressed),
   ]);
 
   return (
@@ -77,7 +87,7 @@ export default function AppButton({
           style={text && { marginLeft: 6 }}
           name={icon}
           size={iconSize}
-          color={secondaryColor}
+          color={type === "secondary" ? secondaryColor : theme.properties.beige}
         />
       )}
     </Pressable>
