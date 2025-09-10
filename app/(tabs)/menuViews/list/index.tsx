@@ -6,6 +6,7 @@ import { useMenu } from "@contexts/MenuContext";
 import { mockedMenuEmpty } from "@constants/mockedMenu";
 import { useState } from "react";
 import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
+import ValidationPopup from "@components/organisms/menu/list/ValidationPopup";
 
 export default function ListView() {
   const router = useRouter();
@@ -33,10 +34,7 @@ export default function ListView() {
       </View>
       <MenuList />
       <DarkScreenContainer visible={isDarkScreenVisible}>
-        <LargeButton
-          text="Annuler"
-          action={() => setIsDarkScreenVisible(false)} // déclenche fade-out
-        />
+        <ValidationPopup setIsDarkScreenVisible={setIsDarkScreenVisible} setMenu={setMenu} />
       </DarkScreenContainer>
     </ImageBackground>
   );

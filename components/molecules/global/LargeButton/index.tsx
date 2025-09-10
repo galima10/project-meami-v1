@@ -1,4 +1,11 @@
-import { View, StyleSheet, Pressable, PressableProps, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  PressableProps,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
 import Icon from "@components/atoms/global/Icon";
@@ -12,6 +19,7 @@ interface LargeButtonProps extends PressableProps {
   type?: "primary" | "secondary";
   action?: () => void;
   style?: StyleProp<ViewStyle>;
+  red?: boolean;
 }
 
 export default function LargeButton({
@@ -20,21 +28,25 @@ export default function LargeButton({
   type = "primary",
   action,
   style,
+  red,
   ...props
-  
 }: LargeButtonProps) {
   const { handlePressIn, handlePressOut, secondaryColor, isPressed } =
     useLargeButton(type);
 
   const primaryContainerStyles = StyleSheet.flatten([
-    globalStyles.buttonGreen,
+    red ? globalStyles.buttonRed : globalStyles.buttonGreen,
     globalStyles.littleShadow,
-    isPressed && globalStyles.buttonGreenPressed,
+    isPressed && (red ? globalStyles.buttonRedPressed : globalStyles.buttonGreenPressed),
   ]);
 
   return (
     <Pressable
-      style={[styles.button, type === "primary" && primaryContainerStyles, style]}
+      style={[
+        styles.button,
+        type === "primary" && primaryContainerStyles,
+        style,
+      ]}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onPress={action}
@@ -75,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    maxHeight: 48,
+    minHeight: 32,
     borderRadius: 50,
     alignSelf: "center",
   },
