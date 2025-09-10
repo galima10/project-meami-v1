@@ -4,11 +4,13 @@ import { useRouter } from "expo-router";
 import MenuList from "@components/organisms/menu/list/MenuList";
 import { useMenu } from "@contexts/MenuContext";
 import { mockedMenuEmpty } from "@constants/mockedMenu";
-
+import { useState } from "react";
+import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
 
 export default function ListView() {
   const router = useRouter();
   const { setMenu } = useMenu();
+  const [isDarkScreenVisible, setIsDarkScreenVisible] = useState(false);
 
   return (
     <ImageBackground
@@ -21,9 +23,21 @@ export default function ListView() {
           text="Liste des recettes"
           action={() => router.push("/menuViews/recipesList")}
         />
-        <LargeButton text="Vider le menu" icon="trash" type="secondary" action={() => setMenu(mockedMenuEmpty)} />
+        <LargeButton
+          text="Vider le menu"
+          icon="trash"
+          type="secondary"
+          // action={() => setMenu(mockedMenuEmpty)}
+          action={() => setIsDarkScreenVisible(true)}
+        />
       </View>
       <MenuList />
+      <DarkScreenContainer visible={isDarkScreenVisible}>
+        <LargeButton
+          text="Annuler"
+          action={() => setIsDarkScreenVisible(false)} // déclenche fade-out
+        />
+      </DarkScreenContainer>
     </ImageBackground>
   );
 }
@@ -31,6 +45,7 @@ export default function ListView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    position: "relative",
   },
   buttonsContainer: {
     flexDirection: "row",

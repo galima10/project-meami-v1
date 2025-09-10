@@ -2,19 +2,36 @@
 (global as any).__DEV__ = true;
 
 jest.mock("react-native-reanimated", () => {
-  // Mock minimal juste pour tes hooks
   return {
-    // Hooks
-    useSharedValue: (value: any) => ({ value }),
+    useSharedValue: (initial: number) => {
+      let val = initial;
+      return {
+        get value() {
+          return val;
+        },
+        set value(v: number) {
+          val = v;
+        },
+      };
+    },
     useAnimatedStyle: (fn: any) => fn(),
-    withTiming: (value: any) => value,
+    withTiming: (
+      toValue: any,
+      _config: any,
+      callback?: (finished: boolean) => void
+    ) => {
+      if (callback) callback(true); // simulate end of animation
+      return toValue;
+    },
     withRepeat: (animation: any) => animation,
     withSequence: (animation: any) => animation,
     withDelay: (_delay: any, animation: any) => animation,
     Easing: { bezier: () => {}, out: () => {} },
-
-    // Autres exports nécessaires pour éviter des erreurs
     addWhitelistedUIProps: () => {},
+    runOnJS:
+      (fn: any) =>
+      (...args: any[]) =>
+        fn(...args),
     default: { call: () => {} },
   };
 });
