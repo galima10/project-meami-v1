@@ -1,7 +1,7 @@
 import { useState } from "react";
 import theme from "@themes/index";
 
-export function useLargeButton(type: "primary" | "secondary") {
+export function useAppButton(type: "primary" | "secondary") {
   const [isPressed, setIsPressed] = useState(false);
   const [secondaryColor, setSecondaryColor] = useState(
     theme.properties.darkRed

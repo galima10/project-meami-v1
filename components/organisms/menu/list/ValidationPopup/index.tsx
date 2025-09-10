@@ -1,10 +1,10 @@
-import { View, StyleSheet } from "react-native";
-import theme from "@themes/index";
-import { globalStyles } from "@themes/styles";
-import LargeButton from "@components/molecules/global/LargeButton";
+import AppButton from "@components/molecules/global/AppButton";
 import { mockedMenuEmpty } from "@constants/mockedMenu";
 import { useMenu } from "@contexts/MenuContext";
+import theme from "@themes/index";
+import { globalStyles } from "@themes/styles";
 import { useRouter } from "expo-router";
+import { StyleSheet, View } from "react-native";
 
 interface ValidationPopupProps {
   setIsDarkScreenVisible: (visible: boolean) => void;
@@ -17,7 +17,7 @@ export default function ValidationPopup({
   const router = useRouter();
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
-      <LargeButton
+      <AppButton
         text="Vider sans retirer d'ingrédients"
         action={() => {
           setMenu(mockedMenuEmpty);
@@ -25,7 +25,7 @@ export default function ValidationPopup({
         }}
         style={styles.primaryButtons}
       />
-      <LargeButton
+      <AppButton
         text="Vider et valider le retrait des ingrédients"
         red
         action={() => {
@@ -36,7 +36,7 @@ export default function ValidationPopup({
         style={styles.primaryButtons}
       />
       <View style={styles.separator} />
-      <LargeButton
+      <AppButton
         text="Annuler"
         type="secondary"
         action={() => setIsDarkScreenVisible(false)}

@@ -1,17 +1,17 @@
-import { renderHook, act } from '@testing-library/react';
-import { useLargeButton } from '../useLargeButton';
+import { act, renderHook } from '@testing-library/react';
 import theme from '@themes/index';
+import { useAppButton } from '../useAppButton';
 
-describe('useLargeButton', () => {
+describe('useAppButton', () => {
   it('should initialize with isPressed false and secondaryColor darkRed', () => {
-    const { result } = renderHook(() => useLargeButton('secondary'));
+    const { result } = renderHook(() => useAppButton('secondary'));
 
     expect(result.current.isPressed).toBe(false);
     expect(result.current.secondaryColor).toBe(theme.properties.darkRed);
   });
 
   it('should handlePressIn sets isPressed true and lightRed for secondary', () => {
-    const { result } = renderHook(() => useLargeButton('secondary'));
+    const { result } = renderHook(() => useAppButton('secondary'));
 
     act(() => {
       result.current.handlePressIn();
@@ -22,7 +22,7 @@ describe('useLargeButton', () => {
   });
 
   it('should handlePressOut sets isPressed false and darkRed for secondary', () => {
-    const { result } = renderHook(() => useLargeButton('secondary'));
+    const { result } = renderHook(() => useAppButton('secondary'));
 
     // First press in
     act(() => {
@@ -39,7 +39,7 @@ describe('useLargeButton', () => {
   });
 
   it('should not change secondaryColor for primary type', () => {
-    const { result } = renderHook(() => useLargeButton('primary'));
+    const { result } = renderHook(() => useAppButton('primary'));
 
     act(() => {
       result.current.handlePressIn();

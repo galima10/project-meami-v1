@@ -1,10 +1,10 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
-import LargeButton from "@components/molecules/global/LargeButton";
-import { useRouter } from "expo-router";
-import MenuList from "@components/organisms/menu/list/MenuList";
-import { useState } from "react";
+import AppButton from "@components/molecules/global/AppButton";
 import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
+import MenuList from "@components/organisms/menu/list/MenuList";
 import ValidationPopup from "@components/organisms/menu/list/ValidationPopup";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { ImageBackground, StyleSheet, View } from "react-native";
 
 export default function ListView() {
   const router = useRouter();
@@ -17,11 +17,11 @@ export default function ListView() {
       resizeMode="cover"
     >
       <View style={styles.buttonsContainer}>
-        <LargeButton
+        <AppButton
           text="Liste des recettes"
           action={() => router.push("/menuViews/recipesList")}
         />
-        <LargeButton
+        <AppButton
           text="Vider le menu"
           icon="trash"
           type="secondary"

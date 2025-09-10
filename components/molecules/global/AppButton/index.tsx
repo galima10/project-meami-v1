@@ -1,49 +1,52 @@
+import Icon from "@components/atoms/global/Icon";
+import { AppText } from "@components/atoms/global/Texts";
+import { useAppButton } from "@hooks/global/useAppButton";
+import theme from "@themes/index";
+import { globalStyles } from "@themes/styles";
 import {
-  View,
-  StyleSheet,
   Pressable,
   PressableProps,
   StyleProp,
+  StyleSheet,
+  View,
   ViewStyle,
 } from "react-native";
-import { AppText } from "@components/atoms/global/Texts";
-import theme from "@themes/index";
-import Icon from "@components/atoms/global/Icon";
-import { useState } from "react";
-import { globalStyles } from "@themes/styles";
-import { useLargeButton } from "@hooks/global/useLargeButton";
 
-interface LargeButtonProps extends PressableProps {
-  text: string;
+interface AppButtonProps extends PressableProps {
+  text?: string;
   icon?: string;
   type?: "primary" | "secondary";
   action?: () => void;
   style?: StyleProp<ViewStyle>;
   red?: boolean;
+  iconSize?: number;
 }
 
-export default function LargeButton({
+export default function AppButton({
   text,
   icon,
   type = "primary",
   action,
   style,
   red,
+  iconSize = 24,
   ...props
-}: LargeButtonProps) {
+}: AppButtonProps) {
   const { handlePressIn, handlePressOut, secondaryColor, isPressed } =
-    useLargeButton(type);
+    useAppButton(type);
 
   const primaryContainerStyles = StyleSheet.flatten([
     red ? globalStyles.buttonRed : globalStyles.buttonGreen,
     globalStyles.littleShadow,
-    isPressed && (red ? globalStyles.buttonRedPressed : globalStyles.buttonGreenPressed),
+    isPressed &&
+      (red ? globalStyles.buttonRedPressed : globalStyles.buttonGreenPressed),
   ]);
 
   return (
     <Pressable
       style={[
         styles.button,
+        text && { paddingHorizontal: 20, paddingVertical: 8 },
         type === "primary" && primaryContainerStyles,
         style,
       ]}
@@ -52,7 +55,7 @@ export default function LargeButton({
       onPress={action}
       {...props}
     >
-      <View>
+      {text && (
         <AppText
           style={[
             styles.text,
@@ -67,12 +70,13 @@ export default function LargeButton({
         >
           {text}
         </AppText>
-      </View>
+      )}
+
       {icon && (
         <Icon
-          style={{ marginLeft: 6 }}
+          style={text && { marginLeft: 6 }}
           name={icon}
-          size={24}
+          size={iconSize}
           color={secondaryColor}
         />
       )}
@@ -82,18 +86,17 @@ export default function LargeButton({
 
 const styles = StyleSheet.create({
   button: {
-    paddingHorizontal: 20,
-    paddingVertical: 8,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
     minHeight: 32,
     borderRadius: 50,
     alignSelf: "center",
+    // backgroundColor: "rgba(0, 0, 0, 0.4)",
   },
   primary: {
     textShadowColor: "rgba(0, 0, 0, 0.4)", // couleur
-    textShadowRadius: 20, // flou
+    textShadowRadius: 15, // flou
   },
   text: {
     textAlign: "center",

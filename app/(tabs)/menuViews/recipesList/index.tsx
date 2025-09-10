@@ -1,9 +1,9 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
-import theme from "@themes/index";
-import LargeButton from "@components/molecules/global/LargeButton";
+import AppButton from "@components/molecules/global/AppButton";
 import { mockedMenu } from "@constants/mockedMenu";
 import { useMenu } from "@contexts/MenuContext";
+import theme from "@themes/index";
+import { ImageBackground, StyleSheet } from "react-native";
 
 export default function RecipesListView() {
   const { setMenu } = useMenu();
@@ -16,7 +16,7 @@ export default function RecipesListView() {
       <AppText style={styles.text}>
         Menu de la semaine Vue liste des recettes
       </AppText>
-      <LargeButton
+      <AppButton
         action={() => setMenu(mockedMenu)}
         text="Ajouter des recettes"
         style={{ marginTop: 20 }}

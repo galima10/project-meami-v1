@@ -1,6 +1,5 @@
 import { View, StyleSheet, ImageBackground } from "react-native";
-import { AppText } from "@components/atoms/global/Texts";
-import theme from "@themes/index";
+import DaySlide from "@components/organisms/menu/modify/DaySlide";
 
 export default function ModifyView() {
   return (
@@ -9,7 +8,7 @@ export default function ModifyView() {
       style={styles.screen}
       resizeMode="cover"
     >
-      <AppText style={styles.text}>Menu de la semaine Vue modifier</AppText>
+      <DaySlide />
     </ImageBackground>
   );
 }
@@ -17,14 +16,5 @@ export default function ModifyView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontFamily: "SN",
-    fontWeight: theme.properties.bold,
-    fontSize: 24,
-    textAlign: "center",
-    paddingHorizontal: 20,
   },
 });
