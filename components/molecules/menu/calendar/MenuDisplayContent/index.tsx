@@ -2,7 +2,7 @@ import { View, StyleSheet } from "react-native";
 import { DayMomentType } from "@app-types/DayMomentType";
 import { AppText } from "@components/atoms/global/Texts";
 import theme from "@themes/index";
-import RecipesContainer from "../../list/RecipesContainer";
+import RecipesContainer from "../RecipesContainer";
 import { useMenuDisplayContent } from "@hooks/menu/list/useMenuDisplayContent";
 
 interface MenuDisplayProps extends DayMomentType {
