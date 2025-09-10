@@ -32,6 +32,7 @@ export default function DaySliderDisplay({
         horizontal
         showsHorizontalScrollIndicator={false}
         ref={scrollRef}
+        scrollEnabled={false}
         onMomentumScrollEnd={(e) => {
           const offsetX = e.nativeEvent.contentOffset.x;
           const newIndex = Math.round(offsetX / getScreenWidth());
