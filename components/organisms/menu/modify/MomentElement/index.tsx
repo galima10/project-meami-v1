@@ -5,15 +5,20 @@ import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 
 interface MomentElementProps {
-  moment: string;
+  moment: "Matin" | "Midi" | "Soir";
+  setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
+  setIsDarkScreenVisible: (visible: boolean) => void;
 }
 
-export default function MomentElement({moment} : MomentElementProps) {
+export default function MomentElement({moment, setMomentSelected, setIsDarkScreenVisible} : MomentElementProps) {
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
       <View style={styles.header}>
         <AppText style={styles.momentTitle}>{moment}</AppText>
-        <AppButton icon="add" iconSize={26} style={styles.addButton} orange />
+        <AppButton icon="add" iconSize={26} style={styles.addButton} orange onPress={() => {
+          setMomentSelected(moment);
+          setIsDarkScreenVisible?.(true);
+        }} />
       </View>
     </View>
   );

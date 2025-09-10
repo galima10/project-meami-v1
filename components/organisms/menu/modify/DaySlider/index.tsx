@@ -6,9 +6,11 @@ import { days } from "@utils/getDate";
 interface DaySliderProps {
   scrollRef: any;
   setCurrentIndex: (index: number) => void;
+  setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
+  setIsDarkScreenVisible: (visible: boolean) => void;
 }
 
-export default function DaySlider({ scrollRef, setCurrentIndex }: DaySliderProps) {
+export default function DaySlider({ scrollRef, setCurrentIndex, setMomentSelected, setIsDarkScreenVisible }: DaySliderProps) {
 
   return (
     <ScrollView
@@ -29,7 +31,7 @@ export default function DaySlider({ scrollRef, setCurrentIndex }: DaySliderProps
     >
       {days.map((day, index) => (
         <View key={index} style={{ width: getScreenWidth(), flex: 1 }}>
-          <DaySlide key={day} day={day} />
+          <DaySlide key={day} day={day} setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
         </View>
       ))}
     </ScrollView>

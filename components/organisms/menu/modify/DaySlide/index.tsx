@@ -6,9 +6,15 @@ import MomentElement from "../MomentElement";
 
 interface DaySlideProps {
   day?: string;
+  setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
+  setIsDarkScreenVisible: (visible: boolean) => void;
 }
 
-export default function DaySlide({ day }: DaySlideProps) {
+export default function DaySlide({
+  day,
+  setMomentSelected,
+  setIsDarkScreenVisible,
+}: DaySlideProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -25,9 +31,9 @@ export default function DaySlide({ day }: DaySlideProps) {
         contentContainerStyle={{ paddingBottom: 16 }}
         showsVerticalScrollIndicator={false}
       >
-        <MomentElement moment="Matin" />
-        <MomentElement moment="Midi" />
-        <MomentElement moment="Soir" />
+        <MomentElement moment="Matin" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
+        <MomentElement moment="Midi" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
+        <MomentElement moment="Soir" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
       </ScrollView>
     </View>
   );
