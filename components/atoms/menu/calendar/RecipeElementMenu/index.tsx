@@ -5,9 +5,10 @@ import { useState } from "react";
 
 interface RecipeElementMenuProps {
   recipe: string;
+  handleInteraction: () => void;
 }
 
-export default function RecipeElementMenu({ recipe }: RecipeElementMenuProps) {
+export default function RecipeElementMenu({ recipe, handleInteraction }: RecipeElementMenuProps) {
   const [isPressed, setIsPressed] = useState(false);
   return (
     //   <Link href={`/recipes/${recipe}`} asChild>
@@ -17,6 +18,7 @@ export default function RecipeElementMenu({ recipe }: RecipeElementMenuProps) {
       style={styles.container}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
+      onPress={handleInteraction}
     >
       <AppText style={[styles.text, isPressed && { opacity: 0.5 }]}>
         {recipe}

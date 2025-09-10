@@ -13,6 +13,7 @@ interface DaySliderDisplayProps {
   momentSelected: any;
   todayIndex: number;
   scrollRef: React.RefObject<ScrollView | null>;
+  handleInteraction: () => void;
 }
 
 export default function DaySliderDisplay({
@@ -21,7 +22,8 @@ export default function DaySliderDisplay({
   setCurrentIndex,
   momentSelected,
   todayIndex,
-  scrollRef
+  scrollRef,
+  handleInteraction
 }: DaySliderDisplayProps) {
   const { menu } = useMenu();
   return (
@@ -45,6 +47,7 @@ export default function DaySliderDisplay({
               momentSelected={momentSelected}
               todayIndex={todayIndex}
               menu={menu[day]}
+              handleInteraction={handleInteraction}
             />
           </View>
         ))}

@@ -58,6 +58,7 @@ export default function CalendarView() {
         momentSelected={momentSelected}
         todayIndex={todayIndex}
         scrollRef={scrollRef}
+        handleInteraction={handleInteraction}
       />
       <View
         style={{ position: "absolute", width: "100%", alignItems: "center" }}

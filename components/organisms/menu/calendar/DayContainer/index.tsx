@@ -17,6 +17,7 @@ interface DayContainerProps extends DayMomentType {
     midi: { name: string; type: string }[];
     soir: { name: string; type: string }[];
   };
+  handleInteraction: () => void;
 }
 
 export default function DayContainer({
@@ -26,12 +27,18 @@ export default function DayContainer({
   index,
   todayIndex,
   menu,
+  handleInteraction,
 }: DayContainerProps) {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flexDirection: "row-reverse", flex: 1 }}>
         <View style={styles.menuContainer}>
-          <MenuContentContainer day={day} menu={menu} momentSelected={momentSelected} />
+          <MenuContentContainer
+            day={day}
+            menu={menu}
+            momentSelected={momentSelected}
+            handleInteraction={handleInteraction}
+          />
         </View>
         <View style={[styles.band, globalStyles.bigShadow]}>
           <MomentBand
