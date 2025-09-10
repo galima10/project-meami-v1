@@ -2,8 +2,8 @@ import { getDateInfo } from ".";
 import { getDayMoment } from ".";
 
 describe("getDayMoment", () => {
-  it("return morning if hour is between 4 (include) and 12 (exclue)", () => {
-    expect(getDayMoment(4)).toBe("morning");
+  it("return morning if hour is between 0 (include) and 12 (exclue)", () => {
+    expect(getDayMoment(0)).toBe("morning");
     expect(getDayMoment(7)).toBe("morning");
     expect(getDayMoment(12)).not.toBe("morning");
   });
@@ -14,11 +14,10 @@ describe("getDayMoment", () => {
     expect(getDayMoment(18)).not.toBe("noon");
   });
 
-  it("return evening if hour is between 18 (include) and 4 the next day (exclue)", () => {
+  it("return evening if hour is between 18 (include) and 23 (include)", () => {
     expect(getDayMoment(18)).toBe("evening");
     expect(getDayMoment(22)).toBe("evening");
-    expect(getDayMoment(2)).toBe("evening");
-    expect(getDayMoment(4)).not.toBe("evening");
+    expect(getDayMoment(0)).not.toBe("evening");
   });
 });
 

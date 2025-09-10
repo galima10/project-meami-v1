@@ -16,8 +16,14 @@ interface DayMenuProps extends DayMomentType {
     midi: { name: string; type: string }[];
     soir: { name: string; type: string }[];
   };
+  handleInteraction: () => void;
 }
-export default function MenuContentContainer({ day, menu, momentSelected }: DayMenuProps) {
+export default function MenuContentContainer({
+  day,
+  menu,
+  momentSelected,
+  handleInteraction,
+}: DayMenuProps) {
   const key = useMemo(() => `${day.toLowerCase()}_icons`, [day]);
   return (
     <ImageBackground
@@ -34,7 +40,11 @@ export default function MenuContentContainer({ day, menu, momentSelected }: DayM
           width: "100%",
         }}
       >
-        <MenuDisplayContent momentSelected={momentSelected} menu={menu} />
+        <MenuDisplayContent
+          momentSelected={momentSelected}
+          menu={menu}
+          handleInteraction={handleInteraction}
+        />
       </LinearGradient>
     </ImageBackground>
   );

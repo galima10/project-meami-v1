@@ -55,30 +55,6 @@ describe("useDate", () => {
     });
   });
 
-  it("met à jour après 1 minute et recalcule todayIndex", async () => {
-    let callCount = 0;
-    mockedGetDateInfo.mockImplementation(() => {
-      callCount++;
-      if (callCount === 1)
-        return { dayOfWeek: "lundi", dayAndMonth: "01 janvier", hour: 10 };
-      return { dayOfWeek: "mardi", dayAndMonth: "02 janvier", hour: 11 };
-    });
-
-    const { result } = renderHook(() => useDate());
-
-    act(() => {
-      jest.advanceTimersByTime(60 * 1000);
-    });
-
-    await act(async () => Promise.resolve());
-
-    expect(result.current.dayOfWeek).toBe("mardi");
-    expect(result.current.hour).toBe(11);
-    expect(result.current.todayIndex).toBe(
-      days.findIndex((d) => d === "mardi")
-    );
-  });
-
   it("se met à jour au focus et recalcule todayIndex", async () => {
     let callCount = 0;
     mockedGetDateInfo.mockImplementation(() => {

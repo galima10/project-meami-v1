@@ -11,11 +11,13 @@ interface MenuDisplayProps extends DayMomentType {
     midi: { name: string; type: string }[];
     soir: { name: string; type: string }[];
   };
+  handleInteraction: () => void;
 }
 
 export default function MenuDisplayContent({
   momentSelected,
   menu,
+  handleInteraction,
 }: MenuDisplayProps) {
   const {
     desserts,
@@ -29,20 +31,20 @@ export default function MenuDisplayContent({
     <View style={styles.menuContainer}>
       {lengthMenu > 0 ? (
         momentSelected === "morning" ? (
-          <RecipesContainer meals={petitDej} />
+          <RecipesContainer meals={petitDej} handleInteraction={handleInteraction} />
         ) : (
           <>
-            <RecipesContainer meals={platsPrincipaux} />
+            <RecipesContainer meals={platsPrincipaux} handleInteraction={handleInteraction} />
             {legumesAccompagnements.length > 0 && (
               <>
                 <View style={styles.separator} />
-                <RecipesContainer meals={legumesAccompagnements} />
+                <RecipesContainer meals={legumesAccompagnements} handleInteraction={handleInteraction} />
               </>
             )}
             {desserts.length > 0 && (
               <>
                 <View style={styles.separator} />
-                <RecipesContainer meals={desserts} />
+                <RecipesContainer meals={desserts} handleInteraction={handleInteraction} />
               </>
             )}
           </>

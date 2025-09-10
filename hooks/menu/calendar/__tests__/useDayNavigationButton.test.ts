@@ -1,7 +1,15 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { useDayNavigationButton } from '../dayNavigation/useDayNavigationButton';
 
 describe('useDayNavigationButton', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('should return correct flags for left and right', () => {
     const { result: hookLeft } = renderHook(() =>
       useDayNavigationButton('morning', 0, 'left')
@@ -21,12 +29,22 @@ describe('useDayNavigationButton', () => {
       const { result } = renderHook(() =>
         useDayNavigationButton('evening', index, 'left')
       );
+
+      act(() => {
+        jest.advanceTimersByTime(50);
+      });
+
       expect(result.current.shouldBeWhite).toBe(true);
     });
 
     const { result: resultOther } = renderHook(() =>
       useDayNavigationButton('evening', 1, 'left')
     );
+
+    act(() => {
+      jest.advanceTimersByTime(50);
+    });
+
     expect(resultOther.current.shouldBeWhite).toBe(false);
   });
 
@@ -34,11 +52,21 @@ describe('useDayNavigationButton', () => {
     const { result: result4 } = renderHook(() =>
       useDayNavigationButton('noon', 4, 'left')
     );
+
+    act(() => {
+      jest.advanceTimersByTime(50);
+    });
+
     expect(result4.current.shouldBeWhite).toBe(true);
 
     const { result: resultOther } = renderHook(() =>
       useDayNavigationButton('noon', 3, 'left')
     );
+
+    act(() => {
+      jest.advanceTimersByTime(50);
+    });
+
     expect(resultOther.current.shouldBeWhite).toBe(false);
   });
 
@@ -46,6 +74,11 @@ describe('useDayNavigationButton', () => {
     const { result } = renderHook(() =>
       useDayNavigationButton('morning', undefined, 'left')
     );
+
+    act(() => {
+      jest.advanceTimersByTime(50);
+    });
+
     expect(result.current.shouldBeWhite).toBe(false);
   });
 });
