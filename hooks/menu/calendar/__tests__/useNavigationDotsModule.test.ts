@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { useNavigationDotsModule } from '../dayNavigation/useNavigationDotsModule';
+import { useNavigationDotsModule } from '../dayNavigation/useCalendarNavigationDotsModule';
 
 describe('useNavigationDotsModule', () => {
   let goToSlideMock: jest.Mock;

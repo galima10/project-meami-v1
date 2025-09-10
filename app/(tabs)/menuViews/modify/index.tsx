@@ -3,6 +3,7 @@ import { days } from "@utils/getDate";
 import DaySlide from "@components/organisms/menu/modify/DaySlide";
 import { useRef, useState } from "react";
 import { getScreenWidth } from "@utils/getScreenDimensions";
+import ModifyNavigationDotsModule from "@components/molecules/menu/modify/ModifyNavigationDotsModule";
 
 export default function ModifyView() {
   const scrollRef = useRef<ScrollView>(null);
@@ -32,6 +33,7 @@ export default function ModifyView() {
           </View>
         ))}
       </ScrollView>
+      <ModifyNavigationDotsModule currentIndex={currentIndex} />
     </ImageBackground>
   );
 }

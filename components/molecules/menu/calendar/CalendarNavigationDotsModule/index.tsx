@@ -1,9 +1,9 @@
-import { View, StyleSheet } from "react-native";
-import NavigationDot from "@components/atoms/menu/calendar/NavigationDot";
+import NavigationDot from "@components/atoms/menu/global/NavigationDot";
 import { days } from "@utils/getDate";
-import { useNavigationDotsModule } from "@hooks/menu/calendar/dayNavigation/useNavigationDotsModule";
+import { StyleSheet, View } from "react-native";
+import { useCalendarNavigationDotsModule } from "@hooks/menu/calendar/dayNavigation/useCalendarNavigationDotsModule";
 
-interface NavigationDotsModuleProps {
+interface CalendarNavigationDotsModuleProps {
   currentIndex: number;
   goToSlide: (index: number) => void;
   handleInteraction: () => void;
@@ -14,15 +14,15 @@ interface NavigationDotsModuleProps {
   actualDayMoment: "morning" | "noon" | "evening";
 }
 
-export default function NavigationDotsModule({
+export default function CalendarNavigationDotsModule({
   currentIndex,
   goToSlide,
   handleInteraction,
   todayIndex,
   setMomentSelected,
   actualDayMoment,
-}: NavigationDotsModuleProps) {
-  const { handleDotPress } = useNavigationDotsModule(
+}: CalendarNavigationDotsModuleProps) {
+  const { handleDotPress } = useCalendarNavigationDotsModule(
     goToSlide,
     handleInteraction,
     todayIndex,
