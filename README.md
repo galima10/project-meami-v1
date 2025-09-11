@@ -105,9 +105,21 @@
 
 [1.4.0] - (../../....)
 
-  - Suppression de la mise à jour de la date toutes les minutes pour gagner en performances
-  - Fixs UI et bugs visuels
-  - Changement de condition pour associer les moments de la journée à l'heure actuelle
-  - Ajout d'une pop-up de validation quand on vide le menu dans l'onglet Menu de la semaine : Vue Liste
+- **Fixs** :
+  > Suppression de la mise à jour de la date toutes les minutes pour gagner en performances
+  > Fixs UI et bugs visuels
+  > Changement de condition pour associer les moments de la journée à l'heure actuelle
+- **Pop-up de validation** :
+  > Ajout d'une pop-up de validation quand on vide le menu dans l'onglet Menu de la semaine : Vue Liste
+- **Onglet Menu de la semaine : Vue Modifier le menu** :
+  > Ajout d'un slider de jour navigable via des dots de navigation ou en swipant pour chaque jour de la semaine
+  > Ajout d'un bouton "Corbeille" pour chaque jour de la vue
+    ! Ne fait rien pour le moment
+  > Stylisation des slides des jours :
+    - 3 moments de la journée peuvent être sélectionnés pour modifier le menu de ce moment via le bouton "+"
+      ! Une barre latérale s'affiche sur le côté avec les différentes recettes ajoutées au menu séparées par type
+      ! Pour l'instant, seules des recettes mockées y sont présentes
+    ! Affichage mocké des recettes déjà ajoutées au moment "Matin"
+  !! Aucune autre fonctionnalité prévue n'est présente pour le moment
 
 ### Notes importantes : 
