@@ -29,7 +29,7 @@ export const recipeTypes: Record<
   },
   vegetables: {
     title: "Légumes",
-    imageSource: require("@assets/images/precharged/illustrations/recipesTypes/vegetables_3x.jpg"),
+    imageSource: require("@assets/images/requires/recipesTypes/vegetables_3x.jpg"),
     color: {
       text: theme.properties.white,
       normal: {
@@ -44,7 +44,7 @@ export const recipeTypes: Record<
   },
   accompaniments: {
     title: "Accompa- gnements",
-    imageSource: require("@assets/images/precharged/illustrations/recipesTypes/accompaniments_3x.jpg"),
+    imageSource: require("@assets/images/requires/recipesTypes/accompaniments_3x.jpg"),
     color: {
       text: theme.properties.white,
       normal: {
@@ -59,7 +59,7 @@ export const recipeTypes: Record<
   },
   desserts: {
     title: "Desserts",
-    imageSource: require("@assets/images/precharged/illustrations/recipesTypes/desserts_3x.jpg"),
+    imageSource: require("@assets/images/requires/recipesTypes/desserts_3x.jpg"),
     color: {
       text: theme.properties.white,
       normal: {
@@ -74,7 +74,7 @@ export const recipeTypes: Record<
   },
   ingredients: {
     title: "Ingrédients",
-    imageSource: require("@assets/images/precharged/illustrations/recipesTypes/ingredients_3x.jpg"),
+    imageSource: require("@assets/images/requires/recipesTypes/ingredients_3x.jpg"),
     color: {
       text: theme.properties.brown,
       normal: {
