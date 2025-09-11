@@ -6,44 +6,36 @@ import ReturnButton from "@components/molecules/menu/modify/ReturnButton";
 import RecipeTypeButton from "@components/molecules/menu/modify/RecipeTypeButton";
 import { recipeTypes } from "@constants/recipeTypes";
 import { useState } from "react";
+import RecipesType from "../sideBar/RecipesType";
 
 interface RecipesSideBarProps {
   momentSelected: "Matin" | "Midi" | "Soir" | undefined;
   setIsDarkScreenVisible: (visible: boolean) => void;
+  daySelected: string;
 }
 
 export default function RecipesSideBar({
   momentSelected,
   setIsDarkScreenVisible,
+  daySelected,
 }: RecipesSideBarProps) {
   const [step, setStep] = useState<1 | 2>(1);
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
+      <AppText>{daySelected}</AppText>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.typesList}
         contentContainerStyle={{ paddingBottom: 32 }}
       >
-        {momentSelected !== "Matin" && (
-          <>
-            {step === 1 && (
-              <>
-                {Object.entries(recipeTypes).map(([key, type]) => {
-                  if (key !== "breakfast") {
-                    return (
-                      <RecipeTypeButton
-                        key={key}
-                        type={key}
-                        action={() => {
-                          setStep(2);
-                        }}
-                      />
-                    );
-                  }
-                })}
-              </>
-            )}
-          </>
+        {momentSelected !== "Matin" ? (
+          step === 1 ? (
+            <RecipesType setStep={setStep} />
+          ) : (
+            <></>
+          )
+        ) : (
+          <></>
         )}
       </ScrollView>
       <ReturnButton

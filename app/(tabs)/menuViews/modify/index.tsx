@@ -5,6 +5,7 @@ import { useDaySlider } from "@hooks/menu/modify/useDaySlider";
 import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
 import { useState } from "react";
 import RecipesSideBar from "@components/organisms/menu/modify/RecipesSideBar";
+import { days } from "@utils/getDate";
 
 export default function ModifyView() {
   const { scrollRef, currentIndex, setCurrentIndex, goToSlide } =
@@ -27,7 +28,7 @@ export default function ModifyView() {
         goToSlide={goToSlide}
       />
       <DarkScreenContainer visible={isDarkScreenVisible}>
-        <RecipesSideBar momentSelected={momentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible}  />
+        <RecipesSideBar momentSelected={momentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} daySelected={days[currentIndex]} />
       </DarkScreenContainer>
     </ImageBackground>
   );
