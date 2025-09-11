@@ -4,6 +4,7 @@ import { ScrollView } from "react-native";
 export function useRecipesSideBar(
   setIsDarkScreenVisible: (visible: boolean) => void,
   setMomentSelected: (moment: "Matin" | "Midi" | "Soir" | undefined) => void,
+  setSelectedRecipeType: (type: string | undefined) => void,
   momentSelected: "Matin" | "Midi" | "Soir" | undefined
 ) {
   const scrollRef = useRef<ScrollView>(null);
@@ -11,6 +12,7 @@ export function useRecipesSideBar(
 
   const handleClose = () => {
     setIsDarkScreenVisible(false);
+    setSelectedRecipeType(undefined);
     setMomentSelected(undefined);
   };
 

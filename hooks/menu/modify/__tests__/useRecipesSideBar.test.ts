@@ -5,15 +5,22 @@ import { ScrollView } from "react-native";
 describe("useRecipesSideBar", () => {
   let setIsDarkScreenVisible: jest.Mock;
   let setMomentSelected: jest.Mock;
+  let setSelectedRecipeType: jest.Mock;
 
   beforeEach(() => {
     setIsDarkScreenVisible = jest.fn();
     setMomentSelected = jest.fn();
+    setSelectedRecipeType = jest.fn();
   });
 
   it("should start with step = 1", () => {
     const { result } = renderHook(() =>
-      useRecipesSideBar(setIsDarkScreenVisible, setMomentSelected, undefined)
+      useRecipesSideBar(
+        setIsDarkScreenVisible,
+        setMomentSelected,
+        setSelectedRecipeType,
+        undefined
+      )
     );
 
     expect(result.current.step).toBe(1);
@@ -21,7 +28,12 @@ describe("useRecipesSideBar", () => {
 
   it("should update step when setStep is called", () => {
     const { result } = renderHook(() =>
-      useRecipesSideBar(setIsDarkScreenVisible, setMomentSelected, undefined)
+      useRecipesSideBar(
+        setIsDarkScreenVisible,
+        setMomentSelected,
+        setSelectedRecipeType,
+        undefined
+      )
     );
 
     act(() => {
@@ -33,7 +45,12 @@ describe("useRecipesSideBar", () => {
 
   it("should call setIsDarkScreenVisible(false) and setMomentSelected(undefined) when handleCloseAndReturn called at step 1", () => {
     const { result } = renderHook(() =>
-      useRecipesSideBar(setIsDarkScreenVisible, setMomentSelected, "Matin")
+      useRecipesSideBar(
+        setIsDarkScreenVisible,
+        setMomentSelected,
+        setSelectedRecipeType,
+        "Matin"
+      )
     );
 
     act(() => {
@@ -42,11 +59,17 @@ describe("useRecipesSideBar", () => {
 
     expect(setIsDarkScreenVisible).toHaveBeenCalledWith(false);
     expect(setMomentSelected).toHaveBeenCalledWith(undefined);
+    expect(setSelectedRecipeType).toHaveBeenCalledWith(undefined);
   });
 
   it("should return to step 1 if step = 2 and momentSelected != 'Matin'", () => {
     const { result } = renderHook(() =>
-      useRecipesSideBar(setIsDarkScreenVisible, setMomentSelected, "Soir")
+      useRecipesSideBar(
+        setIsDarkScreenVisible,
+        setMomentSelected,
+        setSelectedRecipeType,
+        "Soir"
+      )
     );
 
     act(() => {
@@ -64,7 +87,12 @@ describe("useRecipesSideBar", () => {
   it("should scroll to top when handleReturn is called", () => {
     const scrollToMock = jest.fn();
     const { result } = renderHook(() =>
-      useRecipesSideBar(setIsDarkScreenVisible, setMomentSelected, "Soir")
+      useRecipesSideBar(
+        setIsDarkScreenVisible,
+        setMomentSelected,
+        setSelectedRecipeType,
+        "Soir"
+      )
     );
 
     // simule ref attachée avec scrollTo

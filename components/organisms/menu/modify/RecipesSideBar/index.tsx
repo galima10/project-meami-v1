@@ -30,6 +30,7 @@ export default function RecipesSideBar({
   const { step, setStep, scrollRef, handleCloseAndReturn } = useRecipesSideBar(
     setIsDarkScreenVisible,
     setMomentSelected,
+    setSelectedRecipeType,
     momentSelected
   );
 
