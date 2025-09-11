@@ -22,7 +22,7 @@ export default function RecipesSideBar({
   const [step, setStep] = useState<1 | 2>(1);
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
-      <AppText>{daySelected}</AppText>
+      <AppText>{daySelected} : {momentSelected}</AppText>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.typesList}
