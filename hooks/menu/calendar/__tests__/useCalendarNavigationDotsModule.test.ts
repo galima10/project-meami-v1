@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { useNavigationDotsModule } from '../dayNavigation/useCalendarNavigationDotsModule';
+import { useCalendarNavigationDotsModule } from '../dayNavigation/useCalendarNavigationDotsModule';
 
 describe('useNavigationDotsModule', () => {
   let goToSlideMock: jest.Mock;
@@ -16,7 +16,7 @@ describe('useNavigationDotsModule', () => {
 
   it('should call handleInteraction, goToSlide, and setMomentSelected correctly when index === todayIndex', () => {
     const { result } = renderHook(() =>
-      useNavigationDotsModule(
+      useCalendarNavigationDotsModule(
         goToSlideMock,
         handleInteractionMock,
         todayIndex,
@@ -34,7 +34,7 @@ describe('useNavigationDotsModule', () => {
 
   it('should set momentSelected to "morning" when index !== todayIndex', () => {
     const { result } = renderHook(() =>
-      useNavigationDotsModule(
+      useCalendarNavigationDotsModule(
         goToSlideMock,
         handleInteractionMock,
         todayIndex,

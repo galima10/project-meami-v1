@@ -26,6 +26,7 @@ export default function RecipeTypeButton({
       alignItems: "center",
       minHeight: 170,
       marginVertical: 16,
+      marginHorizontal: 16,
     },
     image: {
       width: 100,

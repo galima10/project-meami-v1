@@ -9,6 +9,7 @@ interface DaySlideProps {
   setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
   setIsDarkScreenVisible: (visible: boolean) => void;
   momentSelected: "Matin" | "Midi" | "Soir" | undefined;
+  setSelectedRecipeType: (type: string | undefined) => void;
 }
 
 export default function DaySlide({
@@ -16,7 +17,31 @@ export default function DaySlide({
   setMomentSelected,
   setIsDarkScreenVisible,
   momentSelected,
+  setSelectedRecipeType,
 }: DaySlideProps) {
+  const mockedRecipesList = [
+    {
+      id: 1,
+      name: "Pâtes asperges au citron",
+      type: "meats",
+      image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+      number: 2,
+    },
+    {
+      id: 2,
+      name: "Pâtes asperges au citron",
+      type: "meats",
+      image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+      number: 2,
+    },
+    {
+      id: 3,
+      name: "Pâtes asperges au citron",
+      type: "meats",
+      image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+      number: 2,
+    },
+  ];
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -33,9 +58,26 @@ export default function DaySlide({
         contentContainerStyle={{ paddingBottom: 16 }}
         showsVerticalScrollIndicator={false}
       >
-        <MomentElement moment="Matin" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} isActive={momentSelected === "Matin"} />
-        <MomentElement moment="Midi" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} isActive={momentSelected === "Midi"} />
-        <MomentElement moment="Soir" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} isActive={momentSelected === "Soir"} />
+        <MomentElement
+          moment="Matin"
+          setMomentSelected={setMomentSelected}
+          setIsDarkScreenVisible={setIsDarkScreenVisible}
+          isActive={momentSelected === "Matin"}
+          setSelectedRecipeType={setSelectedRecipeType}
+          recipes={mockedRecipesList}
+        />
+        <MomentElement
+          moment="Midi"
+          setMomentSelected={setMomentSelected}
+          setIsDarkScreenVisible={setIsDarkScreenVisible}
+          isActive={momentSelected === "Midi"}
+        />
+        <MomentElement
+          moment="Soir"
+          setMomentSelected={setMomentSelected}
+          setIsDarkScreenVisible={setIsDarkScreenVisible}
+          isActive={momentSelected === "Soir"}
+        />
       </ScrollView>
     </View>
   );

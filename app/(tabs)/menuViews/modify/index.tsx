@@ -16,6 +16,10 @@ export default function ModifyView() {
     "Matin" | "Midi" | "Soir" | undefined
   >(undefined);
 
+  const [selectedRecipeType, setSelectedRecipeType] = useState<
+    string | undefined
+  >(undefined);
+
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/menu_3x.jpg")}
@@ -28,6 +32,7 @@ export default function ModifyView() {
         setCurrentIndex={setCurrentIndex}
         setMomentSelected={setMomentSelected}
         momentSelected={momentSelected}
+        setSelectedRecipeType={setSelectedRecipeType}
       />
       <ModifyNavigationDotsModule
         currentIndex={currentIndex}
@@ -39,6 +44,8 @@ export default function ModifyView() {
           setIsDarkScreenVisible={setIsDarkScreenVisible}
           daySelected={days[currentIndex]}
           setMomentSelected={setMomentSelected}
+          selectedRecipeType={selectedRecipeType}
+          setSelectedRecipeType={setSelectedRecipeType}
         />
       </DarkScreenContainer>
     </ImageBackground>

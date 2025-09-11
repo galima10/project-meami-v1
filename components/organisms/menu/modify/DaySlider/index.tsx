@@ -9,6 +9,7 @@ interface DaySliderProps {
   setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
   setIsDarkScreenVisible: (visible: boolean) => void;
   momentSelected: "Matin" | "Midi" | "Soir" | undefined;
+  setSelectedRecipeType: (type: string | undefined) => void;
 }
 
 export default function DaySlider({
@@ -17,6 +18,7 @@ export default function DaySlider({
   setMomentSelected,
   setIsDarkScreenVisible,
   momentSelected,
+  setSelectedRecipeType,
 }: DaySliderProps) {
   return (
     <ScrollView
@@ -43,6 +45,7 @@ export default function DaySlider({
             setMomentSelected={setMomentSelected}
             setIsDarkScreenVisible={setIsDarkScreenVisible}
             momentSelected={momentSelected}
+            setSelectedRecipeType={setSelectedRecipeType}
           />
         </View>
       ))}
