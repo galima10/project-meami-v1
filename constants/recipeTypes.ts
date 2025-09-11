@@ -14,7 +14,7 @@ export const recipeTypes: Record<
 > = {
   meats: {
     title: "Plat principal",
-    imageSource: require("@assets/images/precharged/illustrations/recipesTypes/meats_3x.jpg"),
+    imageSource: require("@assets/images/requires/recipesTypes/meats_3x.jpg"),
     color: {
       text: theme.properties.white,
       normal: {

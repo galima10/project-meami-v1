@@ -2,6 +2,7 @@ import { View, StyleSheet, Pressable } from "react-native";
 import { AppText } from "@components/atoms/global/Texts";
 import Icon from "@components/atoms/global/Icon";
 import theme from "@themes/index";
+import { useState } from "react";
 
 interface ReturnButtonProps {
   action: () => void;
@@ -12,15 +13,16 @@ export default function ReturnButton({
   action,
   text,
 }: ReturnButtonProps) {
+  const [isPressed, setIsPressed] = useState(false);
   return (
     <Pressable
       style={styles.button}
-      onPress={() => {
-        action();
-      }}
+      onPress={action}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
     >
-      <Icon name="return" size={32} />
-      <AppText style={styles.text}>{text}</AppText>
+      <Icon name="return" size={40} style={[isPressed && { opacity: 0.5 }]} />
+      <AppText style={[styles.text, isPressed && { opacity: 0.5 }]}>{text}</AppText>
     </Pressable>
   );
 }
@@ -29,8 +31,7 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 16,
-    backgroundColor: "#F0F0F0",
+    paddingVertical: 24,
   },
   text: {
     fontSize: 16,
@@ -38,6 +39,6 @@ const styles = StyleSheet.create({
     borderBottomColor: theme.properties.brown,
     borderBottomWidth: 1.5,
     textAlign: "center",
-    marginTop: 4,
+    marginTop: 2,
   },
 });

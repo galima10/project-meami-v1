@@ -1,32 +1,60 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { AppText } from "@components/atoms/global/Texts";
 import ReturnButton from "@components/molecules/menu/modify/ReturnButton";
 import RecipeTypeButton from "@components/molecules/menu/modify/RecipeTypeButton";
+import { recipeTypes } from "@constants/recipeTypes";
+import { useState } from "react";
 
 interface RecipesSideBarProps {
   momentSelected: "Matin" | "Midi" | "Soir" | undefined;
   setIsDarkScreenVisible: (visible: boolean) => void;
-  setMomentSelected: (moment: "Matin" | "Midi" | "Soir" | undefined) => void;
 }
 
 export default function RecipesSideBar({
   momentSelected,
   setIsDarkScreenVisible,
-  setMomentSelected,
 }: RecipesSideBarProps) {
+  const [step, setStep] = useState<1 | 2>(1);
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
-      <AppText>{momentSelected}</AppText>
-      <RecipeTypeButton type="accompaniments" />
-      <ReturnButton text="Fermer" action={() => setIsDarkScreenVisible(false)} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.typesList}
+        contentContainerStyle={{ paddingBottom: 32 }}
+      >
+        {momentSelected !== "Matin" && (
+          <>
+            {step === 1 && (
+              <>
+                {Object.entries(recipeTypes).map(([key, type]) => {
+                  if (key !== "breakfast") {
+                    return (
+                      <RecipeTypeButton
+                        key={key}
+                        type={key}
+                        action={() => {
+                          setStep(2);
+                        }}
+                      />
+                    );
+                  }
+                })}
+              </>
+            )}
+          </>
+        )}
+      </ScrollView>
+      <ReturnButton
+        text={step === 1 ? "Fermer" : "Retour"}
+        action={() => (step === 1 ? setIsDarkScreenVisible(false) : setStep(1))}
+      />
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
     width: 154,
     height: "100%",
     backgroundColor: theme.properties.beige,
@@ -35,5 +63,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 0,
     top: 0,
+  },
+  typesList: {
+    padding: 16,
   },
 });

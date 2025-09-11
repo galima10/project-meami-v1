@@ -5,7 +5,15 @@ import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { recipeTypes } from "@constants/recipeTypes";
 
-export default function RecipeTypeButton({ type }: { type: string }) {
+interface RecipeTypeButtonProps {
+  type: string;
+  action?: () => void;
+}
+
+export default function RecipeTypeButton({
+  type,
+  action,
+}: RecipeTypeButtonProps) {
   const recipe = recipeTypes[type || ""];
 
   const styles = StyleSheet.create({
@@ -17,7 +25,7 @@ export default function RecipeTypeButton({ type }: { type: string }) {
       borderRadius: 16,
       alignItems: "center",
       minHeight: 170,
-      // alignSelf: "center",
+      marginVertical: 16,
     },
     image: {
       width: 100,
@@ -26,19 +34,37 @@ export default function RecipeTypeButton({ type }: { type: string }) {
     },
     text: {
       fontSize: 16,
-      color: theme.properties.white,
+      color: recipe.color.text,
       fontWeight: theme.properties.semibold,
       textAlign: "center",
       marginVertical: 8,
-      textShadowColor: "rgba(0, 0, 0, 0.5)", // couleur
-      textShadowRadius: 15, // flou
     },
   });
 
   return (
-    <Pressable style={[styles.button, globalStyles.bigShadow]}>
+    <Pressable
+      style={({ pressed }) => [
+        styles.button,
+        globalStyles.bigShadow,
+        pressed && {
+          backgroundColor: recipe.color.pressed.background,
+          borderColor: recipe.color.pressed.border,
+        },
+      ]}
+      onPress={action}
+    >
       <Image source={recipe.imageSource} style={styles.image} />
-      <AppText style={styles.text}>{recipe.title}</AppText>
+      <AppText
+        style={[
+          styles.text,
+          type !== "ingredients" && {
+            textShadowColor: "rgba(0, 0, 0, 0.5)",
+            textShadowRadius: 10,
+          },
+        ]}
+      >
+        {recipe.title}
+      </AppText>
     </Pressable>
   );
 }

@@ -27,7 +27,7 @@ export default function ModifyView() {
         goToSlide={goToSlide}
       />
       <DarkScreenContainer visible={isDarkScreenVisible}>
-        <RecipesSideBar momentSelected={momentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} setMomentSelected={setMomentSelected} />
+        <RecipesSideBar momentSelected={momentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible}  />
       </DarkScreenContainer>
     </ImageBackground>
   );
