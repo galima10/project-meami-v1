@@ -3,34 +3,51 @@ import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { AppText } from "@components/atoms/global/Texts";
 import ReturnButton from "@components/molecules/menu/modify/ReturnButton";
-import RecipeTypeButton from "@components/molecules/menu/modify/RecipeTypeButton";
-import { recipeTypes } from "@constants/recipeTypes";
-import { useState } from "react";
 import RecipesType from "../sideBar/RecipesType";
+import { recipeTypes } from "@constants/recipeTypes";
+import { useRecipesSideBar } from "@hooks/menu/modify/useRecipesSideBar";
 
 interface RecipesSideBarProps {
   momentSelected: "Matin" | "Midi" | "Soir" | undefined;
   setIsDarkScreenVisible: (visible: boolean) => void;
   daySelected: string;
+  setMomentSelected: (moment: "Matin" | "Midi" | "Soir" | undefined) => void;
 }
 
 export default function RecipesSideBar({
   momentSelected,
   setIsDarkScreenVisible,
   daySelected,
+  setMomentSelected,
 }: RecipesSideBarProps) {
-  const [step, setStep] = useState<1 | 2>(1);
+  const {
+    step,
+    setStep,
+    handleClose,
+    selectedRecipeType,
+    setSelectedRecipeType,
+  } = useRecipesSideBar(setIsDarkScreenVisible, setMomentSelected);
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
-      <AppText>{daySelected} : {momentSelected}</AppText>
+      {momentSelected === "Matin" && (
+        <AppText style={styles.title}>Petit-déjeuner</AppText>
+      )}
+      {step === 2 && (
+        <AppText style={styles.title}>
+          {recipeTypes[selectedRecipeType].title}
+        </AppText>
+      )}
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.typesList}
         contentContainerStyle={{ paddingBottom: 32 }}
       >
-        {momentSelected !== "Matin" ? (
+        {momentSelected && momentSelected !== "Matin" ? (
           step === 1 ? (
-            <RecipesType setStep={setStep} />
+            <RecipesType
+              setStep={setStep}
+              setSelectedRecipeType={setSelectedRecipeType}
+            />
           ) : (
             <></>
           )
@@ -40,7 +57,13 @@ export default function RecipesSideBar({
       </ScrollView>
       <ReturnButton
         text={step === 1 ? "Fermer" : "Retour"}
-        action={() => (step === 1 ? setIsDarkScreenVisible(false) : setStep(1))}
+        action={() => {
+          step === 1
+            ? handleClose()
+            : momentSelected !== "Matin"
+            ? setStep(1)
+            : null;
+        }}
       />
     </View>
   );
@@ -58,5 +81,11 @@ const styles = StyleSheet.create({
   },
   typesList: {
     padding: 16,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: theme.properties.semibold,
+    textAlign: "center",
+    marginVertical: 8,
   },
 });

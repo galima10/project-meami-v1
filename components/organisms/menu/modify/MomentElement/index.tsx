@@ -8,11 +8,12 @@ interface MomentElementProps {
   moment: "Matin" | "Midi" | "Soir";
   setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
   setIsDarkScreenVisible: (visible: boolean) => void;
+  isActive: boolean;
 }
 
-export default function MomentElement({moment, setMomentSelected, setIsDarkScreenVisible} : MomentElementProps) {
+export default function MomentElement({moment, setMomentSelected, setIsDarkScreenVisible, isActive} : MomentElementProps) {
   return (
-    <View style={[styles.container, globalStyles.bigShadow]}>
+    <View style={[styles.container, globalStyles.bigShadow, isActive && { borderColor: theme.properties.vibrantOrange }]}>
       <View style={styles.header}>
         <AppText style={styles.momentTitle}>{moment}</AppText>
         <AppButton icon="add" iconSize={26} style={styles.addButton} orange onPress={() => {

@@ -22,13 +22,24 @@ export default function ModifyView() {
       style={styles.screen}
       resizeMode="cover"
     >
-      <DaySlider scrollRef={scrollRef} setIsDarkScreenVisible={setIsDarkScreenVisible} setCurrentIndex={setCurrentIndex} setMomentSelected={setMomentSelected} />
+      <DaySlider
+        scrollRef={scrollRef}
+        setIsDarkScreenVisible={setIsDarkScreenVisible}
+        setCurrentIndex={setCurrentIndex}
+        setMomentSelected={setMomentSelected}
+        momentSelected={momentSelected}
+      />
       <ModifyNavigationDotsModule
         currentIndex={currentIndex}
         goToSlide={goToSlide}
       />
       <DarkScreenContainer visible={isDarkScreenVisible}>
-        <RecipesSideBar momentSelected={momentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} daySelected={days[currentIndex]} />
+        <RecipesSideBar
+          momentSelected={momentSelected}
+          setIsDarkScreenVisible={setIsDarkScreenVisible}
+          daySelected={days[currentIndex]}
+          setMomentSelected={setMomentSelected}
+        />
       </DarkScreenContainer>
     </ImageBackground>
   );

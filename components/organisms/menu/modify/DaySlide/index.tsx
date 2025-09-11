@@ -8,12 +8,14 @@ interface DaySlideProps {
   day?: string;
   setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
   setIsDarkScreenVisible: (visible: boolean) => void;
+  momentSelected: "Matin" | "Midi" | "Soir" | undefined;
 }
 
 export default function DaySlide({
   day,
   setMomentSelected,
   setIsDarkScreenVisible,
+  momentSelected,
 }: DaySlideProps) {
   return (
     <View style={styles.container}>
@@ -31,9 +33,9 @@ export default function DaySlide({
         contentContainerStyle={{ paddingBottom: 16 }}
         showsVerticalScrollIndicator={false}
       >
-        <MomentElement moment="Matin" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
-        <MomentElement moment="Midi" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
-        <MomentElement moment="Soir" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
+        <MomentElement moment="Matin" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} isActive={momentSelected === "Matin"} />
+        <MomentElement moment="Midi" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} isActive={momentSelected === "Midi"} />
+        <MomentElement moment="Soir" setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} isActive={momentSelected === "Soir"} />
       </ScrollView>
     </View>
   );

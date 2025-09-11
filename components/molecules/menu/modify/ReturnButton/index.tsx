@@ -3,6 +3,7 @@ import { AppText } from "@components/atoms/global/Texts";
 import Icon from "@components/atoms/global/Icon";
 import theme from "@themes/index";
 import { useState } from "react";
+import { globalStyles } from "@themes/styles";
 
 interface ReturnButtonProps {
   action: () => void;
@@ -16,7 +17,7 @@ export default function ReturnButton({
   const [isPressed, setIsPressed] = useState(false);
   return (
     <Pressable
-      style={styles.button}
+      style={[styles.button, globalStyles.bigShadow]}
       onPress={action}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
@@ -32,6 +33,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 24,
+    borderTopColor: theme.properties.beigeBorder,
+    borderTopWidth: 1.5,
   },
   text: {
     fontSize: 16,

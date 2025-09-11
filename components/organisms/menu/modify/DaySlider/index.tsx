@@ -8,10 +8,16 @@ interface DaySliderProps {
   setCurrentIndex: (index: number) => void;
   setMomentSelected: (moment: "Matin" | "Midi" | "Soir") => void;
   setIsDarkScreenVisible: (visible: boolean) => void;
+  momentSelected: "Matin" | "Midi" | "Soir" | undefined;
 }
 
-export default function DaySlider({ scrollRef, setCurrentIndex, setMomentSelected, setIsDarkScreenVisible }: DaySliderProps) {
-
+export default function DaySlider({
+  scrollRef,
+  setCurrentIndex,
+  setMomentSelected,
+  setIsDarkScreenVisible,
+  momentSelected,
+}: DaySliderProps) {
   return (
     <ScrollView
       horizontal
@@ -31,7 +37,13 @@ export default function DaySlider({ scrollRef, setCurrentIndex, setMomentSelecte
     >
       {days.map((day, index) => (
         <View key={index} style={{ width: getScreenWidth(), flex: 1 }}>
-          <DaySlide key={day} day={day} setMomentSelected={setMomentSelected} setIsDarkScreenVisible={setIsDarkScreenVisible} />
+          <DaySlide
+            key={day}
+            day={day}
+            setMomentSelected={setMomentSelected}
+            setIsDarkScreenVisible={setIsDarkScreenVisible}
+            momentSelected={momentSelected}
+          />
         </View>
       ))}
     </ScrollView>

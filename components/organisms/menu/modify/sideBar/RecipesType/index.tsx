@@ -4,10 +4,12 @@ import RecipeTypeButton from "@components/molecules/menu/modify/RecipeTypeButton
 
 interface RecipesSideBarProps {
   setStep: (step: 1 | 2) => void;
+  setSelectedRecipeType: (type: string) => void;
 }
 
 export default function RecipesType({
   setStep,
+  setSelectedRecipeType
 }: RecipesSideBarProps) {
   return (
     <View>
@@ -19,6 +21,7 @@ export default function RecipesType({
               type={key}
               action={() => {
                 setStep(2);
+                setSelectedRecipeType(key);
               }}
             />
           );
