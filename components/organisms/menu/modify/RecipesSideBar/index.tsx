@@ -3,6 +3,7 @@ import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { AppText } from "@components/atoms/global/Texts";
 import ReturnButton from "@components/molecules/menu/modify/ReturnButton";
+import RecipeTypeButton from "@components/molecules/menu/modify/RecipeTypeButton";
 
 interface RecipesSideBarProps {
   momentSelected: "Matin" | "Midi" | "Soir" | undefined;
@@ -18,13 +19,15 @@ export default function RecipesSideBar({
   return (
     <View style={[styles.container, globalStyles.bigShadow]}>
       <AppText>{momentSelected}</AppText>
+      <RecipeTypeButton type="accompaniments" />
       <ReturnButton text="Fermer" action={() => setIsDarkScreenVisible(false)} />
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    width: 144,
+    padding: 16,
+    width: 154,
     height: "100%",
     backgroundColor: theme.properties.beige,
     borderColor: theme.properties.beigeBorder,

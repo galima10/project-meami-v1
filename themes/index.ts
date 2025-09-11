@@ -39,21 +39,23 @@ const theme = {
 
     borderColor: "#491b1e40",
 
+    beigeBorder: "#D1BFB4",
     greenBorder: "#807D59",
     redBorder: "#98354C",
     orangeBorder: "#BA795E",
-    beigeBorder: "#D1BFB4",
+    yellowBorder: "#C9A74F",
+    pinkBorder: "#BF7295",
+    purpleBorder: "#7969A9",    
+    
     whiteBorder: "#D1BFB4",
-    vibrantOrangeBorder: "#C47031",
     lightRedBorder: "#B14356",
     lightGreenBorder: "#9C9E74",
     lightOrangeBorder: "#C5866A",
+    lightYellowBorder: "#D1B675",
+    lightPinkBorder: "#C891AD",
+    lightPurpleBorder: "#8C7DB2",
 
-    // active: "#000000",
-    // iconActive: "#ffffff",
-    // iconInactive: "gray",
-    // danger: "#FED7E3",
-    // success: "#42CD00",
+    vibrantOrangeBorder: "#C47031",
   } as ThemeType,
 };
 
@@ -96,8 +98,12 @@ export interface ThemeType {
   lightRedBorder: string;
   lightGreenBorder: string;
   lightOrangeBorder: string;
-  // inputColor: string;
-  // gray: string;
+  lightYellowBorder: string;
+  lightPinkBorder: string;
+  lightPurpleBorder: string;
+  purpleBorder: string;
+  pinkBorder: string;
+  yellowBorder: string;
 }
 
 type FontWeightType =
