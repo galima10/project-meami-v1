@@ -119,6 +119,7 @@
     - 3 moments de la journée peuvent être sélectionnés pour modifier le menu de ce moment via le bouton "+"
       ! Une barre latérale s'affiche sur le côté avec les différentes recettes ajoutées au menu séparées par type
       ! Pour l'instant, seules des recettes mockées y sont présentes
+    + Si un moment est sélectionné pour modifier son menu, il apparaît en encadré orange
     ! Affichage mocké des recettes déjà ajoutées au moment "Matin"
   !! Aucune autre fonctionnalité prévue n'est présente pour le moment
 
