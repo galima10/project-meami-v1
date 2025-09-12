@@ -3,6 +3,7 @@ import { useMenu } from "@contexts/MenuContext";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import RecipesListHeader from "@components/organisms/menu/recipesList/RecipesListHeader";
 import RecipesListContent from "@components/organisms/menu/recipesList/RecipesListContent";
+import { mockedRecipeList } from "@constants/mockedMenu";
 
 export default function RecipesListView() {
   const { setMenu } = useMenu();
@@ -12,8 +13,8 @@ export default function RecipesListView() {
       style={styles.screen}
       resizeMode="cover"
     >
-      <RecipesListHeader />
-      <RecipesListContent />
+      <RecipesListHeader recipeLength={mockedRecipeList.filter(recipe => recipe.number > 0).length} />
+      <RecipesListContent recipes={mockedRecipeList} />
     </ImageBackground>
   );
 }

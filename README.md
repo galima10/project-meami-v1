@@ -89,7 +89,7 @@
 - **Onglet Menu de la semaine : Vue Liste** :
   > Bouton pour naviguer vers la vue Liste des recettes ajoutées au menu
     ! Le bouton retour de la vue Liste des recettes ajoutées au menu fait bien un retour en arrière
-  > Bouton pour vider la Liste des recettes ajoutées au menu
+  > Bouton pour supprimer l'attibution des recettes de la Liste des recettes ajoutées au menu
     ! Le bouton ne fait que changer le menu mocké en "faux menu vide"
     ! La vue Calendrier sera aussi vidée
   > Affichage en cartes stylisées avec un effet glass du menu en ligne de chaque jour et chaque moment
@@ -122,5 +122,18 @@
     + Si un moment est sélectionné pour modifier son menu, il apparaît en encadré orange
     ! Affichage mocké des recettes déjà ajoutées au moment "Matin"
   !! Aucune autre fonctionnalité prévue n'est présente pour le moment
+- **Onglet Menu de la semaine : Vue Liste des recettes ajoutées au menu** : 
+  > Ajout d'un header avec :
+    - Le titre de la vue
+    - Le nombre d'entrées
+    - Un bouton pour vider la liste des recettes ajoutées au menu
+      ! Ne fait rien pour l'instant
+    - Un bouton pour ajouter une recette à la liste des recettes ajoutées au menu
+      ! Ne fait rien pour l'instant
+  > Stylisation de la liste des recettes ajoutées au menu avec :
+    - Image de la recette
+    - Le nom de la recette
+    - Un module pour afficher la quantité de la recette dans la liste et des boutons pour augmenter et diminuer la quantité
+    ! Pour l'instant, seul une liste mockée est affichée
 
 ### Notes importantes : 

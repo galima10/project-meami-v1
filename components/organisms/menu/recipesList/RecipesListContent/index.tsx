@@ -1,12 +1,24 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import theme from "@themes/index";
 import RecipeElement from "../RecipeElement";
-import { mockedRecipeList } from "@constants/mockedMenu";
 
-export default function RecipesListContent() {
+export default function RecipesListContent({
+  recipes,
+}: {
+  recipes: {
+    id: number;
+    name: string;
+    type: string;
+    image: any;
+    number: number;
+  }[];
+}) {
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 16 }}>
-      {mockedRecipeList.map((recipe) => {
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ paddingBottom: 16 }}
+    >
+      {recipes.map((recipe) => {
         if (recipe.type !== "ingredients" && recipe.number > 0) {
           return <RecipeElement key={recipe.id} recipe={recipe} />;
         }

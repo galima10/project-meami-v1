@@ -5,12 +5,12 @@ import AppButton from "@components/molecules/global/AppButton";
 import { useMenu } from "@contexts/MenuContext";
 import { mockedMenu } from "@constants/mockedMenu";
 
-export default function RecipesListHeader() {
+export default function RecipesListHeader({recipeLength}: {recipeLength: number}) {
   const { setMenu } = useMenu();
   return (
     <View style={styles.header}>
       <AppText style={styles.title}>Recettes</AppText>
-      <AppText style={styles.entryText}>5 entrées</AppText>
+      <AppText style={styles.entryText}>{recipeLength ? `${recipeLength} entrées` : "Aucune entrée"}</AppText>
       <View style={styles.buttonsContainer}>
         <AppButton icon="trash" type="secondary" iconSize={40} />
         <AppButton
