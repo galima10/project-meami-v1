@@ -135,5 +135,9 @@
     - Le nom de la recette
     - Un module pour afficher la quantité de la recette dans la liste et des boutons pour augmenter et diminuer la quantité
     ! Pour l'instant, seul une liste mockée est affichée
+  > Ajout du panneau pour ajouter une recette à la liste
+    > Bouton pour switcher de mode d'affichage : 
+      - Possibilité d'effectuer une recherche d'ingrédient
+      - Possibilité d'effectuer un tri des ingrédients
 
 ### Notes importantes : 

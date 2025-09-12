@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.properties.white,
     borderColor: theme.properties.whiteBorder,
     borderWidth: 1.5,
-    borderRadius: 12,
+    borderRadius: 16,
     width: "100%",
     overflow: "hidden",
   },
