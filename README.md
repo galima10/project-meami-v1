@@ -103,7 +103,7 @@
   > Séparation de la logique métier en hooks des composants
   > Déplacements dans des dossiers séparés
 
-[1.4.0] - (../../....)
+[1.4.0] - (12/09/2025)
 
 - **Fixs** :
   > Suppression de la mise à jour de la date toutes les minutes pour gagner en performances
