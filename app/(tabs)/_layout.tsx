@@ -31,7 +31,6 @@ export default function TabLayout() {
                       icon="ingredientsMenu"
                       green
                       withStroke
-                      params={{ ingredients: true }}
                     />
                   </View>
                 );
