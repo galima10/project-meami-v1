@@ -5,19 +5,35 @@ import AppButton from "@components/molecules/global/AppButton";
 import { useMenu } from "@contexts/MenuContext";
 import { mockedMenu } from "@constants/mockedMenu";
 
-export default function RecipesListHeader({recipeLength}: {recipeLength: number}) {
+interface RecipesListHeaderProps {
+  recipeLength: number;
+  setIsDarkScreenVisible: (visible: boolean) => void;
+  setSelectedPanel: (panel: "ingredientsList" | "addRecipe" | null) => void;
+}
+
+export default function RecipesListHeader({
+  recipeLength,
+  setIsDarkScreenVisible,
+  setSelectedPanel,
+}: RecipesListHeaderProps) {
   const { setMenu } = useMenu();
   return (
     <View style={styles.header}>
       <AppText style={styles.title}>Recettes</AppText>
-      <AppText style={styles.entryText}>{recipeLength ? `${recipeLength} entrées` : "Aucune entrée"}</AppText>
+      <AppText style={styles.entryText}>
+        {recipeLength ? recipeLength : "0"} entrées
+      </AppText>
       <View style={styles.buttonsContainer}>
         <AppButton icon="trash" type="secondary" iconSize={40} />
         <AppButton
           icon="add"
           iconSize={24}
           style={styles.addButton}
-          action={() => setMenu(mockedMenu)}
+          // action={() => setMenu(mockedMenu)}
+          action={() => {
+            setIsDarkScreenVisible(true);
+            setSelectedPanel("addRecipe");
+          }}
         />
       </View>
     </View>

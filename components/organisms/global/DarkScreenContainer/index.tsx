@@ -1,22 +1,27 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StyleProp, ViewStyle, ViewProps } from "react-native";
 import Animated from "react-native-reanimated";
 import type { PropsWithChildren } from "react";
 import { useDarkScreenContainer } from "@hooks/menu/list/useDarkScreenContainer";
 
-type DarkScreenContainerProps = PropsWithChildren<{
-  visible: boolean;
-}>;
+interface DarkScreenContainerProps
+  extends PropsWithChildren<{
+      visible: boolean;
+      style?: StyleProp<ViewStyle>;
+    }>,
+    ViewProps {} // <-- ajoute toutes les props de View ici
 
 export default function DarkScreenContainer({
   children,
   visible,
+  style,
+  ...props
 }: DarkScreenContainerProps) {
   const { mounted, animatedStyle } = useDarkScreenContainer(visible);
 
   if (!mounted) return null;
 
   return (
-    <Animated.View style={[styles.container, animatedStyle]}>
+    <Animated.View style={[styles.container, animatedStyle, style]} {...props}>
       {children}
     </Animated.View>
   );

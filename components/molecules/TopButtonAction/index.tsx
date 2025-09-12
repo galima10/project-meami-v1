@@ -32,7 +32,7 @@ export default function AddInfo({ icon, withStroke, action }: AddInfoProps) {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.properties.darkGreen,
-    borderColor: theme.properties.borderColor,
+    borderColor: theme.properties.greenBorder,
     borderWidth: 1.5,
   },
 });

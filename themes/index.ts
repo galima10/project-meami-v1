@@ -37,7 +37,7 @@ const theme = {
     semibold: "600",
     bold: "700",
 
-    borderColor: "#491b1e40",
+    transparentBrown: "#491b1e80",
 
     beigeBorder: "#D1BFB4",
     greenBorder: "#807D59",
@@ -89,7 +89,7 @@ export interface ThemeType {
   medium: FontWeightType;
   semibold: FontWeightType;
   bold: FontWeightType;
-  borderColor: string;
+  transparentBrown: string;
   greenBorder: string;
   redBorder: string;
   orangeBorder: string;
