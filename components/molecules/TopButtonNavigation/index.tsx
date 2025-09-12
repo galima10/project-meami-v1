@@ -31,7 +31,7 @@ export default function TopButton({
   ]);
 
   const activeStyles = StyleSheet.flatten([
-    !green ? topBarStyles.active : topBarStyles.greenActive,
+    !green && topBarStyles.active,
     globalStyles.littleShadow,
   ]);
 

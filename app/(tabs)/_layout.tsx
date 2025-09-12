@@ -6,7 +6,7 @@ import { View } from "react-native";
 import theme from "@themes/index";
 import { globalStyles } from "@themes/styles";
 import { usePathname } from "expo-router";
-import AddInfo from "@components/molecules/TopButtonAction";
+import TopButtonAction from "@components/molecules/TopButtonAction";
 
 export default function TabLayout() {
   return (
@@ -25,16 +25,21 @@ export default function TabLayout() {
                   <View
                     style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
                   >
-                    <AddInfo icon="ingredientsMenu" withStroke />
+                    {/* <TopButtonAction icon="ingredientsMenu" withStroke /> */}
+                    <TopButton
+                      routeName="menuViews/recipesList"
+                      icon="ingredientsMenu"
+                      green
+                      withStroke
+                      params={{ ingredients: true }}
+                    />
                   </View>
                 );
               }
 
               // headerRight par défaut
               return (
-                <View
-                  style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
-                >
+                <View style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}>
                   <TopButton
                     routeName="menuViews/calendar"
                     icon="calendar"
@@ -124,12 +129,7 @@ export default function TabLayout() {
                   <View
                     style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
                   >
-                    <TopButton
-                      icon="validate"
-                      green
-                      withStroke
-                      goBack
-                    />
+                    <TopButton icon="validate" green withStroke goBack />
                   </View>
                 );
               }
@@ -256,7 +256,7 @@ export default function TabLayout() {
                   <View
                     style={{ flexDirection: "row", gap: 10, marginRight: 16 }}
                   >
-                    <AddInfo icon="add" />
+                    <TopButtonAction icon="add" />
                   </View>
                 );
               }

@@ -3,19 +3,20 @@ import Icon from "@components/atoms/global/Icon";
 import { globalStyles } from "@themes/styles";
 import theme from "@themes/index";
 
-interface AddInfoProps {
+interface TopButtonActionProps {
   icon: string;
   withStroke?: boolean;
   action?: () => void;
 }
 
-export default function AddInfo({ icon, withStroke, action }: AddInfoProps) {
+export default function TopButtonAction({ icon, withStroke, action }: TopButtonActionProps) {
   return (
     <Pressable
-      style={[
+      style={({ pressed }) => [
         globalStyles.buttonBase,
         globalStyles.littleShadow,
-        styles.button,
+        globalStyles.buttonGreen,
+        pressed && globalStyles.buttonGreenPressed,
       ]}
       onPress={action}
     >
@@ -29,10 +30,10 @@ export default function AddInfo({ icon, withStroke, action }: AddInfoProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: theme.properties.darkGreen,
-    borderColor: theme.properties.greenBorder,
-    borderWidth: 1.5,
-  },
-});
+// const styles = StyleSheet.create({
+//   button: {
+//     backgroundColor: theme.properties.darkGreen,
+//     borderColor: theme.properties.greenBorder,
+//     borderWidth: 1.5,
+//   },
+// });
