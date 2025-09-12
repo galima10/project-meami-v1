@@ -25,13 +25,7 @@ export default function TabLayout() {
                   <View
                     style={{ flexDirection: "row", gap: 10, marginLeft: 16 }}
                   >
-                    {/* <TopButtonAction icon="ingredientsMenu" withStroke /> */}
-                    <TopButton
-                      routeName="menuViews/recipesList"
-                      icon="ingredientsMenu"
-                      green
-                      withStroke
-                    />
+                    <TopButtonAction icon="ingredientsMenu" withStroke />
                   </View>
                 );
               }
