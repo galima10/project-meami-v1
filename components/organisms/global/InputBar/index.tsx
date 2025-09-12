@@ -10,13 +10,14 @@ export default function InputBar() {
   return (
     <View style={styles.container}>
       <TextInput
-        style={[styles.input, globalStyles.littleShadow]}
+        style={[styles.input, styles.search, globalStyles.littleShadow]}
         placeholder="Rechercher..."
         placeholderTextColor={theme.properties.transparentBrown}
         value={searchText}
         onChangeText={onChangeSearchText}
         keyboardType="default"
       />
+
       {searchText === "" && (
         <Icon
           name="search"
@@ -48,6 +49,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderColor: theme.properties.whiteBorder,
     borderWidth: 1,
+  },
+  search: {
     fontSize: 16,
     lineHeight: 16,
     textAlignVertical: "center",

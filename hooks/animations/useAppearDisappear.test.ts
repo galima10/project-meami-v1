@@ -1,11 +1,11 @@
-import { renderHook, act } from "@testing-library/react";
-import { useDarkScreenContainer } from "../useDarkScreenContainer";
+import { act, renderHook } from "@testing-library/react";
+import { useAppearDisappear } from "./useAppearDisappear";
 
-describe("useDarkScreenContainer", () => {
+describe("useAppearDisappear", () => {
   it("should mount when visible is true", () => {
     let result: any;
     act(() => {
-      ({ result } = renderHook(() => useDarkScreenContainer(true)));
+      ({ result } = renderHook(() => useAppearDisappear(true)));
     });
 
     // mounted devrait être vrai
@@ -21,7 +21,7 @@ describe("useDarkScreenContainer", () => {
 
   it("should unmount when visible is false", () => {
     const { result, rerender } = renderHook(
-      ({ visible }) => useDarkScreenContainer(visible),
+      ({ visible }) => useAppearDisappear(visible),
       { initialProps: { visible: true } }
     );
 

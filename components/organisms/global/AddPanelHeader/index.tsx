@@ -1,16 +1,41 @@
 import { View, StyleSheet } from "react-native";
 import AppButton from "@components/molecules/global/AppButton";
 import theme from "@themes/index";
-import InputBar from "@components/molecules/global/InputBar";
+import InputBar from "@components/organisms/global/InputBar";
+import PickerSorter from "../PickerSorter";
 
-export default function AddPanelHeader() {
+interface AddPanelHeaderProps {
+  setIsDarkScreenVisible: (visible: boolean) => void;
+  setInputMode: (mode: "search" | "sorter") => void;
+  inputMode: "search" | "sorter";
+}
+
+export default function AddPanelHeader({
+  setIsDarkScreenVisible,
+  setInputMode,
+  inputMode,
+}: AddPanelHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.inputBarContainer}>
-        <InputBar />
-        <AppButton icon="switch" iconSize={24} style={styles.switchButton} />
+        {inputMode === "search" ? <InputBar /> : <PickerSorter />}
+
+        <AppButton
+          icon="switch"
+          iconSize={24}
+          style={styles.switchButton}
+          action={() =>
+            setInputMode(inputMode === "search" ? "sorter" : "search")
+          }
+        />
       </View>
-      <AppButton icon="close" iconSize={24} style={styles.closeButton} red />
+      <AppButton
+        icon="close"
+        iconSize={24}
+        style={styles.closeButton}
+        red
+        action={() => setIsDarkScreenVisible(false)}
+      />
     </View>
   );
 }

@@ -6,7 +6,7 @@ import {
   runOnJS,
 } from "react-native-reanimated";
 
-export function useDarkScreenContainer(visible: boolean) {
+export function useAppearDisappear(visible: boolean) {
   const opacity = useSharedValue(0);
   const [mounted, setMounted] = useState(visible);
 

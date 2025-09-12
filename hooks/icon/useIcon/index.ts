@@ -22,6 +22,7 @@ import SvgTrash from "@components/atoms/icons/global/SvgTrash";
 import SvgClose from "@components/atoms/icons/global/SvgClose";
 import SvgSwitch from "@components/atoms/icons/global/SvgSwitch";
 import SvgSearch from "@components/atoms/icons/global/SvgSearch";
+import SvgSort from "@components/atoms/icons/global/SvgSort";
 
 export type IconName =
   | "menu"
@@ -47,6 +48,7 @@ export type IconName =
   | "close"
   | "switch"
   | "search"
+  | "sort"
   | string;
 
 const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
@@ -73,6 +75,7 @@ const ICONS: Record<IconName, React.FC<SvgProps & { withStroke?: boolean }>> = {
   close: SvgClose,
   switch: SvgSwitch,
   search: SvgSearch,
+  sort: SvgSort,
 };
 
 export function useIconComponent(name: IconName) {

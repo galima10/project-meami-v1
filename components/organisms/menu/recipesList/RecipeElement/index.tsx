@@ -1,10 +1,8 @@
 import { View, StyleSheet } from "react-native";
 import theme from "@themes/index";
-import { AppText } from "@components/atoms/global/Texts";
 import CounterModule from "@components/organisms/global/CounterModule";
 import { globalStyles } from "@themes/styles";
 import RecipeName from "@components/molecules/menu/recipesList/RecipeName";
-import { mockedRecipeList } from "@constants/mockedMenu";
 
 export default function RecipeElement({recipe}: {recipe: {
   id: number;
