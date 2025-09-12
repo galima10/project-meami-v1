@@ -3,18 +3,23 @@ import theme from "@themes/index";
 import { useState } from "react";
 import { globalStyles } from "@themes/styles";
 
-export default function CounterInput() {
-  const [number, onChangeNumber] = useState("10");
+export default function CounterInput({
+  value,
+  onChangeNumber,
+}: {
+  value: string;
+  onChangeNumber: (value: string) => void;
+}) {
   return (
     <TextInput
       style={[styles.input, globalStyles.littleShadow]}
       keyboardType="numeric"
-      value={number}
       onChangeText={onChangeNumber}
-      maxLength={2}
-      selection={{ start: number.length, end: number.length }}
+      value={value}
+      maxLength={value.includes(".") ? 3 : 2}
+      selection={{ start: value.length, end: value.length }}
       onBlur={() => {
-        if (number === "") {
+        if (value === "" || isNaN(Number(value)) || Number(value) < 0) {
           onChangeNumber("0"); // remet 0 quand on quitte le champ et qu'il est vide
         }
       }}
@@ -28,12 +33,13 @@ const styles = StyleSheet.create({
     backgroundColor: theme.properties.white,
     borderColor: theme.properties.whiteBorder,
     borderRadius: theme.properties.buttonRadius,
+    fontWeight: theme.properties.medium,
     fontFamily: "SN",
     color: theme.properties.brown,
-    fontSize: 18,
-    lineHeight: 16,
+    fontSize: 16,
     width: 32,
     height: 40,
     textAlign: "center",
+    marginHorizontal: 8,
   },
 });

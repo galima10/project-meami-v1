@@ -56,6 +56,7 @@ const theme = {
     lightPurpleBorder: "#8C7DB2",
 
     vibrantOrangeBorder: "#C47031",
+    vibrantBeigeBorder: "#D1B69A",
   } as ThemeType,
 };
 
@@ -104,6 +105,7 @@ export interface ThemeType {
   purpleBorder: string;
   pinkBorder: string;
   yellowBorder: string;
+  vibrantBeigeBorder: string;
 }
 
 type FontWeightType =
