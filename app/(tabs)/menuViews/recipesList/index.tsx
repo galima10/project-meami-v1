@@ -1,9 +1,8 @@
 import { AppText } from "@components/atoms/global/Texts";
-import AppButton from "@components/molecules/global/AppButton";
-import { mockedMenu } from "@constants/mockedMenu";
 import { useMenu } from "@contexts/MenuContext";
-import theme from "@themes/index";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, View } from "react-native";
+import RecipesListHeader from "@components/organisms/menu/recipesList/RecipesListHeader";
+import RecipesListContent from "@components/organisms/menu/recipesList/RecipesListContent";
 
 export default function RecipesListView() {
   const { setMenu } = useMenu();
@@ -13,14 +12,8 @@ export default function RecipesListView() {
       style={styles.screen}
       resizeMode="cover"
     >
-      <AppText style={styles.text}>
-        Menu de la semaine Vue liste des recettes
-      </AppText>
-      <AppButton
-        action={() => setMenu(mockedMenu)}
-        text="Ajouter des recettes"
-        style={{ marginTop: 20 }}
-      />
+      <RecipesListHeader />
+      <RecipesListContent />
     </ImageBackground>
   );
 }
@@ -28,14 +21,5 @@ export default function RecipesListView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontFamily: "SN",
-    fontWeight: theme.properties.bold,
-    fontSize: 24,
-    textAlign: "center",
-    paddingHorizontal: 20,
   },
 });
