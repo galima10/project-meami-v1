@@ -1,4 +1,4 @@
-import NavigationDotsModule from "@components/molecules/menu/calendar/NavigationDotsModule";
+import CalendarNavigationDotsModule from "@components/molecules/menu/calendar/CalendarNavigationDotsModule";
 import TodayButton from "@components/molecules/menu/calendar/TodayButton";
 import DayNavigation from "@components/organisms/menu/calendar/DayNavigation";
 import DaySliderDisplay from "@components/organisms/menu/calendar/DaySlider";
@@ -85,7 +85,7 @@ export default function CalendarView() {
           forceRefresh={forceRefresh}
         />
       </View>
-      <NavigationDotsModule
+      <CalendarNavigationDotsModule
         currentIndex={currentIndex}
         goToSlide={goToSlide}
         handleInteraction={handleInteraction}

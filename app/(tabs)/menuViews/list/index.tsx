@@ -1,14 +1,14 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
-import LargeButton from "@components/molecules/global/LargeButton";
-import { useRouter } from "expo-router";
+import AppButton from "@components/molecules/global/AppButton";
+import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
 import MenuList from "@components/organisms/menu/list/MenuList";
-import { useMenu } from "@contexts/MenuContext";
-import { mockedMenuEmpty } from "@constants/mockedMenu";
-
+import ValidationPopup from "@components/organisms/menu/list/ValidationPopup";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { ImageBackground, StyleSheet, View } from "react-native";
 
 export default function ListView() {
   const router = useRouter();
-  const { setMenu } = useMenu();
+  const [isDarkScreenVisible, setIsDarkScreenVisible] = useState(false);
 
   return (
     <ImageBackground
@@ -17,13 +17,21 @@ export default function ListView() {
       resizeMode="cover"
     >
       <View style={styles.buttonsContainer}>
-        <LargeButton
+        <AppButton
           text="Liste des recettes"
           action={() => router.push("/menuViews/recipesList")}
         />
-        <LargeButton text="Vider le menu" icon="trash" type="secondary" action={() => setMenu(mockedMenuEmpty)} />
+        <AppButton
+          text="Vider le menu"
+          icon="trash"
+          type="secondary"
+          action={() => setIsDarkScreenVisible(true)}
+        />
       </View>
       <MenuList />
+      <DarkScreenContainer visible={isDarkScreenVisible}>
+        <ValidationPopup setIsDarkScreenVisible={setIsDarkScreenVisible} />
+      </DarkScreenContainer>
     </ImageBackground>
   );
 }
@@ -31,6 +39,7 @@ export default function ListView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    position: "relative",
   },
   buttonsContainer: {
     flexDirection: "row",

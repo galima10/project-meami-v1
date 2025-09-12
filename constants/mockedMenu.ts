@@ -348,3 +348,152 @@ export const mockedMenuEmpty: Record<
     soir: [],
   },
 };
+
+export const mockedRecipeList: Array<{
+  id: number;
+  name: string;
+  type: string;
+  image: any;
+  number: number;
+}> = [
+  {
+    id: 1,
+    name: "Pâtes asperges au citron",
+    type: "meats",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 1,
+  },
+  {
+    id: 2,
+    name: "Pâtes asperges au citron",
+    type: "vegetables",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 8,
+  },
+  {
+    id: 3,
+    name: "Pâtes asperges au citron",
+    type: "vegetables",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 2,
+  },
+  {
+    id: 4,
+    name: "Pâtes asperges au citron",
+    type: "vegetables",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 6,
+  },
+  {
+    id: 5,
+    name: "Pâtes asperges au citron",
+    type: "vegetables",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 7,
+  },
+  {
+    id: 6,
+    name: "Pâtes asperges au citron",
+    type: "meats",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 3,
+  },
+  {
+    id: 7,
+    name: "Pâtes asperges au citron",
+    type: "desserts",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 9,
+  },
+  {
+    id: 8,
+    name: "Pâtes asperges au citron",
+    type: "desserts",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 7,
+  },
+  {
+    id: 9,
+    name: "Pâtes asperges au citron",
+    type: "meats",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 5,
+  },
+  {
+    id: 10,
+    name: "Pâtes asperges au citron",
+    type: "accompaniments",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 3,
+  },
+  {
+    id: 11,
+    name: "Pâtes asperges au citron",
+    type: "meats",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 2,
+  },
+  {
+    id: 12,
+    name: "Pâtes asperges au citron",
+    type: "breakfast",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 2,
+  },
+  {
+    id: 13,
+    name: "Pâtes asperges au citron",
+    type: "meats",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 4,
+  },
+  {
+    id: 14,
+    name: "Pâtes asperges au citron",
+    type: "breakfast",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 1,
+  },
+  {
+    id: 15,
+    name: "Pâtes asperges au citron",
+    type: "breakfast",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 5,
+  },
+  {
+    id: 16,
+    name: "Pâtes asperges au citron",
+    type: "ingredients",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 9,
+  },
+  {
+    id: 17,
+    name: "Pâtes asperges au citron",
+    type: "ingredients",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 2,
+  },
+  {
+    id: 18,
+    name: "Pâtes asperges au citron",
+    type: "ingredients",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 6,
+  },
+  {
+    id: 19,
+    name: "Pâtes asperges au citron",
+    type: "ingredients",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 7,
+  },
+  {
+    id: 20,
+    name: "Pâtes asperges au citron",
+    type: "ingredients",
+    image: require("@assets/images/requires/ingredient_recipe_3x.png"),
+    number: 2,
+  },
+]

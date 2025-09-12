@@ -34,6 +34,16 @@ export const globalStyles = StyleSheet.create({
     borderColor: theme.properties.lightRedBorder,
     borderWidth: 1.5,
   },
+  buttonOrange: {
+    backgroundColor: theme.properties.darkOrange,
+    borderColor: theme.properties.orangeBorder,
+    borderWidth: 1.5,
+  },
+  buttonOrangePressed: {
+    backgroundColor: theme.properties.lightOrange,
+    borderColor: theme.properties.lightOrangeBorder,
+    borderWidth: 1.5,
+  },
 });
 
 export const tabBarStyles = StyleSheet.create({

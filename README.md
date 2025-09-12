@@ -73,9 +73,11 @@
   > Barre de points de navigation qui indique la slide actuelle et qui permet de naviguer rapidement en bas de la vue
   > Module pour changer le moment de la journée (matin, midi et soir) pour afficher le menu en fonction du moment sélectionné
   > Ajout d'un délai d'inactivité de 15 secondes : si celui-ci tombe à 0, le slider revient au jour et au moment de la journée actuels
+    + Met à jour la date et l'heure actuelles
   > Réactualisation vers le jour et le moment de la journée actuels si on quitte et que l'on revient sur l'onglet / la vue
   > Bouton "Aller à aujourd'hui" qui renvoit directement au jour et au moment actuel et qui annule immédiatement le délai d'inactivité
-  > Affichage visuel du cooldown sur le bouton
+    + Affichage visuel du cooldown sur le bouton
+    + Met à jour la date et l'heure actuelles
   > Affichage du menu pour chaque jour et chaque moment
     ! Les recettes sont séparées dans l'affichage :
       - Les Petits déjeuners sont regroupés
@@ -87,19 +89,55 @@
 - **Onglet Menu de la semaine : Vue Liste** :
   > Bouton pour naviguer vers la vue Liste des recettes ajoutées au menu
     ! Le bouton retour de la vue Liste des recettes ajoutées au menu fait bien un retour en arrière
-  > Bouton pour vider la Liste des recettes ajoutées au menu
+  > Bouton pour supprimer l'attibution des recettes de la Liste des recettes ajoutées au menu
     ! Le bouton ne fait que changer le menu mocké en "faux menu vide"
     ! La vue Calendrier sera aussi vidée
   > Affichage en cartes stylisées avec un effet glass du menu en ligne de chaque jour et chaque moment
     ! S'il n'y a aucune recette d'entrée, les moments de la journées pour les cartes affichent "----"
   > Le jour actuel a une bordure orange vif
   > Possibilité de scroller verticalement dans la vue
-- **Onglet Menu de la semaine : Vue Modifier** :
+- **Onglet Menu de la semaine : Vue Liste des recettes** :
   > Ajout d'un bouton pour remplir le menu
     ! Le bouton ne fait que changer le menu mocké en "faux menu pré-rempli"
 - **Réorganisation de fichiers** :
   > Séparation de la logique métier en hooks des composants
   > Déplacements dans des dossiers séparés
 
+[1.4.0] - (../../....)
+
+- **Fixs** :
+  > Suppression de la mise à jour de la date toutes les minutes pour gagner en performances
+  > Fixs UI et bugs visuels
+  > Changement de condition pour associer les moments de la journée à l'heure actuelle
+- **Pop-up de validation** :
+  > Ajout d'une pop-up de validation quand on vide le menu dans l'onglet Menu de la semaine : Vue Liste
+- **Onglet Menu de la semaine : Vue Modifier le menu** :
+  > Ajout d'un slider de jour navigable via des dots de navigation ou en swipant pour chaque jour de la semaine
+  > Ajout d'un bouton "Corbeille" pour chaque jour de la vue
+    ! Ne fait rien pour le moment
+  > Stylisation des slides des jours :
+    - 3 moments de la journée peuvent être sélectionnés pour modifier le menu de ce moment via le bouton "+"
+      ! Une barre latérale s'affiche sur le côté avec les différentes recettes ajoutées au menu séparées par type
+      ! Pour l'instant, seules des recettes mockées y sont présentes
+    + Si un moment est sélectionné pour modifier son menu, il apparaît en encadré orange
+    ! Affichage mocké des recettes déjà ajoutées au moment "Matin"
+  !! Aucune autre fonctionnalité prévue n'est présente pour le moment
+- **Onglet Menu de la semaine : Vue Liste des recettes ajoutées au menu** : 
+  > Ajout d'un header avec :
+    - Le titre de la vue
+    - Le nombre d'entrées
+    - Un bouton pour vider la liste des recettes ajoutées au menu
+      ! Ne fait rien pour l'instant
+    - Un bouton pour ajouter une recette à la liste des recettes ajoutées au menu
+      ! Ne fait rien pour l'instant
+  > Stylisation de la liste des recettes ajoutées au menu avec :
+    - Image de la recette
+    - Le nom de la recette
+    - Un module pour afficher la quantité de la recette dans la liste et des boutons pour augmenter et diminuer la quantité
+    ! Pour l'instant, seul une liste mockée est affichée
+  > Ajout du panneau pour ajouter une recette à la liste
+    > Bouton pour switcher de mode d'affichage : 
+      - Possibilité d'effectuer une recherche d'ingrédient
+      - Possibilité d'effectuer un tri des ingrédients
+
 ### Notes importantes : 
-  - Ne pas oublier de faire la pop-up de validation de la vue Liste de l'onglet Menu de la semaine quand on appuie sur Vider le menu et faire la redirection

@@ -1,26 +1,59 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
-import { AppText } from "@components/atoms/global/Texts";
-import theme from "@themes/index";
-import LargeButton from "@components/molecules/global/LargeButton";
-import { mockedMenu } from "@constants/mockedMenu";
-import { useMenu } from "@contexts/MenuContext";
+import { ImageBackground, StyleSheet } from "react-native";
+import RecipesListHeader from "@components/organisms/menu/recipesList/RecipesListHeader";
+import RecipesListContent from "@components/organisms/menu/recipesList/RecipesListContent";
+import { mockedRecipeList } from "@constants/mockedMenu";
+import { useState, useCallback } from "react";
+import DarkScreenContainer from "@components/organisms/global/DarkScreenContainer";
+import AddPanel from "@components/organisms/global/AddPanel";
+import RecipeElement from "@components/organisms/menu/recipesList/RecipeElement";
+
+interface Recipe {
+  id: number;
+  name: string;
+  type: string;
+  image: any;
+  number: number;
+}
 
 export default function RecipesListView() {
-  const { setMenu } = useMenu();
+  const [isDarkScreenVisible, setIsDarkScreenVisible] = useState(false);
+  const [selectedPanel, setSelectedPanel] = useState<
+    "ingredientsList" | "addRecipe" | null
+  >(null);
+  // const [localRecipeList, setLocalRecipeList] = useState([]);
+  const [localRecipeList, setLocalRecipeList] = useState(mockedRecipeList);
+
+  const renderItem = useCallback(
+    (item: Recipe) => <RecipeElement key={item.id} recipe={item} />,
+    []
+  );
+
   return (
     <ImageBackground
       source={require("@assets/images/precharged/background/recipes_3x.jpg")}
       style={styles.screen}
       resizeMode="cover"
     >
-      <AppText style={styles.text}>
-        Menu de la semaine Vue liste des recettes
-      </AppText>
-      <LargeButton
-        action={() => setMenu(mockedMenu)}
-        text="Ajouter des recettes"
-        style={{ marginTop: 20 }}
+      <RecipesListHeader
+        recipeLength={
+          localRecipeList.filter((recipe) => recipe.number > 0).length
+        }
+        setIsDarkScreenVisible={setIsDarkScreenVisible}
+        setSelectedPanel={setSelectedPanel}
       />
+      <RecipesListContent recipes={localRecipeList} />
+      <DarkScreenContainer
+        visible={isDarkScreenVisible}
+        style={{ paddingHorizontal: 0, justifyContent: "flex-end" }}
+      >
+        {selectedPanel === "addRecipe" && (
+          <AddPanel
+            setIsDarkScreenVisible={setIsDarkScreenVisible}
+            data={mockedRecipeList}
+            renderItem={renderItem}
+          />
+        )}
+      </DarkScreenContainer>
     </ImageBackground>
   );
 }
@@ -28,14 +61,5 @@ export default function RecipesListView() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontFamily: "SN",
-    fontWeight: theme.properties.bold,
-    fontSize: 24,
-    textAlign: "center",
-    paddingHorizontal: 20,
   },
 });

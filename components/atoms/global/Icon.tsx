@@ -1,6 +1,7 @@
 import { IconName, useIconComponent } from "@hooks/icon/useIcon";
 import React from "react";
 import { SvgProps } from "react-native-svg";
+import theme from "@themes/index";
 
 interface IconProps extends SvgProps {
   name: IconName;
@@ -11,7 +12,7 @@ interface IconProps extends SvgProps {
 export default function Icon({
   name,
   size = 24,
-  color = "#000",
+  color = theme.properties.brown,
   ...props
 }: IconProps) {
   const SvgComponent = useIconComponent(name);
