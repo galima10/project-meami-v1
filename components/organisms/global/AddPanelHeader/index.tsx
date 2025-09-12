@@ -2,7 +2,7 @@ import { View, StyleSheet } from "react-native";
 import AppButton from "@components/molecules/global/AppButton";
 import theme from "@themes/index";
 import InputBar from "@components/organisms/global/InputBar";
-import PickerSorter from "../PickerSorter";
+import PickerInput from "../pickerModule/PickerInput";
 
 interface AddPanelHeaderProps {
   setIsDarkScreenVisible: (visible: boolean) => void;
@@ -18,7 +18,7 @@ export default function AddPanelHeader({
   return (
     <View style={styles.container}>
       <View style={styles.inputBarContainer}>
-        {inputMode === "search" ? <InputBar /> : <PickerSorter />}
+        {inputMode === "search" ? <InputBar /> : <PickerInput />}
 
         <AppButton
           icon="switch"

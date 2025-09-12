@@ -1,4 +1,4 @@
-import { useAppearDisappear } from "@hooks/animations/useAppearDisappear";
+import { useAppearDisappear } from "@hooks/animations/global/useAppearDisappear";
 import type { PropsWithChildren } from "react";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import Animated from "react-native-reanimated";

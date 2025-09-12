@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
-import { useAppearDisappear } from "./useAppearDisappear";
+import { useAppearDisappear } from ".";
 
 describe("useAppearDisappear", () => {
   it("should mount when visible is true", () => {

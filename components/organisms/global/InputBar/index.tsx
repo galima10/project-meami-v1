@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: theme.properties.white,
     marginRight: 16,
   },
   input: {
